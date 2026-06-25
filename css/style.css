@@ -1734,16 +1734,16 @@ code {
 .proto-banner {
   width: 100%;
   background: var(--color-electric-blue-15, #001E5B);
-  padding: 14px 24px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .proto-banner__text {
   font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
-  font-size: var(--font-style-body-copy-4-size, 14px);
+  font-size: var(--font-style-body-copy-3-size, 16px);
   font-weight: var(--font-weight-demi, 600);
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.01em;
@@ -1751,8 +1751,8 @@ code {
 }
 
 .proto-banner__star {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   color: var(--color-cloud-blue-68, #00B3FF);
   flex-shrink: 0;
 }
@@ -1933,19 +1933,19 @@ code {
 }
 
 .home-tile--pink {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #FEF0F3 100%);
+  background: var(--color-pink-95, #FEF0F3);
 }
 
 .home-tile--yellow {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #FBF3E0 100%);
+  background: var(--color-yellow-95, #FBF3E0);
 }
 
 .home-tile--teal-pastel {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #DEF9F3 100%);
+  background: var(--color-teal-95, #DEF9F3);
 }
 
 .home-tile--violet-pastel {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #F9F0FF 100%);
+  background: var(--color-violet-95, #F9F0FF);
 }
 
 .home-tile--pastel .home-tile__title {
