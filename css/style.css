@@ -1981,7 +1981,7 @@ code {
   font-size: 13px;
   color: var(--color-on-surface-2, #444444);
   line-height: 1.5;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
 /* ── CTA button inside tile — hug text ── */
