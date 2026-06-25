@@ -1,0 +1,1036 @@
+/* ═══════════════════════════════════════════════
+   DMS Design Tokens — Skill Documentation Site
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --brand-blue: #066AFE;
+  --brand-blue-dark: #032D60;
+  --brand-ink: #181818;
+  --brand-muted: #585858;
+  --brand-tint: #EEF4FF;
+  --cloud-blue-90: #D8E6FE;
+  --neutral-30: #444444;
+  --neutral-50: #747474;
+  --neutral-90: #E5E5E5;
+  --neutral-95: #F3F3F3;
+  --emerald-50: #ecfdf5;
+  --emerald-200: #a7f3d0;
+  --emerald-500: #10b981;
+  --emerald-700: #047857;
+  --violet-50: #f5f3ff;
+  --violet-200: #ddd6fe;
+  --violet-500: #8b5cf6;
+  --violet-700: #6d28d9;
+  --red-50: #fef2f2;
+  --red-200: #fecaca;
+  --green-50: #2E844A;
+  --white: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Salesforce Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--brand-ink);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* ── Shell ── */
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+  border-bottom: 1px solid var(--neutral-90);
+  backdrop-filter: blur(12px);
+}
+
+.shell__header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 64px;
+}
+
+.shell__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand-blue-dark);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.shell__badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--brand-tint);
+  color: var(--brand-blue-dark);
+  border: 1px solid rgba(6, 106, 254, 0.2);
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--neutral-90);
+}
+
+.tab {
+  padding: 12px 20px;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--neutral-50);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--brand-blue-dark);
+}
+
+.tab.active {
+  color: var(--brand-blue-dark);
+  border-bottom-color: var(--brand-blue);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ── Content area ── */
+.content {
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 48px 64px;
+  width: 100%;
+}
+
+.content > .tab-panel > :first-child {
+  margin-top: 0;
+}
+
+/* ── Sections ── */
+.section {
+  margin-top: 56px;
+}
+
+.section:first-child {
+  margin-top: 0;
+}
+
+.section__eyebrow {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-blue-dark);
+  margin-bottom: 6px;
+}
+
+.section__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.section__desc {
+  font-size: 14px;
+  color: var(--brand-muted);
+  line-height: 1.65;
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+/* ── Hero block ── */
+.hero-block {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  background: linear-gradient(135deg, rgba(3,45,96,0.05), var(--white) 50%, rgba(16,185,129,0.06));
+  padding: 32px 40px;
+}
+
+.hero-block__eyebrow {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-blue-dark);
+  margin-bottom: 10px;
+}
+
+.hero-block__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--brand-ink);
+  margin-bottom: 12px;
+}
+
+.hero-block__body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--brand-muted);
+  max-width: 720px;
+}
+
+.hero-block__body strong {
+  color: var(--brand-ink);
+  font-weight: 600;
+}
+
+/* ── Pillars ── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.pillar {
+  border-radius: 12px;
+  border: 1px solid var(--neutral-90);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pillar__num {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brand-blue-dark);
+}
+
+.pillar__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.pillar__body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--brand-muted);
+}
+
+/* ── Cards ── */
+.card-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.card-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.card {
+  border-radius: 12px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  background: var(--white);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card--full-height { height: 100%; }
+
+.card__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  width: fit-content;
+}
+
+.card__pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.pill--blue { border-color: rgba(3,45,96,0.3); background: rgba(3,45,96,0.05); color: var(--brand-blue-dark); }
+.pill--blue .dot { background: var(--brand-blue-dark); }
+.pill--green { border-color: var(--emerald-200); background: var(--emerald-50); color: var(--emerald-700); }
+.pill--green .dot { background: var(--emerald-500); }
+.pill--violet { border-color: var(--violet-200); background: var(--violet-50); color: var(--violet-700); }
+.pill--violet .dot { background: var(--violet-500); }
+.pill--neutral { border-color: var(--neutral-90); background: var(--neutral-95); color: var(--neutral-30); }
+.pill--neutral .dot { background: var(--neutral-50); }
+
+.card__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  line-height: 1.35;
+}
+
+.card__body {
+  font-size: 12.5px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card__footer {
+  font-size: 11px;
+  color: var(--neutral-50);
+  border-top: 1px solid var(--neutral-90);
+  padding-top: 8px;
+  word-break: break-word;
+}
+
+.card__footer-label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--neutral-30);
+  margin-right: 4px;
+}
+
+/* ── Inline code ── */
+code {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 0.88em;
+  background: var(--neutral-95);
+  border: 1px solid var(--neutral-90);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+/* ── Intent note ── */
+.intent-note {
+  background: var(--brand-tint);
+  border: 1px solid rgba(6, 106, 254, 0.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--brand-ink);
+  line-height: 1.6;
+  margin-top: 24px;
+}
+
+/* ── Bundle URL panel ── */
+.url-panel {
+  border-radius: 16px;
+  border: 1px solid rgba(6, 106, 254, 0.3);
+  background: linear-gradient(135deg, var(--brand-tint), rgba(216,230,254,0.3) 50%, var(--white));
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.url-panel__label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--brand-blue-dark);
+  margin-bottom: 4px;
+}
+
+.url-panel__url {
+  font-size: 15px;
+  color: var(--brand-ink);
+  word-break: break-all;
+}
+
+/* ── Download panel ── */
+.download-panel {
+  border-radius: 16px;
+  border: 2px solid rgba(6, 106, 254, 0.4);
+  background: linear-gradient(135deg, var(--brand-tint), rgba(216,230,254,0.3) 50%, var(--white));
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.download-panel__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+
+.download-panel__desc {
+  font-size: 13px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--neutral-90);
+  background: var(--white);
+  padding: 6px 12px;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brand-blue-dark);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover {
+  background: rgba(216,230,254,0.25);
+}
+
+.btn--primary {
+  background: var(--brand-blue-dark);
+  border-color: var(--brand-blue-dark);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.btn--primary:hover {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+}
+
+.btn.copied {
+  border-color: var(--emerald-200);
+  background: var(--emerald-50);
+  color: var(--emerald-700);
+}
+
+/* ── Code blocks ── */
+.code-block {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--neutral-90);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.code-block__label {
+  padding: 16px 20px 0;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--neutral-50);
+}
+
+.code-block pre {
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 16px 20px;
+  overflow-x: auto;
+  white-space: pre;
+  background: none;
+  border: none;
+}
+
+.code-block pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.code-block .btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/* ── Setup cards ── */
+.setup-card {
+  border-radius: 16px;
+  border: 1px solid var(--neutral-90);
+  background: var(--white);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.setup-card__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--neutral-90);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.setup-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.setup-card__name {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+
+.setup-card__body {
+  padding: 16px 20px;
+  flex: 1;
+}
+
+.setup-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.setup-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.step-num--blue { background: rgba(3,45,96,0.2); color: var(--brand-blue-dark); }
+.step-num--green { background: rgba(16,185,129,0.15); color: var(--emerald-700); }
+.step-num--violet { background: rgba(139,92,246,0.15); color: var(--violet-700); }
+
+.setup-steps li p {
+  font-size: 13px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+}
+
+.setup-card__terminal {
+  border-top: 1px solid var(--neutral-90);
+  background: rgba(243,243,243,0.4);
+}
+
+.setup-card__terminal summary {
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--neutral-30);
+  user-select: none;
+  list-style: none;
+}
+
+.setup-card__terminal summary::-webkit-details-marker { display: none; }
+
+.setup-card__terminal summary .chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--neutral-50);
+  transition: transform 0.2s;
+}
+
+.setup-card__terminal[open] summary .chevron {
+  transform: rotate(180deg);
+}
+
+.setup-card__terminal pre {
+  padding: 0 20px 12px;
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--white);
+  border: 1px solid var(--neutral-90);
+  border-radius: 8px;
+  margin: 0 20px 12px;
+  padding: 8px 12px;
+}
+
+/* ── Hallucination tips ── */
+.tip-list {
+  border-radius: 16px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.tip-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--neutral-90);
+}
+
+.tip-item:last-child {
+  border-bottom: none;
+}
+
+.tip-item__signal {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tip-item__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red-50);
+  border: 1px solid var(--red-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.tip-item__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tip-item__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  line-height: 1.4;
+}
+
+.tip-item__fix {
+  margin-top: 6px;
+  border-radius: 8px;
+  background: var(--emerald-50);
+  border: 1px solid var(--emerald-200);
+  padding: 8px 12px;
+}
+
+.tip-item__fix-label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--emerald-700);
+  margin-bottom: 2px;
+}
+
+.tip-item__fix-text {
+  font-size: 12.5px;
+  color: #064e3b;
+  line-height: 1.6;
+}
+
+.tip-item__why {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── Prompt slot ── */
+.prompt-slot {
+  border-radius: 12px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  background: var(--white);
+  padding: 20px;
+}
+
+.prompt-slot__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.prompt-slot__num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand-blue-dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.prompt-slot__name {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brand-blue-dark);
+}
+
+.prompt-slot__purpose {
+  font-size: 13px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+}
+
+.prompt-slot__example {
+  margin-top: 8px;
+  border-radius: 8px;
+  background: var(--neutral-95);
+  border: 1px solid var(--neutral-90);
+  padding: 8px 12px;
+}
+
+.prompt-slot__example-label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--neutral-50);
+  margin-bottom: 4px;
+}
+
+.prompt-slot__example-text {
+  font-size: 13px;
+  color: var(--brand-ink);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.prompt-slot__tips {
+  margin-top: 8px;
+  border-radius: 8px;
+  background: rgba(238,244,255,0.4);
+  border: 1px solid rgba(6, 106, 254, 0.2);
+  padding: 10px 12px;
+}
+
+.prompt-slot__tips-label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brand-blue-dark);
+  margin-bottom: 6px;
+}
+
+.prompt-slot__tips ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prompt-slot__tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(24,24,24,0.8);
+  line-height: 1.6;
+}
+
+.prompt-slot__tips li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(3,45,96,0.6);
+  margin-top: 7px;
+}
+
+.slot-arrow {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+  color: rgba(6, 106, 254, 0.7);
+}
+
+/* ── Gallery ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  border-radius: 16px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  background: var(--white);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.gallery-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.gallery-card__preview {
+  aspect-ratio: 16 / 10;
+  background: var(--neutral-95);
+  border-bottom: 1px solid var(--neutral-90);
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-card__preview iframe {
+  width: 200%;
+  height: 200%;
+  border: none;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.gallery-card__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-card__info {
+  padding: 16px 20px;
+}
+
+.gallery-card__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  margin-bottom: 4px;
+}
+
+.gallery-card__desc {
+  font-size: 13px;
+  color: var(--brand-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.gallery-card__meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gallery-card__actions {
+  padding: 0 20px 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.gallery-card__actions a {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--neutral-90);
+  transition: background 0.15s;
+}
+
+.gallery-card__actions a:hover {
+  background: var(--brand-tint);
+}
+
+/* ── Gallery empty state ── */
+.gallery-empty {
+  text-align: center;
+  padding: 80px 40px;
+  border: 2px dashed var(--neutral-90);
+  border-radius: 16px;
+  background: rgba(243,243,243,0.3);
+}
+
+.gallery-empty__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  margin-bottom: 8px;
+}
+
+.gallery-empty__body {
+  font-size: 14px;
+  color: var(--brand-muted);
+  max-width: 480px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--brand-muted);
+  margin-top: 20px;
+}
+
+.legend__label {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--neutral-30);
+}
+
+.legend__sep {
+  color: var(--neutral-50);
+}
+
+/* ── Template cards ── */
+.template-card {
+  border-radius: 16px;
+  border: 1px solid var(--neutral-90);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.template-card__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--neutral-90);
+  background: rgba(216,230,254,0.25);
+}
+
+.template-card__title {
+  font-family: "ITC Avant Garde Gothic Pro", "Salesforce Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  line-height: 1.4;
+}
+
+.template-card__when {
+  font-size: 12px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pillars { grid-template-columns: 1fr; }
+  .card-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .shell__header-inner { padding: 0 24px; }
+  .content { padding: 24px; }
+}
+
+@media (max-width: 768px) {
+  .card-grid--2,
+  .card-grid--3 { grid-template-columns: 1fr; }
+  .url-panel,
+  .download-panel { flex-direction: column; align-items: flex-start; }
+  .hero-block { padding: 24px; }
+  .hero-block__title { font-size: 22px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}

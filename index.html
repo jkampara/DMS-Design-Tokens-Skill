@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMS Design Tokens — Agent Skill</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ═══ Header ═══ -->
+  <header class="shell__header">
+    <div class="shell__header-inner">
+      <span class="shell__title">DMS Design Tokens</span>
+      <span class="shell__badge">Agent Skill</span>
+      <nav class="tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="use-it">How to use it</button>
+        <button class="tab" data-tab="gallery">Gallery</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══ Content ═══ -->
+  <main class="content">
+
+    <!-- ─── Overview ─── -->
+    <div id="overview" class="tab-panel active">
+
+      <!-- Tokens hero -->
+      <div class="hero-block">
+        <div style="max-width:720px;display:flex;flex-direction:column;gap:12px">
+          <p class="hero-block__eyebrow">The foundation</p>
+          <h2 class="hero-block__title">Built on semantic tokens</h2>
+          <p class="hero-block__body">
+            Every value the bundle paints &mdash; color, type, spacing,
+            radii &mdash; is a <strong>semantic token</strong>, not a literal.
+            Each one is described in <code>references/token-roles.md</code>
+            &mdash; the agent reads what a token <em>means</em> and
+            <em>when to reach for it</em> right alongside the recipes. Flip
+            <code>data-theme</code> at any level and the same recipes repaint
+            themselves; swap the token JSON and the whole bundle re-skins
+            &mdash; the recipes don&rsquo;t change.
+          </p>
+        </div>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="pillar__num">01</span>
+            <h3 class="pillar__title">Semantic, not literal</h3>
+            <p class="pillar__body">
+              Tokens are named by role &mdash;
+              <code>--color-surface-1</code>,
+              <code>--color-on-surface-1</code>,
+              <code>--color-fill-accent-1</code> &mdash;
+              never by raw value. Recipes never reach for
+              <code>#066AFE</code> directly.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="pillar__num">02</span>
+            <h3 class="pillar__title">Scope-anywhere theming</h3>
+            <p class="pillar__body">
+              Apply <code>data-theme="day"</code> or
+              <code>"night"</code> on
+              <code>&lt;html&gt;</code>, on a single
+              <code>&lt;section&gt;</code>, or on a
+              multi-blade region wrapper. The cascade does the repaint.
+            </p>
+          </article>
+          <article class="pillar">
+            <span class="pillar__num">03</span>
+            <h3 class="pillar__title">Primitives &rarr; aliases, by design</h3>
+            <p class="pillar__body">
+              Every family ships in two layers: a primitive ladder
+              (the brand&rsquo;s tuning surface &mdash;
+              <code>space.5</code>,
+              <code>radius.2</code>) and aliases on top
+              that name intent (<code>space.layout.gutter</code>,
+              <code>radius.button</code>). Product code binds to aliases;
+              a brand fork re-tunes the primitive ladder once and every
+              alias inherits.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <!-- What & Why -->
+      <section class="section">
+        <p class="section__eyebrow">The pitch in two cards</p>
+        <h2 class="section__title">What it is, and why we built it</h2>
+        <div class="card-grid card-grid--2">
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>01 &mdash; What</span>
+            <h3 class="card__title">A self-contained brand bundle, hosted at a single URL</h3>
+            <p class="card__body">
+              Every token (color, typography, spacing, grid, radii) and
+              every recipe (hero, card, CTA, page-shell, gradient regions)
+              lives in one published bundle. Agents fetch what they need on
+              demand and follow the rules the bundle ships with. No SDK, no
+              install, no per-project setup &mdash; just a URL and a skill
+              entrypoint.
+            </p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>02 &mdash; Why</span>
+            <h3 class="card__title">So the brand survives the AI page-building workflow</h3>
+            <p class="card__body">
+              Agents that don&rsquo;t know the brand invent visual values:
+              ad-hoc hex colors, off-grid spacing, wrong type ladders. The
+              skill replaces invention with retrieval &mdash; the agent reads
+              the canonical recipe, copies the canonical CSS, and audits its
+              own output against the brand contract before sending. The brand
+              stays the brand, even when nobody on the design team sees the
+              draft.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="section">
+        <p class="section__eyebrow">Who it helps</p>
+        <h2 class="section__title">Benefits</h2>
+        <p class="section__desc">
+          Faster builds, higher fidelity, fewer review cycles. The skill
+          turns &ldquo;implement the brand refresh&rdquo; from a multi-week
+          alignment exercise into a fetch-and-follow workflow.
+        </p>
+        <div class="card-grid card-grid--3">
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Engineers</span>
+            <h3 class="card__title">Save hours per component</h3>
+            <p class="card__body">Skip the &ldquo;which hex? which radius? which spacing step?&rdquo; research loop. The bundle resolves every visual decision to a single var(--&hellip;) lookup &mdash; fetch three JSONs, copy the recipe skeleton, ship.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>AI agents &amp; copilots</span>
+            <h3 class="card__title">Fewer hallucinations</h3>
+            <p class="card__body">Every value the agent emits is verified against a machine-readable source of truth. The gaps protocol forces agents to ask instead of guess &mdash; no more invented hex codes, made-up font stacks, or plausible-but-wrong spacing.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--violet"><span class="dot"></span>Designers</span>
+            <h3 class="card__title">A launchpad for new patterns</h3>
+            <p class="card__body">The bundle ships brand-approved, AA-validated primitives as composable building blocks. Designers can remix them into novel card types, blade layouts, and themed event pages &mdash; build something new without starting from zero.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Accessibility reviewers</span>
+            <h3 class="card__title">Pre-built for contrast</h3>
+            <p class="card__body">Every color pairing is AA-validated (&ge; 4.5 : 1) at build time. Background &rarr; ink &rarr; highlight triples are curated per surface so adopters never accidentally ship a sub-AA combination.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Brand &amp; marketing</span>
+            <h3 class="card__title">Brand-refresh expression, captured</h3>
+            <p class="card__body">The refreshed identity &mdash; gradients, type pairings, Day / Night system, four theming axes &mdash; lives in code, not a static PDF. Every page built with the skill ships the new brand automatically.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section class="section">
+        <p class="section__eyebrow">What to build with it</p>
+        <h2 class="section__title">Use cases</h2>
+        <p class="section__desc">
+          The skill isn&rsquo;t limited to copying existing recipes
+          verbatim &mdash; it&rsquo;s a toolkit for building new
+          patterns, exploring theme variations, and shipping
+          brand-safe pages at prototype speed.
+        </p>
+        <div class="card-grid card-grid--3">
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Prototyping</span>
+            <h3 class="card__title">Rapid page-pattern prototyping</h3>
+            <p class="card__body">Spin up new page layouts in minutes instead of days. The agent assembles hero, card-grid, body, and CTA blades from recipe skeletons &mdash; you describe the structure, it wires the tokens.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Prototyping</span>
+            <h3 class="card__title">New blade types and interaction patterns</h3>
+            <p class="card__body">Building a blade the recipes don&rsquo;t cover yet? The agent reads token-roles.md to pick the right semantic tokens by intent, applies the spacing and type ladders, and still runs the 8-question audit.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">Day / Night themed pages and sections</h3>
+            <p class="card__body">Scope data-theme on the page, a single section, or a multi-blade region wrapper and the cascade repaints everything &mdash; backgrounds, inks, card islands, CTA variants.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">Accent-surface and gradient exploration</h3>
+            <p class="card__body">Explore the 25 sanctioned blade backgrounds &mdash; five theme families, each with curated gradient + ink + highlight triples. Stack two blades into a contiguous-gradient super-region.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--violet"><span class="dot"></span>Brand</span>
+            <h3 class="card__title">Event and campaign microsites</h3>
+            <p class="card__body">Dreamforce, World Tour, product launches &mdash; each needs the brand-refresh expression with campaign-specific theming. The skill gives you the full token palette and recipe catalogue.</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--violet"><span class="dot"></span>Brand</span>
+            <h3 class="card__title">Multi-brand reskinning</h3>
+            <p class="card__body">Swap the primitive token ladder and every alias inherits &mdash; same recipes, different brand. The skill&rsquo;s two-layer architecture means a sub-brand can re-tune once and every page rebuilds.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Capabilities -->
+      <section class="section">
+        <p class="section__eyebrow">What it can do</p>
+        <h2 class="section__title">Capabilities at a glance</h2>
+        <p class="section__desc">
+          Thirteen capabilities organised by the problem each one solves.
+          Theming makes sure color, type, spacing and radii are right;
+          Layout gives you the building blocks; Quality is the contract
+          that protects the brand from drift.
+        </p>
+        <div class="card-grid card-grid--3">
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">Four-family token glossary</h3>
+            <p class="card__body">Every semantic token explained in plain language &mdash; role, when to reach for it, and the primitive it points at.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> token-roles.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">Dual-island cards on dark surfaces</h3>
+            <p class="card__body">Cards on Night blades default to Day-island (white solid); opt into Night-island (translucent, ghost CTAs auto-painted) when the design calls for it.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-card.md &sect; Rule 2</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">On-dark CTA modifier</h3>
+            <p class="card__body">CTAs directly on a Night gradient get .sf-cta--on-dark; CTAs inside cards never need the modifier &mdash; the card cascade paints them.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-cta-buttons.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+            <h3 class="card__title">25 sanctioned blade backgrounds</h3>
+            <p class="card__body">Five themes &times; 25 surfaces &times; allowed inks &times; AA-validated highlight pairs. Every triple is brand-curated.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-blade-backgrounds.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Layout</span>
+            <h3 class="card__title">Hero blade variants</h3>
+            <p class="card__body">Two-column marquee, centered single-column, Large, Mirror, oversize-asset &mdash; each with its own headline cascade and breakpoint behaviour.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-hero.quickstart.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Layout</span>
+            <h3 class="card__title">Card grids with math-fit bands</h3>
+            <p class="card__body">Four bands (1-up 1280, 2-up 620, 3-up 400, 4-up 290 px MAX) wired to a flex-wrap pattern so cards stay centered and equal-height.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-card-grid.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--blue"><span class="dot"></span>Layout</span>
+            <h3 class="card__title">Contiguous-gradient regions</h3>
+            <p class="card__body">Two or more adjacent blades sharing the same gradient surface auto-wrap into a super-blade region so the gradient flows without a seam.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-multi-blade-gradient.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--violet"><span class="dot"></span>Quality</span>
+            <h3 class="card__title">Page-shell overflow safety net</h3>
+            <p class="card__body">Universal box-sizing: border-box reset prevents every blade from overflowing the viewport horizontally.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> recipe-page.md</p>
+          </article>
+          <article class="card card--full-height">
+            <span class="card__pill pill--violet"><span class="dot"></span>Quality</span>
+            <h3 class="card__title">8-question self-audit before send</h3>
+            <p class="card__body">Every generation ends with a fast walk through eight gate-guarded questions &mdash; card clipping, grid bands, layout, headline tier, dual-island contract, page-shell overflow.</p>
+            <p class="card__footer"><span class="card__footer-label">Ships in</span> failure-signals.md</p>
+          </article>
+        </div>
+        <div class="legend">
+          <span class="legend__label">Legend</span>
+          <span class="card__pill pill--green"><span class="dot"></span>Theming</span>
+          <span>rules for color at every level</span>
+          <span class="legend__sep">&middot;</span>
+          <span class="card__pill pill--blue"><span class="dot"></span>Layout</span>
+          <span>the building blocks of a page</span>
+          <span class="legend__sep">&middot;</span>
+          <span class="card__pill pill--violet"><span class="dot"></span>Quality</span>
+          <span>the contract that protects the brand</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── How to use it ─── -->
+    <div id="use-it" class="tab-panel">
+
+      <!-- Hosted URL -->
+      <section class="section" style="margin-top:0">
+        <p class="section__eyebrow">Get started in 30 seconds</p>
+        <h2 class="section__title">Two ways to get started</h2>
+        <p class="section__desc">
+          Point your agent at the hosted URL for instant access,
+          or download the zip and set it up in your tool of choice.
+          Both paths give the agent the same bundle &mdash; pick
+          whichever fits your workflow.
+        </p>
+
+        <h3 style="font-size:16px;font-weight:600;color:var(--brand-ink);margin-bottom:12px">
+          Option 1 &mdash; Use the hosted URL
+        </h3>
+        <p style="font-size:13px;color:var(--brand-muted);line-height:1.6;max-width:720px;margin-bottom:16px">
+          The fastest path &mdash; no download, no install. Point your
+          agent at the bundle URL and it will fetch what it needs on demand.
+        </p>
+
+        <div class="url-panel">
+          <div>
+            <p class="url-panel__label">Bundle URL</p>
+            <p class="url-panel__url" id="bundle-url">https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/</p>
+          </div>
+          <button class="btn" onclick="copyText(document.getElementById('bundle-url').textContent, this)">Copy URL</button>
+        </div>
+      </section>
+
+      <!-- Canonical first message -->
+      <section class="section">
+        <h3 style="font-size:16px;font-weight:600;color:var(--brand-ink);margin-bottom:8px">
+          Canonical first message
+        </h3>
+        <p style="font-size:13px;color:var(--brand-muted);line-height:1.6;max-width:720px;margin-bottom:16px">
+          Whatever agent you use, your first message should pin the bundle URL,
+          point the agent at <code>SKILL.md</code>, and state your goal in
+          plain English. The skill takes it from there.
+        </p>
+        <div class="code-block">
+          <p class="code-block__label">First message &mdash; Cursor / Claude / any MCP-aware agent</p>
+          <pre><code id="first-msg">The Salesforce token bundle lives at:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
+
+The agent skill is at SKILL.md in that folder. Read it first; it tells you
+how to use the rest of the bundle.
+
+[Your goal in plain English — e.g. "I want to build a landing page
+with a Night-themed hero and three Day-island feature cards below it."]</code></pre>
+          <button class="btn" onclick="copyText(document.getElementById('first-msg').textContent, this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Download -->
+      <section class="section">
+        <h3 style="font-size:16px;font-weight:600;color:var(--brand-ink);margin-bottom:8px">
+          Option 2 &mdash; Download &amp; set up
+        </h3>
+        <p style="font-size:13px;color:var(--brand-muted);line-height:1.6;max-width:720px;margin-bottom:16px">
+          One zip contains everything an AI agent needs &mdash;
+          SKILL.md, all recipes, token JSON, CSS, Tailwind preset,
+          and gap coverage. Download it, unzip into the right folder
+          for your tool, and start prompting.
+        </p>
+
+        <div class="download-panel">
+          <div>
+            <p class="section__eyebrow" style="margin-bottom:4px">One download &mdash; works with Cursor, Claude, and any LLM</p>
+            <h3 class="download-panel__title">dms-design-tokens-skill.zip</h3>
+            <p class="download-panel__desc">
+              Contains SKILL.md, all 23 recipe &amp; reference files,
+              token JSON, CSS custom properties, Tailwind preset, gaps
+              coverage, and spec files.
+            </p>
+          </div>
+          <a href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip"
+             download class="btn btn--primary">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15v2h14v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download
+          </a>
+        </div>
+      </section>
+
+      <!-- Setup cards -->
+      <section class="section">
+        <p style="font-size:13px;color:var(--brand-muted);line-height:1.6;max-width:720px;margin-bottom:16px">
+          It&rsquo;s the same zip for every tool. The only difference is where you unzip it.
+        </p>
+        <div class="card-grid card-grid--3">
+          <!-- Cursor -->
+          <div class="setup-card">
+            <div class="setup-card__header">
+              <span class="setup-card__dot" style="background:var(--brand-blue-dark)"></span>
+              <h3 class="setup-card__name">Cursor</h3>
+            </div>
+            <div class="setup-card__body">
+              <ol class="setup-steps">
+                <li><span class="step-num step-num--blue">1</span><p>Download the zip above.</p></li>
+                <li><span class="step-num step-num--blue">2</span><p>Unzip into <code>~/.cursor/skills/</code> &mdash; this creates <code>~/.cursor/skills/dms-design-tokens/</code>.</p></li>
+                <li><span class="step-num step-num--blue">3</span><p>Open Cursor. The skill is auto-discovered. Say <strong>&ldquo;use the dms-design-tokens skill&rdquo;</strong> or just <strong>&ldquo;build me a Salesforce hero&rdquo;</strong>.</p></li>
+              </ol>
+            </div>
+            <details class="setup-card__terminal">
+              <summary>Terminal one-liner <svg class="chevron" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+              <pre>curl -L "https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip" \
+  -o /tmp/dms-skill.zip && \
+  unzip -o /tmp/dms-skill.zip -d ~/.cursor/skills/ && \
+  rm /tmp/dms-skill.zip</pre>
+            </details>
+          </div>
+          <!-- Claude -->
+          <div class="setup-card">
+            <div class="setup-card__header">
+              <span class="setup-card__dot" style="background:var(--emerald-500)"></span>
+              <h3 class="setup-card__name">Claude Code</h3>
+            </div>
+            <div class="setup-card__body">
+              <ol class="setup-steps">
+                <li><span class="step-num step-num--green">1</span><p>Download the zip above.</p></li>
+                <li><span class="step-num step-num--green">2</span><p>Unzip into <code>~/.claude/skills/</code> &mdash; this creates <code>~/.claude/skills/dms-design-tokens/</code>.</p></li>
+                <li><span class="step-num step-num--green">3</span><p>Type <code>/dms-design-tokens</code> in Claude to activate the skill, or just say <strong>&ldquo;build me a Salesforce hero&rdquo;</strong>.</p></li>
+              </ol>
+            </div>
+            <details class="setup-card__terminal">
+              <summary>Terminal one-liner <svg class="chevron" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+              <pre>curl -L "https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip" \
+  -o /tmp/dms-skill.zip && \
+  unzip -o /tmp/dms-skill.zip -d ~/.claude/skills/ && \
+  rm /tmp/dms-skill.zip</pre>
+            </details>
+          </div>
+          <!-- Other LLMs -->
+          <div class="setup-card">
+            <div class="setup-card__header">
+              <span class="setup-card__dot" style="background:var(--violet-500)"></span>
+              <h3 class="setup-card__name">Other LLMs</h3>
+            </div>
+            <div class="setup-card__body">
+              <ol class="setup-steps">
+                <li><span class="step-num step-num--violet">1</span><p>Download the zip above.</p></li>
+                <li><span class="step-num step-num--violet">2</span><p>Unzip into your project root or any folder. Point the agent at <code>SKILL.md</code> as the entry point.</p></li>
+                <li><span class="step-num step-num--violet">3</span><p>Or paste <code>llms-full.txt</code> (inside the zip) directly into ChatGPT / Copilot / any chat-based agent for a single-file ingest.</p></li>
+              </ol>
+            </div>
+            <details class="setup-card__terminal">
+              <summary>Terminal one-liner <svg class="chevron" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+              <pre>unzip dms-design-tokens-skill.zip -d ./
+
+# Or just point your agent at the hosted URL:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/SKILL.md</pre>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt framework -->
+      <section class="section">
+        <p class="section__eyebrow">Five named slots + anti-hallucination guide</p>
+        <h2 class="section__title">Prompt framework</h2>
+        <p class="section__desc">
+          Every effective prompt to this skill fills five named slots.
+          Each slot has one job; together they give the agent enough
+          context to make sensible defaults and ask the right clarifying
+          questions.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <!-- CONTEXT -->
+          <div class="prompt-slot">
+            <div class="prompt-slot__header">
+              <span class="prompt-slot__num">1</span>
+              <div>
+                <h3 class="prompt-slot__name">Context</h3>
+                <p class="prompt-slot__purpose">Pin the bundle URL and the entrypoint file. One reusable block.</p>
+                <div class="prompt-slot__example">
+                  <p class="prompt-slot__example-label">Example</p>
+                  <p class="prompt-slot__example-text">&ldquo;The Salesforce token bundle lives at &hellip; Read SKILL.md first; it tells you how to use the rest of the bundle.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot-arrow"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 2v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+          <!-- GOAL -->
+          <div class="prompt-slot">
+            <div class="prompt-slot__header">
+              <span class="prompt-slot__num">2</span>
+              <div>
+                <h3 class="prompt-slot__name">Goal</h3>
+                <p class="prompt-slot__purpose">What you&rsquo;re building, in one sentence of plain English.</p>
+                <div class="prompt-slot__example">
+                  <p class="prompt-slot__example-label">Example</p>
+                  <p class="prompt-slot__example-text">&ldquo;I want a landing page with a Night-themed hero and a three-card feature grid below it.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot-arrow"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 2v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+          <!-- STRUCTURE -->
+          <div class="prompt-slot">
+            <div class="prompt-slot__header">
+              <span class="prompt-slot__num">3</span>
+              <div>
+                <h3 class="prompt-slot__name">Structure</h3>
+                <p class="prompt-slot__purpose">Describe the parts in the order they appear &mdash; blades, cards, CTAs.</p>
+                <div class="prompt-slot__example">
+                  <p class="prompt-slot__example-label">Example</p>
+                  <p class="prompt-slot__example-text">&ldquo;Blade 1 = Night --2col hero with two CTAs. Blade 2 = --3up card grid with Day-island cards.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot-arrow"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 2v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+          <!-- DELIVERABLES -->
+          <div class="prompt-slot">
+            <div class="prompt-slot__header">
+              <span class="prompt-slot__num">4</span>
+              <div>
+                <h3 class="prompt-slot__name">Deliverables</h3>
+                <p class="prompt-slot__purpose">What the agent should hand back: file format, audit walk, file list, theme summary.</p>
+                <div class="prompt-slot__example">
+                  <p class="prompt-slot__example-label">Example</p>
+                  <p class="prompt-slot__example-text">&ldquo;Ship one HTML file. Walk the 8-question audit. Tell me which recipe files you read.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slot-arrow"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 2v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+          <!-- CONSTRAINTS -->
+          <div class="prompt-slot">
+            <div class="prompt-slot__header">
+              <span class="prompt-slot__num">5</span>
+              <div>
+                <h3 class="prompt-slot__name">Constraints</h3>
+                <p class="prompt-slot__purpose">Breakpoint coverage, theme defaults, anything the agent shouldn&rsquo;t do or assume.</p>
+                <div class="prompt-slot__example">
+                  <p class="prompt-slot__example-label">Example</p>
+                  <p class="prompt-slot__example-text">&ldquo;Render at 1440 / 1024 / 768 / 414 px. Default to Desktop unless I say otherwise.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anti-hallucination -->
+        <div style="margin-top:40px">
+          <p class="section__eyebrow">Reduce hallucination</p>
+          <h3 style="font-size:18px;font-weight:600;color:var(--brand-ink);line-height:1.3;margin-bottom:8px">
+            What to include so the agent doesn&rsquo;t make things up
+          </h3>
+          <p style="font-size:13px;color:var(--brand-muted);line-height:1.6;max-width:720px;margin-bottom:16px">
+            AI agents hallucinate when they lack specifics. Below are the six
+            most common hallucination patterns &mdash; and the one line you
+            can add to your prompt to prevent each one.
+          </p>
+          <div class="tip-list">
+            <div class="tip-item">
+              <div class="tip-item__signal">
+                <span class="tip-item__icon"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 4v4m0 3h.01" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <div class="tip-item__content">
+                  <p class="tip-item__title">The agent writes a hex code not in the bundle</p>
+                  <div class="tip-item__fix">
+                    <p class="tip-item__fix-label">Fix &mdash; add to your prompt</p>
+                    <p class="tip-item__fix-text">Always include &ldquo;Use only tokenized values. Never invent hex codes, pixel values, or font names.&rdquo; in your CONSTRAINTS slot.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-item__signal">
+                <span class="tip-item__icon"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 4v4m0 3h.01" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <div class="tip-item__content">
+                  <p class="tip-item__title">Cards on a Night blade inherit dark inks (invisible CTAs)</p>
+                  <div class="tip-item__fix">
+                    <p class="tip-item__fix-label">Fix &mdash; add to your prompt</p>
+                    <p class="tip-item__fix-text">Name the card island explicitly: &ldquo;Day-island cards on the Night hero&rdquo;.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-item__signal">
+                <span class="tip-item__icon"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 4v4m0 3h.01" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <div class="tip-item__content">
+                  <p class="tip-item__title">Agent guesses shadow / elevation values</p>
+                  <div class="tip-item__fix">
+                    <p class="tip-item__fix-label">Fix &mdash; add to your prompt</p>
+                    <p class="tip-item__fix-text">Add &ldquo;Ask me about any un-tokenized concern before generating&rdquo;.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tip-item">
+              <div class="tip-item__signal">
+                <span class="tip-item__icon"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 4v4m0 3h.01" stroke="#DC2626" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+                <div class="tip-item__content">
+                  <p class="tip-item__title">Spacing looks &ldquo;off&rdquo; (not aligned to the 4 px grid)</p>
+                  <div class="tip-item__fix">
+                    <p class="tip-item__fix-label">Fix &mdash; add to your prompt</p>
+                    <p class="tip-item__fix-text">Name the spacing aliases: &ldquo;Use space.layout.margin for outer, space.content.lg for inter-element gaps.&rdquo;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="intent-note">
+            <strong>Rule of thumb:</strong> if you can name the token alias,
+            the recipe variant, and the breakpoints in your prompt, the
+            agent has almost nothing left to guess. Specificity is the
+            antidote to hallucination.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── Gallery ─── -->
+    <div id="gallery" class="tab-panel">
+      <section class="section" style="margin-top:0">
+        <p class="section__eyebrow">Built with the skill</p>
+        <h2 class="section__title">Gallery</h2>
+        <p class="section__desc">
+          Real pages and components generated using the DMS Design Tokens
+          skill. Each example includes the prompt used, so you can
+          reproduce or remix it.
+        </p>
+
+        <div class="gallery-empty">
+          <h3 class="gallery-empty__title">Gallery coming soon</h3>
+          <p class="gallery-empty__body">
+            We&rsquo;re building showcase examples generated with the skill.
+            Each will be a standalone HTML + CSS page with the prompt
+            that created it. Check back soon or add your own by
+            submitting a PR to the
+            <a href="https://github.com/jkampara/DMS-Design-Tokens-Skill" style="color:var(--brand-blue)">repo</a>.
+          </p>
+        </div>
+
+        <!-- Gallery items will go here as:
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-card__preview">
+              <iframe src="gallery/example-name.html" loading="lazy"></iframe>
+            </div>
+            <div class="gallery-card__info">
+              <h3 class="gallery-card__title">Example Title</h3>
+              <p class="gallery-card__desc">Description of what was built.</p>
+              <div class="gallery-card__meta">
+                <span class="card__pill pill--green"><span class="dot"></span>Day theme</span>
+                <span class="card__pill pill--blue"><span class="dot"></span>Hero + Cards</span>
+              </div>
+            </div>
+            <div class="gallery-card__actions">
+              <a href="gallery/example-name.html" target="_blank">View full page</a>
+              <a href="gallery/example-name.prompt.txt" target="_blank">View prompt</a>
+            </div>
+          </article>
+        </div>
+        -->
+      </section>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
