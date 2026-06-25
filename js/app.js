@@ -16,8 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!overlay) return;
 
   function openFeedback() {
-    overlay.classList.add('is-open');
-    backdrop.classList.add('is-open');
+    overlay.style.display = '';
+    backdrop.style.display = '';
+    requestAnimationFrame(function () {
+      overlay.classList.add('is-open');
+      backdrop.classList.add('is-open');
+    });
     document.body.style.overflow = 'hidden';
   }
 
@@ -25,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.classList.remove('is-open');
     backdrop.classList.remove('is-open');
     document.body.style.overflow = '';
+    setTimeout(function () {
+      overlay.style.display = 'none';
+      backdrop.style.display = 'none';
+    }, 300);
   }
 
   document.querySelectorAll('[data-feedback-open]').forEach(function (el) {
