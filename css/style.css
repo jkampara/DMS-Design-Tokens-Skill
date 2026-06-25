@@ -1719,57 +1719,61 @@ code {
   text-transform: uppercase;
 }
 
-/* ── Prototype disclaimer ── */
-.home-disclaimer {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 24px;
-  margin: 0 auto;
-  max-width: 960px;
-  border-radius: var(--radius-card, 12px);
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
-  box-shadow:
-    0 2px 8px -2px rgba(24, 24, 24, 0.06),
-    0 4px 12px -4px rgba(24, 24, 24, 0.08);
+/* ── Day-themed hero badge ── */
+.home-hero__badge--day {
+  background: var(--color-electric-blue-95, #EDF4FF);
+  border: 1px solid rgba(6, 106, 254, 0.15);
+  color: var(--color-fill-accent, #066AFE);
 }
 
-.home-disclaimer__icon {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: #FEF3C7;
-  border: 1px solid #FDE68A;
+.home-hero__badge--day .icon {
+  color: var(--color-fill-accent, #066AFE);
+}
+
+/* ── Prototype marquee banner ── */
+.proto-banner {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-electric-blue-15, #001E5B);
+  padding: 10px 0;
+}
+
+.proto-banner__inner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.proto-banner__marquee {
   display: flex;
+  width: max-content;
+  animation: proto-scroll 28s linear infinite;
+}
+
+.proto-banner__content {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: #92400E;
-  margin-top: 2px;
-}
-
-.home-disclaimer__content { flex: 1; }
-
-.home-disclaimer__title {
-  font-family: var(--font-family-display, "Avant Garde For Salesforce", Arial, sans-serif);
-  font-size: var(--font-style-body-copy-2-bold-size, 18px);
-  font-weight: var(--font-weight-demi, 600);
-  color: #92400E;
-  line-height: 1.3;
-  margin-bottom: 6px;
-}
-
-.home-disclaimer__body {
+  gap: 8px;
+  padding: 0 48px;
+  white-space: nowrap;
   font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
   font-size: var(--font-style-body-copy-4-size, 14px);
-  color: #78350F;
-  line-height: 1.65;
+  font-weight: var(--font-weight-demi, 600);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.01em;
 }
 
-.home-disclaimer__body strong {
-  font-weight: var(--font-weight-bold, 700);
-  color: #92400E;
+.proto-banner__content .icon {
+  color: var(--color-cloud-blue-68, #00B3FF);
+  flex-shrink: 0;
+}
+
+@keyframes proto-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.proto-banner:hover .proto-banner__marquee {
+  animation-play-state: paused;
 }
 
 /* ── Home tile grid ── */
@@ -1991,7 +1995,6 @@ code {
   .home-grid, .home-grid--4 { grid-template-columns: 1fr; }
   .home-tile { padding: 28px 24px 24px; }
   .home-tile__title { font-size: 20px; }
-  .home-disclaimer { flex-direction: column; gap: 12px; }
 }
 
 /* ── Fun fact banner ── */

@@ -37,7 +37,10 @@
 <!-- ═══ Hero ═══ -->
 <section class="blade blade--day" style="padding-bottom:48px;">
   <div class="blade__inner" style="text-align:center; max-width:900px; margin-inline:auto;">
-    <p class="sh__eyebrow">Design Skill</p>
+    <div class="home-hero__badge home-hero__badge--day">
+      <i class="icon icon--magicwand" aria-hidden="true" style="width:18px;height:18px;"></i>
+      <span>Design Skill</span>
+    </div>
     <h1 class="hero__title" style="max-width:none;margin-inline:auto;color:var(--color-on-surface-1,#001E5B);">
       Design Tokens Skill for<br><span style="color:var(--color-fill-accent,#066AFE);">Digital Marketing Subsystem (DMS)</span>
     </h1>
@@ -85,26 +88,21 @@
   </div>
 </section>
 
-<!-- ═══ Prototype-only disclaimer ═══ -->
-<section class="blade blade--day" style="padding-top:0;">
-  <div class="blade__inner">
-    <div class="home-disclaimer">
-      <div class="home-disclaimer__icon">
-        <i class="icon icon--info" aria-hidden="true" style="width:20px;height:20px;"></i>
-      </div>
-      <div class="home-disclaimer__content">
-        <p class="home-disclaimer__title">Prototyping only — not production-ready code</p>
-        <p class="home-disclaimer__body">
-          This skill generates <strong>prototype-quality HTML &amp; CSS</strong> for rapid visual exploration, 
-          stakeholder alignment, and design direction validation. Output is <strong>not intended for production deployment</strong> — 
-          it has not been audited for accessibility compliance (WCAG), performance optimization, cross-browser/device testing, 
-          framework integration, security review, or production build tooling. Use it to <strong>move fast during ideation</strong>, 
-          then hand off to your engineering team for production implementation with proper testing and review cycles.
-        </p>
-      </div>
+<!-- ═══ Prototype-only banner ═══ -->
+<div class="proto-banner">
+  <div class="proto-banner__inner">
+    <div class="proto-banner__marquee">
+      <span class="proto-banner__content">
+        <i class="icon icon--info" aria-hidden="true" style="width:14px;height:14px;"></i>
+        For prototyping &amp; visual exploration only — not production-ready code. Hand off to engineering for production implementation.
+      </span>
+      <span class="proto-banner__content" aria-hidden="true">
+        <i class="icon icon--info" aria-hidden="true" style="width:14px;height:14px;"></i>
+        For prototyping &amp; visual exploration only — not production-ready code. Hand off to engineering for production implementation.
+      </span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ═══ Feedback FAB + Overlay ═══ -->
 <button class="feedback-fab" data-feedback-open aria-label="Give feedback">
