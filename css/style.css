@@ -1954,32 +1954,19 @@ code {
   margin-bottom: 4px;
 }
 
-/* ── Icon circle ── */
-.home-tile__icon-circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 40px;
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
-}
-
-.home-tile__icon-circle .icon {
-  width: 24px;
-  height: 24px;
+/* ── Tile icon (bare, no container) ── */
+.home-tile__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 64px;
+  flex-shrink: 0;
   color: var(--color-fill-accent, #066AFE);
 }
 
-.home-tile--pink .home-tile__icon-circle .icon { color: #DB2777; }
-.home-tile--yellow .home-tile__icon-circle .icon { color: #D97706; }
-.home-tile--teal-pastel .home-tile__icon-circle .icon { color: #0D9488; }
-.home-tile--violet-pastel .home-tile__icon-circle .icon { color: #7C3AED; }
+.home-tile--pink .home-tile__icon { color: #DB2777; }
+.home-tile--yellow .home-tile__icon { color: #D97706; }
+.home-tile--teal-pastel .home-tile__icon { color: #0D9488; }
+.home-tile--violet-pastel .home-tile__icon { color: #7C3AED; }
 
 /* ── Tile body group (title + desc + CTA tight together) ── */
 .home-tile__body {
