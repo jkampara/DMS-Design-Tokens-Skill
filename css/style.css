@@ -2024,12 +2024,14 @@ code {
 /* ── Home responsive ── */
 @media (max-width: 1023.98px) and (min-width: 768px) {
   .home-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .home-hero__eyebrow { font-size: 20px; }
 }
 
 @media (max-width: 767.98px) {
   .home-grid, .home-grid--4 { grid-template-columns: 1fr; }
   .home-tile { padding: 28px 24px 24px; }
   .home-tile__title { font-size: 20px; }
+  .home-hero__eyebrow { font-size: 16px; }
 }
 
 /* ── Fun fact banner ── */
