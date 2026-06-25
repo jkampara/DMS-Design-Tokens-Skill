@@ -1697,6 +1697,262 @@ code {
   height: 14px;
 }
 
+/* ═══ Homepage ═══ */
+
+/* ── Hero badge ── */
+.home-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 24px;
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: var(--font-style-body-copy-4-size, 14px);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-electric-blue-80, #A8CBFF);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Prototype disclaimer ── */
+.home-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  margin: -32px auto 0;
+  max-width: 960px;
+  position: relative;
+  z-index: 10;
+  border-radius: var(--radius-card, 12px);
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  box-shadow:
+    0 2px 8px -2px rgba(24, 24, 24, 0.06),
+    0 4px 12px -4px rgba(24, 24, 24, 0.08);
+}
+
+.home-disclaimer__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #92400E;
+  margin-top: 2px;
+}
+
+.home-disclaimer__content { flex: 1; }
+
+.home-disclaimer__title {
+  font-family: var(--font-family-display, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-size: var(--font-style-body-copy-2-bold-size, 18px);
+  font-weight: var(--font-weight-demi, 600);
+  color: #92400E;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.home-disclaimer__body {
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: var(--font-style-body-copy-4-size, 14px);
+  color: #78350F;
+  line-height: 1.65;
+}
+
+.home-disclaimer__body strong {
+  font-weight: var(--font-weight-bold, 700);
+  color: #92400E;
+}
+
+/* ── Home tile grid ── */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ── Individual tiles ── */
+.home-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px 32px;
+  border-radius: 20px;
+  background: var(--color-surface-1, #FFFFFF);
+  border: 1px solid rgba(24, 24, 24, 0.04);
+  box-shadow:
+    0 2px 8px -2px rgba(24, 24, 24, 0.08),
+    0 8px 20px -4px rgba(24, 24, 24, 0.12);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.home-tile:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 24px -4px rgba(24, 24, 24, 0.14),
+    0 20px 40px -8px rgba(24, 24, 24, 0.18);
+}
+
+.home-tile__glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  opacity: 0.08;
+  transition: opacity 0.4s, transform 0.4s;
+  pointer-events: none;
+}
+
+.home-tile:hover .home-tile__glow {
+  opacity: 0.15;
+  transform: scale(1.2);
+}
+
+/* Color variants — glow + icon background */
+.home-tile--blue .home-tile__glow { background: var(--color-fill-accent, #066AFE); }
+.home-tile--teal .home-tile__glow { background: var(--color-cloud-blue-68, #00B3FF); }
+.home-tile--violet .home-tile__glow { background: #8B5CF6; }
+.home-tile--green .home-tile__glow { background: var(--color-green-50, #2E844A); }
+
+.home-tile__icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-tile__icon-wrap .icon {
+  width: 28px;
+  height: 28px;
+}
+
+.home-tile__icon-wrap--blue {
+  background: linear-gradient(135deg, var(--color-electric-blue-95, #EDF4FF), rgba(6, 106, 254, 0.15));
+  color: var(--color-fill-accent, #066AFE);
+}
+
+.home-tile__icon-wrap--teal {
+  background: linear-gradient(135deg, #E0F7FA, rgba(0, 179, 255, 0.15));
+  color: var(--color-cloud-blue-68, #00B3FF);
+}
+
+.home-tile__icon-wrap--violet {
+  background: linear-gradient(135deg, #F0E8FC, rgba(139, 92, 246, 0.15));
+  color: #7C3AED;
+}
+
+.home-tile__icon-wrap--green {
+  background: linear-gradient(135deg, #ECFDF5, rgba(46, 132, 74, 0.15));
+  color: var(--color-green-50, #2E844A);
+}
+
+.home-tile__title {
+  font-family: var(--font-family-display, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-size: var(--font-style-display-6-size, 24px);
+  font-weight: var(--font-weight-demi, 600);
+  color: var(--color-on-surface-1, #001E5B);
+  line-height: 1.25;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-tile__desc {
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: var(--font-style-body-copy-3-size, 16px);
+  color: var(--color-on-surface-2, #444444);
+  line-height: 1.6;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.home-tile__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: var(--font-style-body-copy-3-size, 16px);
+  font-weight: var(--font-weight-bold, 700);
+  position: relative;
+  z-index: 1;
+  transition: gap 0.25s;
+}
+
+.home-tile:hover .home-tile__cta { gap: 10px; }
+
+.home-tile--blue .home-tile__cta { color: var(--color-fill-accent, #066AFE); }
+.home-tile--teal .home-tile__cta { color: #0891B2; }
+.home-tile--violet .home-tile__cta { color: #7C3AED; }
+.home-tile--green .home-tile__cta { color: var(--color-green-50, #2E844A); }
+
+.home-tile__cta-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* ── Gradient accent line at top of each tile ── */
+.home-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+}
+
+.home-tile--blue::before {
+  background: linear-gradient(90deg, var(--color-electric-blue-30, #022AC0), var(--color-fill-accent, #066AFE), var(--color-cloud-blue-68, #00B3FF));
+}
+
+.home-tile--teal::before {
+  background: linear-gradient(90deg, var(--color-fill-accent, #066AFE), var(--color-cloud-blue-68, #00B3FF), #67E8F9);
+}
+
+.home-tile--violet::before {
+  background: linear-gradient(90deg, #6D28D9, #8B5CF6, #C084FC);
+}
+
+.home-tile--green::before {
+  background: linear-gradient(90deg, #15803D, var(--color-green-50, #2E844A), #4ADE80);
+}
+
+/* ── Home responsive ── */
+@media (max-width: 767.98px) {
+  .home-grid { grid-template-columns: 1fr; }
+  .home-tile { padding: 28px 24px 24px; }
+  .home-tile__icon-wrap { width: 48px; height: 48px; border-radius: 14px; margin-bottom: 16px; }
+  .home-tile__icon-wrap .icon { width: 24px; height: 24px; }
+  .home-tile__title { font-size: 20px; }
+  .home-disclaimer { flex-direction: column; gap: 12px; margin-top: -24px; }
+}
+
 /* ── Fun fact banner ── */
 .fun-fact-banner {
   display: flex;

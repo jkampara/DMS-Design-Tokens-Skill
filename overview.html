@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMS Design Tokens — Overview</title>
+  <meta name="description" content="A self-contained brand bundle that turns AI agents into brand-safe page builders. Semantic tokens, curated recipes, and an 8-question self-audit — all at a single URL.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <!-- Bundle assets — fonts, tokens, icons all from the hosted URL -->
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/fonts.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/tokens.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css">
+  <link rel="stylesheet" href="css/style.css?v=20260625">
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <i class="icon icon--salesforce1 nav__logo-icon"></i>
+      DMS Design Tokens
+    </a>
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__tabs">
+      <a href="overview.html" class="nav__tab-link active">Overview</a>
+      <a href="use-it.html" class="nav__tab-link">How to use it</a>
+      <a href="setup-and-help.html" class="nav__tab-link">Setup and help</a>
+      <a href="gallery.html" class="nav__tab-link">Gallery</a>
+      <button class="sf-cta sf-cta--special sf-cta--medium nav__feedback" data-feedback-open><i class="icon icon--chat" aria-hidden="true" style="width:16px;height:16px;"></i> Feedback</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Night Hero ── -->
+<section class="blade blade--night-hero" data-theme="night">
+  <div class="blade__inner">
+    <p class="hero__eyebrow">AI Agent Skill</p>
+    <h1 class="hero__title">
+      Brand-safe pages,<br>
+      built by <span class="highlight">AI agents</span>
+    </h1>
+    <p class="hero__body">
+      A self-contained brand bundle — semantic tokens, curated recipes,
+      and an 8-question self-audit — all at a single URL. Agents fetch
+      what they need on demand and follow the rules the bundle ships
+      with. No SDK, no install, no per-project setup.
+    </p>
+    <div class="hero__actions">
+      <a href="use-it.html" class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark">Get started</a>
+      <a href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/SKILL.md" class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" target="_blank" rel="noopener">Read SKILL.md <i class="icon icon--chevronright" style="width:16px;height:16px;"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── What & Why ── -->
+<section class="blade blade--day">
+  <div class="blade__inner">
+    <div class="section-header">
+      <p class="sh__eyebrow">The pitch in two cards</p>
+      <h2 class="sh__title">What it is, and why we built it</h2>
+    </div>
+    <div class="card-grid card-grid--2">
+      <article class="sf-card">
+        <p class="sh__eyebrow">What is it?</p>
+        <h3 class="sf-card__title">A self-contained brand bundle, hosted at a single URL</h3>
+        <p class="sf-card__body">
+          Every token (color, typography, spacing, grid, radii) and every recipe
+          (hero, card, CTA, page-shell, gradient regions) lives in one published
+          bundle. Agents fetch what they need on demand and follow the rules
+          the bundle ships with. No SDK, no install, no per-project setup —
+          just a URL and a skill entrypoint.
+        </p>
+      </article>
+      <article class="sf-card">
+        <p class="sh__eyebrow">Why does it exist?</p>
+        <h3 class="sf-card__title">So the brand survives the AI page-building workflow</h3>
+        <p class="sf-card__body">
+          Agents that don't know the brand invent visual values: ad-hoc hex colors,
+          off-grid spacing, wrong type ladders. The skill replaces invention with
+          retrieval — the agent reads the canonical recipe, copies the canonical CSS,
+          and audits its own output against the brand contract before sending.
+          The brand stays the brand, even when nobody on the design team sees the draft.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Benefits + Use cases: continuous Day Morning gradient ── -->
+<section class="sf-blade-region" data-theme="day">
+
+<!-- ── Benefits ── -->
+<section class="blade blade--transparent" style="padding-bottom:32px;">
+  <div class="blade__inner">
+    <div class="section-header">
+      <p class="sh__eyebrow">Why it matters</p>
+      <h2 class="sh__title">Built for every role in the workflow</h2>
+      <p class="sh__desc">
+        Faster builds, higher fidelity, fewer review cycles.
+        The skill turns "implement the brand refresh" from a multi-week alignment
+        exercise into a fetch-and-follow workflow.
+      </p>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="sf-card">
+        <span class="sf-card__pill pill--blue"><span class="dot"></span>Engineers</span>
+        <h3 class="sf-card__title">Save hours per component</h3>
+        <p class="sf-card__body">
+          Skip the "which hex? which radius? which spacing step?" research loop.
+          The bundle resolves every visual decision to a single var(--…) lookup —
+          fetch three JSONs, copy the recipe skeleton, ship.
+        </p>
+      </article>
+      <article class="sf-card">
+        <span class="sf-card__pill pill--blue"><span class="dot"></span>AI agents &amp; copilots</span>
+        <h3 class="sf-card__title">Fewer hallucinations</h3>
+        <p class="sf-card__body">
+          Every value the agent emits is verified against a machine-readable source of truth.
+          The gaps protocol forces agents to ask instead of guess — no more invented hex codes,
+          made-up font stacks, or plausible-but-wrong spacing.
+        </p>
+      </article>
+      <article class="sf-card">
+        <span class="sf-card__pill pill--blue"><span class="dot"></span>Designers</span>
+        <h3 class="sf-card__title">A launchpad for new patterns</h3>
+        <p class="sf-card__body">
+          The bundle ships brand-approved, AA-validated primitives as composable
+          building blocks. Designers can remix them into novel card types, blade
+          layouts, and themed event pages — build something new without starting from zero.
+        </p>
+      </article>
+      <article class="sf-card">
+        <span class="sf-card__pill pill--blue"><span class="dot"></span>Accessibility reviewers</span>
+        <h3 class="sf-card__title">Pre-built for contrast</h3>
+        <p class="sf-card__body">
+          Every color pairing is AA-validated (&ge; 4.5 : 1) at build time.
+          Background &rarr; ink &rarr; highlight triples are curated per surface
+          so adopters never accidentally ship a sub-AA combination.
+        </p>
+      </article>
+      <article class="sf-card">
+        <span class="sf-card__pill pill--blue"><span class="dot"></span>Brand &amp; marketing</span>
+        <h3 class="sf-card__title">Brand-refresh expression, captured</h3>
+        <p class="sf-card__body">
+          The refreshed identity — gradients, type pairings, Day / Night system,
+          four theming axes — lives in code, not a static PDF. Every page built
+          with the skill ships the new brand automatically.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use cases ── -->
+<section class="blade blade--transparent" style="padding-top:32px;padding-bottom:32px;">
+  <div class="blade__inner">
+    <div class="section-header">
+      <p class="sh__eyebrow">What to build with it</p>
+      <h2 class="sh__title">Ideas you can ship today</h2>
+      <p class="sh__desc">
+        The skill isn't limited to copying existing recipes verbatim — it's a toolkit for building
+        new patterns, exploring theme variations, and shipping brand-safe pages at prototype speed.
+      </p>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--layout"></i></div>
+        <h3 class="sf-card__title">Rapid page-pattern prototyping</h3>
+        <p class="sf-card__body">Spin up new page layouts in minutes instead of days. The agent assembles hero, card-grid, body, and CTA blades from recipe skeletons.</p>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--builder"></i></div>
+        <h3 class="sf-card__title">New blade types and interaction patterns</h3>
+        <p class="sf-card__body">Building a blade the recipes don't cover yet? The agent reads token-roles.md to pick the right semantic tokens by intent.</p>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--palette"></i></div>
+        <h3 class="sf-card__title">Day / Night themed pages and sections</h3>
+        <p class="sf-card__body">Scope data-theme on the page, a single section, or a multi-blade region wrapper and the cascade repaints everything.</p>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--color-swatch"></i></div>
+        <h3 class="sf-card__title">Accent-surface and gradient region exploration</h3>
+        <p class="sf-card__body">Explore the 25 sanctioned blade backgrounds — five theme families, each with curated gradient + ink + highlight triples.</p>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--campaign"></i></div>
+        <h3 class="sf-card__title">Event and campaign microsites</h3>
+        <p class="sf-card__body">Dreamforce, World Tour, product launches — each needs the brand-refresh expression with campaign-specific theming.</p>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__icon"><i class="icon icon--globe"></i></div>
+        <h3 class="sf-card__title">Multi-brand reskinning</h3>
+        <p class="sf-card__body">Swap the primitive token ladder and every alias inherits — same recipes, different brand.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Capabilities ── -->
+<section class="blade blade--transparent" style="padding-top:32px;">
+  <div class="blade__inner">
+    <div class="section-header">
+      <p class="sh__eyebrow">What it can do</p>
+      <h2 class="sh__title">Capabilities at a glance</h2>
+      <p class="sh__desc">
+        Three pillars that protect the brand from drift — Theming, Layout, and Quality.
+      </p>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="sf-card">
+        <h3 class="sf-card__title">Tokens, themes &amp; surfaces</h3>
+        <p class="sf-card__body">Four-family token glossary (color, spacing, type, radii), 25 sanctioned blade backgrounds, and per-page or per-blade theme scoping via <code>data-theme</code>.</p>
+      </article>
+      <article class="sf-card">
+        <h3 class="sf-card__title">Dark-mode components</h3>
+        <p class="sf-card__body">Dual-island cards on Night blades (Day-island default, Night-island opt-in) and an on-dark CTA modifier — cards auto-paint, no extra class needed.</p>
+      </article>
+      <article class="sf-card">
+        <h3 class="sf-card__title">Heroes &amp; grid systems</h3>
+        <p class="sf-card__body">Hero blade variants (marquee, centered, large, mirror) plus card grids with four math-fit bands that flex-wrap so cards stay centered at every breakpoint.</p>
+      </article>
+      <article class="sf-card">
+        <h3 class="sf-card__title">Content blocks &amp; regions</h3>
+        <p class="sf-card__body">Featured Quote 3-stage cascade (desktop &rarr; tablet &rarr; mobile) and contiguous-gradient super-blade regions that span multiple sections.</p>
+      </article>
+      <article class="sf-card">
+        <h3 class="sf-card__title">Layout safety nets</h3>
+        <p class="sf-card__body">Page-shell overflow prevention, card-grid guardrails (min-width, overflow-wrap, box-sizing, stretch), and headline tier enforcement.</p>
+      </article>
+      <article class="sf-card">
+        <h3 class="sf-card__title">Self-audit &amp; validation</h3>
+        <p class="sf-card__body">Every generation ends with an 8-question self-audit — gate-guarded checks that catch brand drift before you ship.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</section><!-- /sf-blade-region (Benefits + Use cases + Capabilities) -->
+
+<!-- ═══ Feedback FAB + Overlay ═══ -->
+<button class="feedback-fab" data-feedback-open aria-label="Give feedback">
+  <i class="icon icon--chat" aria-hidden="true"></i>
+</button>
+<div class="feedback-backdrop" id="feedback-backdrop" style="display:none;"></div>
+<div class="feedback-overlay" id="feedback-overlay" style="display:none;">
+  <div class="feedback-overlay__header">
+    <button class="feedback-overlay__close" data-feedback-close aria-label="Close"><i class="icon icon--close" aria-hidden="true"></i></button>
+    <h3 class="feedback-overlay__title">Share your work &amp; give feedback</h3>
+    <p class="feedback-overlay__subtitle">Help us improve the skill — even rough results are useful signal.</p>
+  </div>
+  <div class="feedback-overlay__body">
+    <div class="feedback-overlay__section">
+      <p class="feedback-overlay__label">Join the conversation</p>
+      <p class="feedback-overlay__text">Connect with other creators, share what you've built, get tips, and help shape the skill. Drop screenshots, questions, or ideas — everything helps.</p>
+      <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener" class="feedback-overlay__cta feedback-overlay__cta--primary">
+        <i class="icon icon--chat" aria-hidden="true"></i> Open Slack channel
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js?v=20260625"></script>
+</body>
+</html>
