@@ -1933,26 +1933,30 @@ code {
 }
 
 .home-tile--pink {
-  background: var(--color-pink-95, #FEF0F3);
+  background: var(--color-pink-60, #FF538A);
 }
 
 .home-tile--yellow {
-  background: var(--color-yellow-95, #FBF3E0);
+  background: var(--color-yellow-80, #FCC003);
 }
 
 .home-tile--teal-pastel {
-  background: var(--color-teal-95, #DEF9F3);
+  background: var(--color-teal-80, #04E1CB);
 }
 
 .home-tile--violet-pastel {
-  background: var(--color-violet-95, #F9F0FF);
+  background: var(--color-violet-65, #D17DFE);
 }
 
 .home-tile--pastel .home-tile__title {
-  color: var(--color-on-surface-1, #001E5B);
   font-size: var(--font-style-display-7-size, 20px);
   margin-bottom: 4px;
 }
+
+.home-tile--pink .home-tile__title { color: var(--color-pink-20, #61022A); }
+.home-tile--yellow .home-tile__title { color: var(--color-yellow-20, #4F2100); }
+.home-tile--teal-pastel .home-tile__title { color: var(--color-teal-20, #023434); }
+.home-tile--violet-pastel .home-tile__title { color: var(--color-violet-20, #580276); }
 
 /* ── Tile icon (bare, no container) ── */
 .home-tile__icon {
@@ -1963,10 +1967,10 @@ code {
   color: var(--color-fill-accent, #066AFE);
 }
 
-.home-tile--pink .home-tile__icon { color: #DB2777; }
-.home-tile--yellow .home-tile__icon { color: #D97706; }
-.home-tile--teal-pastel .home-tile__icon { color: #0D9488; }
-.home-tile--violet-pastel .home-tile__icon { color: #7C3AED; }
+.home-tile--pink .home-tile__icon { color: var(--color-pink-20, #61022A); }
+.home-tile--yellow .home-tile__icon { color: var(--color-yellow-20, #4F2100); }
+.home-tile--teal-pastel .home-tile__icon { color: var(--color-teal-20, #023434); }
+.home-tile--violet-pastel .home-tile__icon { color: var(--color-violet-20, #580276); }
 
 /* ── Tile body group (title + desc + CTA tight together) ── */
 .home-tile__body {
@@ -1979,10 +1983,14 @@ code {
 .home-tile__desc {
   font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
   font-size: 13px;
-  color: var(--color-on-surface-2, #444444);
   line-height: 1.5;
   margin-bottom: 24px;
 }
+
+.home-tile--pink .home-tile__desc { color: rgba(97, 2, 42, 0.7); }
+.home-tile--yellow .home-tile__desc { color: rgba(79, 33, 0, 0.7); }
+.home-tile--teal-pastel .home-tile__desc { color: rgba(2, 52, 52, 0.7); }
+.home-tile--violet-pastel .home-tile__desc { color: rgba(88, 2, 118, 0.7); }
 
 /* ── CTA button inside tile — hug text ── */
 .home-tile__btn {
