@@ -343,7 +343,6 @@
     .hero-blade--1col .hero-blade__content {
       width: 100%; max-width: 840px; margin-inline: auto; min-width: 0;
       display: flex; flex-direction: column; align-items: center;
-      gap: var(--space-content-lg, 24px);
     }
     .hero-blade__eyebrow {
       margin: 0; text-align: center;
@@ -355,7 +354,7 @@
       color: var(--color-on-surface-1, #001E5B);
     }
     .hero-blade__headline {
-      margin: 0; text-align: center; width: 100%; min-width: 0;
+      margin-top: var(--space-content-sm, 12px); text-align: center; width: 100%; min-width: 0;
       overflow-wrap: anywhere; word-break: normal;
       font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
       font-weight: var(--font-style-display-4-weight, 600);
@@ -366,7 +365,7 @@
     }
     .hero-blade__body {
       text-align: center; max-width: 720px; margin-inline: auto;
-      margin-top: 0; min-width: 0; overflow-wrap: anywhere; word-break: normal;
+      margin-top: var(--space-content-lg, 24px); min-width: 0; overflow-wrap: anywhere; word-break: normal;
       font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
       font-weight: var(--font-style-body-copy-1-weight, 400);
       font-size: var(--font-style-body-copy-1-size, 20px);
@@ -448,7 +447,7 @@
       cursor: pointer; border: none; transition: background 150ms ease-out;
     }
     .pill--inactive {
-      background: var(--color-neutral-95, #f3f3f3);
+      background: var(--color-surface-1, #FFFFFF);
       color: var(--color-on-surface-2, #181818);
     }
     .pill--inactive:hover { background: var(--color-fill-neutral-hover, #EAF5FE); }
@@ -463,6 +462,7 @@
     .browse-blade { background: var(--color-surface-1, #FFFFFF); }
 
     .section-header { margin-bottom: var(--space-content-2xl, 48px); }
+    .section-header:last-child { margin-bottom: 0; }
     .section-header--left { text-align: left; }
     .section-header__eyebrow {
       margin: 0 0 var(--space-content-sm, 12px) 0;
@@ -716,7 +716,10 @@
       font-family: var(--font-style-body-copy-5-family, "Salesforce Sans", Arial, sans-serif);
       font-size: 12px; color: var(--color-on-surface-3, #444444);
     }
-    .sf-card__stats .icon { width: 12px; height: 12px; }
+    .sf-card__stats > span {
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .sf-card__stats .icon { width: 14px; height: 14px; }
     .sf-card__stats-divider {
       width: 4px; height: 4px; border-radius: 50%;
       background: var(--color-neutral-80, #c9c9c9);
@@ -876,7 +879,6 @@
     .closing-content {
       text-align: center;
       display: flex; flex-direction: column; align-items: center;
-      gap: var(--space-content-lg, 24px);
     }
     .closing-content__headline {
       margin: 0; max-width: 840px;
@@ -894,7 +896,7 @@
       }
     }
     .closing-content__body {
-      margin: 0; max-width: 720px;
+      margin-top: var(--space-content-lg, 24px); max-width: 720px;
       font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
       font-size: var(--font-style-body-copy-1-size, 20px);
       line-height: var(--font-style-body-copy-1-line-height, 1.5);
@@ -903,6 +905,7 @@
     .closing-ctas {
       display: inline-flex; gap: var(--space-4, 16px); flex-wrap: wrap;
       align-items: center; justify-content: center;
+      margin-top: var(--space-content-2xl, 48px);
     }
 
     /* ═══════════════════════════════════════════════════
@@ -1268,7 +1271,7 @@
           <!-- Card 5: Commerce Agent -->
           <article class="sf-card">
             <div class="sf-card__copy">
-              <div class="sf-card__icon-wrap" style="background:#FEF0F3;"><i class="icon icon--bot" style="width:20px;height:20px;color:#61022A;"></i></div>
+              <div class="sf-card__icon-wrap" style="background:#FEF0F3;"><i class="icon icon--agentforce" style="width:20px;height:20px;color:#61022A;"></i></div>
               <span class="sf-card__pill sf-card__pill--pink">Agent</span>
               <h3 class="sf-card__headline">Commerce Agent</h3>
               <p class="sf-card__body">Autonomous agent that handles product recommendations, cart management, and checkout flows.</p>
@@ -1422,7 +1425,7 @@
           <!-- Card 12: Knowledge Agent -->
           <article class="sf-card">
             <div class="sf-card__copy">
-              <div class="sf-card__icon-wrap" style="background:#FEF0F3;"><i class="icon icon--knowledge" style="width:20px;height:20px;color:#61022A;"></i></div>
+              <div class="sf-card__icon-wrap" style="background:#FEF0F3;"><i class="icon icon--knowledge-base" style="width:20px;height:20px;color:#61022A;"></i></div>
               <span class="sf-card__pill sf-card__pill--pink">Agent</span>
               <h3 class="sf-card__headline">Knowledge Agent</h3>
               <p class="sf-card__body">Autonomously search, summarize, and surface knowledge articles to resolve customer queries.</p>
@@ -1493,7 +1496,7 @@
             </th>
             <th>
               <div class="model-header">
-                <div class="model-header__icon" style="background:#FEF0F3;"><i class="icon icon--bot"></i></div>
+                <div class="model-header__icon" style="background:#FEF0F3;"><i class="icon icon--agentforce"></i></div>
                 <div>
                   <strong>Commerce Agent</strong><br>
                   <span class="remove-link">Remove</span>

@@ -346,7 +346,6 @@ img { display: block; max-width: 100%; height: auto; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-content-lg, 24px);
 }
 .hero-blade__eyebrow {
   margin: 0 0 var(--space-content-sm, 12px) 0;
@@ -456,6 +455,7 @@ img { display: block; max-width: 100%; height: auto; }
   margin-bottom: var(--space-content-2xl, 48px);
 }
 .section-header--left { text-align: left; }
+.section-header:last-child { margin-bottom: 0; }
 
 .section-header__eyebrow {
   margin: 0 0 var(--space-content-sm, 12px) 0;
@@ -1076,7 +1076,7 @@ img { display: block; max-width: 100%; height: auto; }
          style="background: linear-gradient(180deg, #001E5B 0%, #022AC0 35.2%, #066AFE 75%, #00B3FF 100%);">
 
   <!-- ── BLADE 1: Centered Hero (--1col, no asset) ── -->
-  <section class="hero-blade hero-blade--1col">
+  <section class="hero-blade hero-blade--1col" style="padding-bottom: 32px;">
     <div class="hero-blade__cap">
       <div class="hero-blade__grid">
         <div class="hero-blade__content">
@@ -1099,12 +1099,12 @@ img { display: block; max-width: 100%; height: auto; }
   </section>
 
   <!-- ── BLADE 2: 4-up Status Indicator Cards (Day-island) ── -->
-  <section class="sf-section">
+  <section class="sf-section" style="padding-top: 32px;">
     <div class="sf-section__cap">
       <div class="sf-card-grid sf-card-grid--4up">
 
         <!-- Sales Cloud — Operational -->
-        <article class="sf-card sf-card--status" style="border-top: 3px solid var(--color-green-50, #2e844a);">
+        <article class="sf-card sf-card--status">
           <div class="sf-card__copy">
             <span class="sf-card__eyebrow pill--green">Operational</span>
             <h3 class="sf-card__headline">Sales Cloud</h3>
@@ -1119,7 +1119,7 @@ img { display: block; max-width: 100%; height: auto; }
         </article>
 
         <!-- Service Cloud — Operational -->
-        <article class="sf-card sf-card--status" style="border-top: 3px solid var(--color-green-50, #2e844a);">
+        <article class="sf-card sf-card--status">
           <div class="sf-card__copy">
             <span class="sf-card__eyebrow pill--green">Operational</span>
             <h3 class="sf-card__headline">Service Cloud</h3>
@@ -1134,7 +1134,7 @@ img { display: block; max-width: 100%; height: auto; }
         </article>
 
         <!-- Marketing Cloud — Degraded -->
-        <article class="sf-card sf-card--status" style="border-top: 3px solid var(--color-yellow-50, #a96504);">
+        <article class="sf-card sf-card--status">
           <div class="sf-card__copy">
             <span class="sf-card__eyebrow pill--yellow">Degraded performance</span>
             <h3 class="sf-card__headline">Marketing Cloud</h3>
@@ -1149,7 +1149,7 @@ img { display: block; max-width: 100%; height: auto; }
         </article>
 
         <!-- Data Cloud — Operational -->
-        <article class="sf-card sf-card--status" style="border-top: 3px solid var(--color-green-50, #2e844a);">
+        <article class="sf-card sf-card--status">
           <div class="sf-card__copy">
             <span class="sf-card__eyebrow pill--green">Operational</span>
             <h3 class="sf-card__headline">Data Cloud</h3>
@@ -1300,7 +1300,7 @@ img { display: block; max-width: 100%; height: auto; }
         <article class="sf-card">
           <div class="sf-card__copy">
             <div class="sf-card__icon-wrap" style="background: var(--color-violet-95, #f9f0ff);">
-              <i class="icon icon--key"></i>
+              <i class="icon icon--lock"></i>
             </div>
             <h3 class="sf-card__headline">Encryption in transit</h3>
             <p class="sf-card__body">TLS 1.3 enforced for all connections. Certificate pinning and perfect forward secrecy enabled by default.</p>
@@ -1406,7 +1406,7 @@ img { display: block; max-width: 100%; height: auto; }
 <!-- ═══════════════════════════════════════════════════════════════
      BLADE 6 — Day Tinted (neutral-95), Data Residency
      ═══════════════════════════════════════════════════════════════ -->
-<section class="sf-section" style="background: var(--color-neutral-95, #f3f3f3);">
+<section class="sf-section" style="background: var(--color-surface-1, #FFFFFF);">
   <div class="sf-section__cap">
 
     <header class="section-header">
