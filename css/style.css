@@ -1926,9 +1926,10 @@ code {
 /* ── Pastel gradient tile variant ── */
 .home-tile--pastel {
   border: none;
-  padding: 32px 28px 28px;
+  padding: 28px 24px 24px;
   min-height: 220px;
   justify-content: flex-start;
+  gap: 0;
 }
 
 .home-tile--pink {
@@ -1950,7 +1951,7 @@ code {
 .home-tile--pastel .home-tile__title {
   color: var(--color-on-surface-1, #001E5B);
   font-size: var(--font-style-display-7-size, 20px);
-  margin-bottom: 0;
+  margin-bottom: 4px;
 }
 
 /* ── Icon circle (document-style) ── */
@@ -1965,7 +1966,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
 }
 
@@ -1980,9 +1981,26 @@ code {
 .home-tile--teal-pastel .home-tile__icon-circle .icon { color: #0D9488; }
 .home-tile--violet-pastel .home-tile__icon-circle .icon { color: #7C3AED; }
 
-/* ── Secondary CTA button inside tile ── */
+/* ── Tile body group (title + desc + CTA tight together) ── */
+.home-tile__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.home-tile__desc {
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: 13px;
+  color: var(--color-on-surface-2, #444444);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* ── CTA button inside tile — hug text ── */
 .home-tile__btn {
   margin-top: auto;
+  align-self: flex-start;
   pointer-events: none;
 }
 
