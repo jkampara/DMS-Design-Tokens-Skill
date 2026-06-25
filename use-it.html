@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMS Design Tokens — How to use it</title>
+  <meta name="description" content="Get started with the DMS Design Tokens skill — hosted URL or download, setup for Cursor, Claude Code, and other LLMs.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/fonts.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/tokens.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <i class="icon icon--salesforce1 nav__logo-icon"></i>
+      DMS Design Tokens
+    </a>
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__tabs">
+      <a href="index.html" class="nav__tab-link">Overview</a>
+      <a href="use-it.html" class="nav__tab-link active">How to use it</a>
+      <a href="setup-and-help.html" class="nav__tab-link">Setup and help</a>
+      <a href="gallery.html" class="nav__tab-link">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Continuous Night gradient across all blades ── -->
+<section class="sf-blade-region sf-blade-region--night" data-theme="night">
+
+<!-- ── Blade 1: Intro ── -->
+<section class="blade blade--transparent" style="padding-bottom:32px;">
+  <div class="blade__inner">
+    <div class="section-header">
+      <p class="sh__eyebrow">Get started</p>
+      <h2 class="sh__title">Two ways to use the skill</h2>
+      <p class="sh__desc">
+        Point your agent at the hosted URL for instant, zero-install access — or download
+        the zip and set it up locally. Both paths give the agent the same bundle.
+      </p>
+    </div>
+    <div class="card-grid card-grid--2">
+      <article class="sf-card" data-theme="day">
+        <div class="sf-card__icon"><i class="icon icon--world"></i></div>
+        <h3 class="sf-card__title">Option 1 — Hosted URL</h3>
+        <p class="sf-card__body">
+          No download, no install. Paste the bundle URL into your first message
+          and the agent fetches tokens, recipes, and docs on demand.
+        </p>
+      </article>
+      <article class="sf-card" data-theme="day">
+        <div class="sf-card__icon"><i class="icon icon--download"></i></div>
+        <h3 class="sf-card__title">Option 2 — Download &amp; install</h3>
+        <p class="sf-card__body">
+          One zip (~960 KB) contains everything the agent needs — SKILL.md, recipes,
+          token JSON, CSS, and Tailwind preset. Unzip into your tool's skill folder.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Blade 2: Option 1 — Hosted URL ── -->
+<section class="blade blade--transparent" style="padding-top:32px;padding-bottom:32px;">
+  <div class="blade__inner">
+    <div class="section-header section-header--left">
+      <p class="sh__eyebrow">Option 1</p>
+      <h2 class="sh__title">Use the hosted URL</h2>
+      <p class="sh__desc" style="max-width:640px;">
+        The fastest path. Copy the URL, paste it into your first message along with
+        your goal, and you're ready to build.
+      </p>
+    </div>
+
+    <article class="sf-card" data-theme="day" style="gap:20px;margin-top:24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <p class="sf-card__title" style="margin-bottom:4px;">Bundle URL</p>
+          <p class="sf-card__body" style="font-weight:600;word-break:break-all;">https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/</p>
+        </div>
+        <button class="copy-btn" onclick="copyText('https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/', this)">
+          <i class="icon icon--copy" style="width:12px;height:12px;"></i>
+          Copy URL
+        </button>
+      </div>
+      <div style="border-top:1px solid var(--color-neutral-80, #C9C9C9);padding-top:20px;">
+        <h3 class="sf-card__title" style="margin-bottom:8px;">Canonical first message</h3>
+        <p class="sf-card__body" style="margin-bottom:12px;">
+          Whatever agent you use, your first message should pin the bundle URL,
+          point the agent at <code>SKILL.md</code>, and state your goal in plain English.
+        </p>
+        <div class="code-block" style="margin:0;">
+          <pre><code>The Salesforce token bundle lives at:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
+
+The agent skill is at SKILL.md in that folder. Read it first; it tells you
+how to use the rest of the bundle.
+
+[Your goal in plain English — e.g. "I want to build a landing page
+with a Night-themed hero and three Day-island feature cards below it."]</code></pre>
+          <button class="copy-btn" onclick="copyText(this.closest('.code-block').querySelector('code').textContent, this)">
+            <i class="icon icon--copy" style="width:12px;height:12px;"></i>
+            Copy
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── Blade 3: Option 2 — Download & set up ── -->
+<section class="blade blade--transparent" style="padding-top:32px;">
+  <div class="blade__inner">
+    <div class="section-header section-header--left">
+      <p class="sh__eyebrow">Option 2</p>
+      <h2 class="sh__title">Download &amp; set up</h2>
+      <p class="sh__desc" style="max-width:640px;">
+        One zip contains everything an AI agent needs. Download it, unzip into your
+        tool's skill directory, and the agent discovers it automatically.
+      </p>
+    </div>
+
+    <div class="download-panel" style="margin-top:24px;">
+      <div style="position:relative;z-index:1;">
+        <p class="download-panel__eyebrow">One download — works with Cursor, Claude, and any LLM</p>
+        <h3 class="download-panel__title">dms-design-tokens-skill.zip</h3>
+        <p class="download-panel__desc">
+          Contains SKILL.md, all 23 recipe &amp; reference files, token JSON,
+          CSS custom properties, Tailwind preset, gaps coverage, and agent index files. ~960 KB.
+        </p>
+      </div>
+      <a href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip" download class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" style="position:relative;z-index:1;">
+        <i class="icon icon--download" style="width:18px;height:18px;"></i>
+        Download skill zip
+      </a>
+    </div>
+
+    <details class="zip-details" style="margin-top:16px;">
+      <summary>
+        What's in the zip?
+        <span style="font-size:12px;color:var(--color-on-surface-2);font-weight:400;">(32 files, ~960 KB)</span>
+        <i class="icon icon--chevrondown" style="margin-left:auto;width:14px;height:14px;"></i>
+      </summary>
+      <div style="padding:0 20px 16px;">
+        <table class="zip-table">
+          <tbody>
+            <tr><td>SKILL.md</td><td>Entry point — routes the agent to the right recipe</td></tr>
+            <tr><td>marketplace.yaml</td><td>Skill metadata for standalone installation</td></tr>
+            <tr><td>salesforce.json</td><td>Full token envelope (colors, type, spacing, grid, radii)</td></tr>
+            <tr><td>gaps.json</td><td>Coverage map + clarifying questions for un-tokenized concerns</td></tr>
+            <tr><td>tokens.index.json</td><td>CSS var &harr; JSON path lookup (271 entries)</td></tr>
+            <tr><td>tokens.css</td><td>Drop-in CSS custom properties stylesheet</td></tr>
+            <tr><td>tailwind.preset.js</td><td>Tailwind v3 preset</td></tr>
+            <tr><td>references/ (20 files)</td><td>Recipes (hero, card, CTA, page), catalogues, debug guides</td></tr>
+            <tr><td>spec/ (4 files)</td><td>Token naming contract, palette, aliases, and TypeScript types</td></tr>
+            <tr><td>llms-full.txt</td><td>Single-file ingest for non-skill-aware agents</td></tr>
+            <tr><td>version.json</td><td>Bundle version + changelog</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <div style="margin-top:32px;">
+      <h3 class="sh__title" style="font-size:var(--font-style-display-8-size,18px);margin-bottom:16px;">Set up for your tool</h3>
+      <div class="card-grid card-grid--3">
+        <article class="sf-card" data-theme="day">
+          <div class="sf-card__icon"><i class="icon icon--desktop"></i></div>
+          <h3 class="sf-card__title">Cursor</h3>
+          <p class="sf-card__body">
+            Unzip into <code>~/.cursor/skills/</code>. The skill is auto-discovered.
+            Say <strong>"use the dms-design-tokens skill"</strong> or just
+            <strong>"build me a Salesforce hero"</strong>.
+          </p>
+          <div class="setup-card__terminal--visible">
+            <div class="setup-card__terminal-header">
+              <span class="setup-card__terminal-label">Terminal one-liner</span>
+              <button class="copy-btn terminal-copy-btn" onclick="copyText(this.closest('.setup-card__terminal--visible').querySelector('pre').textContent, this)">
+                <i class="icon icon--copy" style="width:12px;height:12px;"></i>
+              </button>
+            </div>
+            <pre>curl -L "https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip" \
+  -o /tmp/sf-skill.zip && \
+  unzip -o /tmp/sf-skill.zip -d ~/.cursor/skills/ && \
+  rm /tmp/sf-skill.zip</pre>
+          </div>
+        </article>
+        <article class="sf-card" data-theme="day">
+          <div class="sf-card__icon"><i class="icon icon--flow"></i></div>
+          <h3 class="sf-card__title">Claude Code</h3>
+          <p class="sf-card__body">
+            Unzip into <code>~/.claude/skills/</code>. Type <code>/dms-design-tokens</code>
+            to activate, or just say <strong>"build me a Salesforce hero"</strong>.
+          </p>
+          <div class="setup-card__terminal--visible">
+            <div class="setup-card__terminal-header">
+              <span class="setup-card__terminal-label">Terminal one-liner</span>
+              <button class="copy-btn terminal-copy-btn" onclick="copyText(this.closest('.setup-card__terminal--visible').querySelector('pre').textContent, this)">
+                <i class="icon icon--copy" style="width:12px;height:12px;"></i>
+              </button>
+            </div>
+            <pre>curl -L "https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/dms-design-tokens-skill.zip" \
+  -o /tmp/sf-skill.zip && \
+  unzip -o /tmp/sf-skill.zip -d ~/.claude/skills/ && \
+  rm /tmp/sf-skill.zip</pre>
+          </div>
+        </article>
+        <article class="sf-card" data-theme="day">
+          <div class="sf-card__icon"><i class="icon icon--apps"></i></div>
+          <h3 class="sf-card__title">Other LLMs</h3>
+          <p class="sf-card__body">
+            Unzip into your project root. Point the agent at <code>SKILL.md</code> as the entry point,
+            or paste <code>llms-full.txt</code> directly into ChatGPT / Copilot.
+          </p>
+          <div class="setup-card__terminal--visible">
+            <div class="setup-card__terminal-header">
+              <span class="setup-card__terminal-label">Terminal one-liner</span>
+              <button class="copy-btn terminal-copy-btn" onclick="copyText(this.closest('.setup-card__terminal--visible').querySelector('pre').textContent, this)">
+                <i class="icon icon--copy" style="width:12px;height:12px;"></i>
+              </button>
+            </div>
+            <pre>unzip dms-design-tokens-skill.zip -d ./
+
+# Or point your agent at the hosted URL:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/SKILL.md</pre>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+</section><!-- /sf-blade-region (Night) -->
+
+<script src="js/app.js"></script>
+</body>
+</html>

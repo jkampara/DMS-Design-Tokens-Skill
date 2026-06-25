@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="en"
+      data-theme="day"
+      data-typography="default"
+      data-spacing="default"
+      data-radii="default">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retail Cloud — Salesforce</title>
+
+  <!-- Token bundle -->
+  <link rel="stylesheet"
+        href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/tokens.css" />
+  <!-- Icon bundle (496 SVG icons via CSS mask-image) -->
+  <link rel="stylesheet"
+        href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       FONTS — inline @font-face for standalone HTML
+       ═══════════════════════════════════════════════════════════════ */
+    @font-face {
+      font-family: "Avant Garde For Salesforce";
+      src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/AvantGardeForSalesforceW05-Dm.woff2") format("woff2");
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Salesforce Sans";
+      src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Salesforce Sans";
+      src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Bold.woff2") format("woff2");
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PAGE SHELL — universal reset + layout-neutral body/main
+       ═══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { min-height: 100vh; }
+    main { display: flex; flex-direction: column; width: 100%; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       GLOBAL NAV
+       ═══════════════════════════════════════════════════════════════ */
+    .sf-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--color-surface-1);
+      border-bottom: 1px solid var(--color-border-1);
+    }
+    .sf-nav__inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 72px;
+      padding-inline: 40px;
+      margin: 0;
+    }
+    .sf-nav__logo { display: flex; align-items: center; text-decoration: none; }
+    .sf-nav__logo-full { display: block; }
+    .sf-nav__logo-bug { display: none; }
+    .sf-nav__hamburger { display: none; }
+    .sf-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .sf-nav__links a {
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--color-on-surface-1);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .sf-nav__links a:hover {
+      background: var(--color-surface-container-1);
+    }
+    .sf-nav__utilities {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-left: auto;
+    }
+    .sf-nav__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px;
+      border-radius: 100px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-on-surface-1);
+      text-decoration: none;
+    }
+    .sf-nav__icon .icon { width: 18px; height: 18px; }
+    .sf-nav__icon:hover { background: var(--color-surface-container-1); }
+    .sf-nav__login { gap: 4px; }
+    .sf-nav__login-label {
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--color-on-surface-1);
+    }
+    .sf-nav__cta { margin-left: 16px; }
+    @media (max-width: 1023px) {
+      .sf-nav__inner { height: 56px; padding-inline: 16px; }
+      .sf-nav__logo-full { display: none; }
+      .sf-nav__logo-bug { display: block; }
+      .sf-nav__hamburger {
+        display: flex; flex-direction: column; gap: 5px;
+        background: none; border: none; cursor: pointer; padding: 8px; order: -1;
+      }
+      .sf-nav__hamburger span {
+        display: block; width: 20px; height: 2px;
+        background: var(--color-on-surface-1); border-radius: 1px;
+      }
+      .sf-nav .sf-nav__cta {
+        padding-inline: var(--space-interactive-sm, 12px);
+        padding-block: var(--space-interactive-2xs, 4px);
+        font-size: var(--font-size-body-sm, 14px);
+      }
+      .sf-nav__links { display: none; }
+      .sf-nav__links.is-open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 56px; left: 0; right: 0;
+        background: var(--color-surface-1);
+        border-bottom: 1px solid var(--color-border-1);
+        padding: 16px; gap: 4px; z-index: 49;
+      }
+      .sf-nav__icon--desktop-only { display: none; }
+      .sf-nav__login-label { display: none; }
+    }
+    @media (max-width: 767px) {
+      .sf-nav__icon[aria-label="Call us"] { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CTA SYSTEM — Primary, Secondary, Special, On-dark, Link-type
+       ═══════════════════════════════════════════════════════════════ */
+    .sf-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      text-decoration: none;
+      border-radius: var(--radius-button, 9999px);
+      font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-weight-bold, 700);
+      cursor: pointer;
+      outline: none;
+      transition: background-color 150ms ease-out,
+                  transform        150ms ease-out,
+                  color            150ms ease-out,
+                  border-color     150ms ease-out;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    .sf-cta:not([aria-disabled="true"]):not(.is-disabled):hover  { transform: translateY(-2px) scale(1.02); }
+    .sf-cta:not([aria-disabled="true"]):not(.is-disabled):active { transform: translateY(0)    scale(0.98); }
+    .sf-cta:focus-visible {
+      outline: 3px solid var(--color-border-focus, #066AFE);
+      outline-offset: 2px;
+    }
+    /* Sizes */
+    .sf-cta--hero {
+      padding-inline: var(--space-interactive-xl, 32px);
+      padding-block:  var(--space-interactive-sm, 12px);
+      gap: var(--space-interactive-xs, 8px);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+    }
+    .sf-cta--medium {
+      padding-inline: var(--space-interactive-lg, 24px);
+      padding-block:  var(--space-interactive-xs, 8px);
+      gap: var(--space-interactive-xs, 8px);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+    }
+    /* Primary */
+    .sf-cta--primary {
+      background: var(--color-fill-accent, #066AFE);
+      color: var(--color-on-fill-accent, #FFFFFF);
+      border: none;
+    }
+    .sf-cta--primary:hover           { background: var(--color-fill-accent-hover, #022AC0); }
+    .sf-cta--primary:active          { background: var(--color-fill-accent-active, #002775); }
+    .sf-cta--primary:focus-visible   { background: var(--color-fill-accent-hover, #022AC0); }
+    /* Secondary */
+    .sf-cta--secondary {
+      background: transparent;
+      color: var(--color-on-fill-neutral-accent, #022AC0);
+      border: none;
+      box-shadow: inset 0 0 0 2px var(--color-border-accent, #022AC0);
+    }
+    .sf-cta--secondary:hover         { background: var(--color-fill-neutral-hover, #EAF5FE); color: var(--color-on-fill-neutral-accent-hover, #002775); box-shadow: inset 0 0 0 2px var(--color-border-accent-hover, #002775); }
+    .sf-cta--secondary:active        { background: var(--color-fill-neutral-active, #EAF5FE); color: var(--color-on-fill-neutral-accent-active, #002775); box-shadow: inset 0 0 0 2px var(--color-border-accent-active, #002775); }
+    .sf-cta--secondary:focus-visible { background: var(--color-fill-neutral-hover, #EAF5FE); color: var(--color-on-fill-neutral-accent-hover, #002775); box-shadow: inset 0 0 0 2px var(--color-border-accent-hover, #002775); }
+    /* Special */
+    .sf-cta--special {
+      background: var(--color-green-50, #2E844A);
+      color: var(--color-white, #FFFFFF);
+      border: none;
+    }
+    .sf-cta--special:hover           { background: var(--color-green-20, #143B25); }
+    .sf-cta--special:active          { background: var(--color-green-20, #143B25); }
+    .sf-cta--special:focus-visible   { background: var(--color-green-20, #143B25); }
+    /* On-dark Primary */
+    .sf-cta--on-dark.sf-cta--primary {
+      background: var(--color-fill-accent, #FFFFFF);
+      color: var(--color-on-fill-accent, #022AC0);
+      border: none;
+    }
+    .sf-cta--on-dark.sf-cta--primary:hover         { background: var(--color-fill-accent-hover, rgba(255,255,255,0.85)); }
+    .sf-cta--on-dark.sf-cta--primary:active        { background: var(--color-fill-accent-active, rgba(255,255,255,0.85)); }
+    .sf-cta--on-dark.sf-cta--primary:focus-visible { background: var(--color-fill-accent-hover, rgba(255,255,255,0.85)); outline-color: #FFFFFF; }
+    /* On-dark Secondary */
+    .sf-cta--on-dark.sf-cta--secondary {
+      background: transparent;
+      color: #FFFFFF;
+      border: none;
+      box-shadow: inset 0 0 0 2px #FFFFFF;
+    }
+    .sf-cta--on-dark.sf-cta--secondary:hover         { background: rgba(255,255,255,0.12); color: #FFFFFF; box-shadow: inset 0 0 0 2px #FFFFFF; }
+    .sf-cta--on-dark.sf-cta--secondary:active        { background: rgba(255,255,255,0.20); color: #FFFFFF; box-shadow: inset 0 0 0 2px #FFFFFF; }
+    .sf-cta--on-dark.sf-cta--secondary:focus-visible { background: rgba(255,255,255,0.20); color: #FFFFFF; box-shadow: inset 0 0 0 2px #FFFFFF; outline-color: #FFFFFF; }
+    /* Link-type CTA */
+    .sf-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-interactive-xs, 8px);
+      border-radius: var(--radius-4, 4px);
+      font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-weight-bold, 700);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+      color: var(--color-link, #022AC0);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      outline: none;
+      transition: color 150ms ease-out;
+    }
+    .sf-cta-link__label {
+      position: relative;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: currentColor;
+      transition: text-decoration-color 150ms ease-in-out 350ms;
+    }
+    .sf-cta-link__label::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: calc(0.25em - 2px);
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      pointer-events: none;
+    }
+    .sf-cta-link:hover .sf-cta-link__label         { text-decoration-color: transparent; transition: text-decoration-color 150ms ease-in-out 0ms; }
+    .sf-cta-link:hover .sf-cta-link__label::after   { transform: scaleX(1); transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; }
+    .sf-cta-link:hover         { color: var(--color-link-hover, #002775); }
+    .sf-cta-link:active        { color: var(--color-link-active, #002775); }
+    .sf-cta-link:focus-visible { outline: 3px solid var(--color-border-focus, #066AFE); outline-offset: 2px; }
+    .sf-cta-link__chevron { flex-shrink: 0; width: 14px; height: 14px; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       CARD SYSTEM — base + Day-island re-assertion + grid
+       ═══════════════════════════════════════════════════════════════ */
+    .sf-card,
+    .sf-card *,
+    .sf-card *::before,
+    .sf-card *::after {
+      box-sizing: border-box;
+    }
+    .sf-card:not([data-theme]), .sf-card[data-theme="day"] {
+      --color-background-1: #FFFFFF;
+      --color-surface-1: #FFFFFF;
+      --color-surface-container-1: #FFFFFF;
+      --color-fill-accent: #066AFE;
+      --color-fill-accent-hover: #022AC0;
+      --color-fill-accent-active: #022AC0;
+      --color-fill-neutral: #FFFFFF;
+      --color-fill-neutral-hover: #EAF5FE;
+      --color-fill-neutral-active: #EAF5FE;
+      --color-on-surface-1: #001E5B;
+      --color-on-surface-2: #181818;
+      --color-on-surface-3: #444444;
+      --color-on-surface-4: #747474;
+      --color-on-fill-accent: #FFFFFF;
+      --color-link: #022AC0;
+      --color-link-hover: #002775;
+      --color-link-active: #066AFE;
+      --color-border-neutral: #D6D6D6;
+      --color-border-neutral-hover: var(--color-electric-blue-30, #022ac0);
+      --color-border-accent: #002775;
+      --color-border-accent-hover: #001D56;
+      --color-border-accent-active: #001338;
+      --color-border-focus: #066AFE;
+      --color-on-fill-neutral-accent: #002775;
+      --color-on-fill-neutral-accent-hover: #001D56;
+      --color-on-fill-neutral-accent-active: #001338;
+      --color-fill-error-1: #FEF1EE;
+      --color-fill-success: #EBF7E6;
+      --color-fill-warning: #FBF3E0;
+      --color-fill-info: #EAF5FE;
+      --color-on-fill-error-1: #EA001E;
+      --color-on-fill-success: #2E844A;
+      --color-on-fill-warning: #A96504;
+      --color-on-fill-info: #066AFE;
+      --color-on-surface-error: #EA001E;
+      --color-on-surface-success: #2E844A;
+      --color-on-surface-warning: #A96504;
+      --color-on-surface-info: #066AFE;
+      --color-border-error: #EA001E;
+      --color-border-success: #2E844A;
+      --color-border-warning: #A96504;
+      --color-border-info: #066AFE;
+    }
+    .sf-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      text-align: left;
+      background: var(--color-surface-1);
+      border: 1px solid rgba(24, 24, 24, 0.04);
+      box-shadow:
+        0 2px 8px -2px rgba(24, 24, 24, 0.08),
+        0 8px 12px -2px rgba(24, 24, 24, 0.16);
+      border-radius: var(--radius-card, 12px);
+      overflow-wrap: anywhere;
+      word-break: normal;
+      hyphens: auto;
+      container-type: inline-size;
+      container-name: sf-card;
+    }
+    .sf-card :where(p, h1, h2, h3, h4, h5, h6, span, a, li, blockquote) {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .sf-card__image {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      background: var(--color-neutral-80, #c9c9c9);
+      border-radius: var(--radius-card-nested, 8px) var(--radius-card-nested, 8px) 0 0;
+    }
+    .sf-card__image:has(img),
+    .sf-card__quote-avatar:has(img),
+    .sf-ph-slot:has(img) {
+      background: transparent;
+    }
+    .sf-card__image img,
+    .sf-card__quote-avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sf-card__copy {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      min-width: 0;
+      padding: var(--space-5, 24px);
+    }
+    .sf-card__icon {
+      color: var(--color-fill-accent, #066AFE);
+      margin-bottom: var(--space-content-sm, 12px);
+    }
+    .sf-card__headline {
+      margin: 0 0 var(--space-content-sm, 12px) 0;
+      font-family: var(--font-style-display-7-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-7-weight, 600);
+      font-size: var(--font-style-display-7-size, 20px);
+      line-height: var(--font-style-display-7-line-height, 1.5);
+      letter-spacing: var(--font-style-display-7-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1);
+    }
+    .sf-card__body {
+      margin: 0 0 var(--space-content-lg, 24px) 0;
+      font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-weight, 400);
+      font-size: var(--font-style-body-copy-2-size, 18px);
+      line-height: var(--font-style-body-copy-2-line-height, 1.5);
+      color: var(--color-on-surface-2);
+    }
+    .sf-card__cta-slot {
+      margin-top: auto;
+    }
+
+    /* Card grid — flexbox pattern with band enforcement */
+    .sf-card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: var(--space-grid-desktop-gutter, 40px);
+      width: 100%;
+    }
+    .sf-card-grid > * { min-width: 0; }
+    .sf-card-grid :where(p, h1, h2, h3, h4, h5, h6, span, a, li, dt, dd, blockquote) {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+    .sf-card-grid--3up > * {
+      flex: 1 1 400px;
+      min-width: min(270px, 100%);
+      max-width: min(400px, 100%);
+    }
+    @media (max-width: 1439.98px) and (min-width: 1024px) {
+      .sf-card-grid { gap: var(--space-grid-tablet-landscape-gutter, 32px); }
+    }
+    @media (max-width: 1023.98px) and (min-width: 768px) {
+      .sf-card-grid { gap: var(--space-grid-tablet-portrait-gutter, 24px); }
+    }
+    @media (max-width: 767.98px) {
+      .sf-card-grid { gap: var(--space-grid-mobile-gutter, 24px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       BLADE SYSTEM — shared blade primitives
+       ═══════════════════════════════════════════════════════════════ */
+    .blade {
+      width: 100%;
+      padding-inline: var(--space-grid-desktop-margin, 48px);
+      padding-block: 64px;
+    }
+    .blade__cap {
+      width: 100%;
+      max-width: var(--space-grid-desktop-max-content-width, 1280px);
+      margin-inline: auto;
+    }
+    @media (max-width: 1023.98px) and (min-width: 768px) {
+      .blade {
+        padding-inline: var(--space-grid-tablet-portrait-margin, 32px);
+        padding-block: 48px;
+      }
+    }
+    @media (max-width: 767.98px) {
+      .blade {
+        padding-inline: var(--space-grid-mobile-margin, 24px);
+        padding-block: 48px;
+      }
+    }
+
+    /* Section header — body-blade tier (Display 5 → Display 4, caps at 4) */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-content-2xl, 48px);
+    }
+    .section-header__eyebrow {
+      margin: 0 0 var(--space-content-sm, 12px) 0;
+      font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-bold-weight, 700);
+      font-size: var(--font-style-body-copy-2-bold-size, 18px);
+      line-height: var(--font-style-body-copy-2-bold-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-2-bold-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-1);
+    }
+    .section-header__headline {
+      margin: 0;
+      font-family: var(--font-style-display-5-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-5-weight, 600);
+      font-size: var(--font-style-display-5-size, 32px);
+      line-height: var(--font-style-display-5-line-height, 1.25);
+      letter-spacing: var(--font-style-display-5-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1);
+    }
+    .section-header__body {
+      margin-top: var(--space-content-lg, 24px);
+      max-width: 720px;
+      margin-inline: auto;
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-2);
+    }
+    @media (min-width: 1024px) {
+      .section-header__headline {
+        font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+        font-weight: var(--font-style-display-4-weight, 600);
+        font-size: var(--font-style-display-4-size, 40px);
+        line-height: var(--font-style-display-4-line-height, 1.125);
+        letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       1. HERO BLADE — Night gradient, 2-column
+       ═══════════════════════════════════════════════════════════════ */
+    .hero-blade {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+      padding-inline: var(--space-grid-mobile-margin, 24px);
+      padding-block: 48px;
+      background: linear-gradient(180deg, #001E5B 0%, #022AC0 35.2%, #066AFE 75%, #00B3FF 100%);
+    }
+    .hero-blade__cap {
+      width: 100%;
+      margin-inline: auto;
+    }
+    .hero-blade__grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-content-2xl, 48px);
+    }
+    .hero-blade__content,
+    .hero-blade__asset {
+      width: 100%;
+      min-width: 0;
+    }
+    .hero-blade__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-blade__eyebrow-icon {
+      margin-bottom: var(--space-content-lg, 24px);
+    }
+    .hero-blade__eyebrow-icon img {
+      width: 64px;
+      height: 64px;
+    }
+    .hero-blade__headline {
+      margin: 0;
+      font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-4-weight, 600);
+      font-size: var(--font-style-display-4-size, 40px);
+      line-height: var(--font-style-display-4-line-height, 1.125);
+      letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+      color: var(--color-on-surface-1);
+    }
+    .hero-blade__body {
+      margin-top: var(--space-content-lg, 24px);
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-2);
+    }
+    .hero-blade__ctas {
+      display: inline-flex;
+      gap: var(--space-4, 16px);
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: var(--space-8, 48px);
+    }
+    .hero-blade__asset {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      border-radius: var(--radius-image-large, 16px);
+      max-height: 620px;
+    }
+    .hero-blade__asset img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .hero-blade {
+        padding-inline: var(--space-grid-tablet-portrait-margin, 32px);
+        padding-block: 48px;
+      }
+      .hero-blade__asset {
+        max-width: 66.667%;
+        margin-inline: auto;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-blade {
+        padding-inline: var(--space-grid-tablet-landscape-margin, 48px);
+        padding-block: 64px;
+      }
+      .hero-blade__grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: var(--space-grid-tablet-landscape-gutter, 32px);
+        align-items: center;
+        row-gap: 0;
+      }
+      .hero-blade__content { grid-column: 1 / span 6; grid-row: 1; }
+      .hero-blade__asset   { grid-column: 7 / span 6; grid-row: 1; max-width: none; margin-inline: 0; }
+      .hero-blade__headline {
+        font-size: var(--font-style-display-3-size, 48px);
+        letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+      }
+      .hero-blade__body {
+        padding-right: calc((100% + var(--space-grid-tablet-landscape-gutter, 32px)) / 6);
+      }
+    }
+    @media (min-width: 1440px) {
+      .hero-blade {
+        padding-inline: var(--space-grid-desktop-margin, 48px);
+        padding-block: 64px;
+      }
+      .hero-blade__cap {
+        max-width: var(--space-grid-desktop-max-content-width, 1280px);
+      }
+      .hero-blade__grid {
+        column-gap: var(--space-grid-desktop-gutter, 40px);
+      }
+      .hero-blade__headline {
+        font-size: var(--font-style-display-2-size, 56px);
+        letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
+      }
+      .hero-blade__body {
+        padding-right: calc((100% + var(--space-grid-desktop-gutter, 40px)) / 6);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       2. FEATURE GRID BLADE — Day theme, solid white
+       ═══════════════════════════════════════════════════════════════ */
+    .feature-blade {
+      background: var(--color-surface-1);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       3. QUOTE BLADE — Night theme, solid dark surface
+       ═══════════════════════════════════════════════════════════════ */
+    .quote-blade {
+      background: var(--color-surface-1);
+    }
+    .quote-card {
+      border-radius: var(--radius-hero-card, 16px);
+    }
+    .quote-card__inner {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-content-xl, 32px);
+      padding: var(--space-8, 48px);
+    }
+    .quote-card__avatar {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: var(--radius-image-large, 16px);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--color-neutral-80, #c9c9c9);
+    }
+    .quote-card__avatar:has(img) { background: transparent; }
+    .quote-card__avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .quote-card__mark {
+      width: 42.667px;
+      height: 32px;
+    }
+    .quote-card__text {
+      margin: 0;
+      font-family: var(--font-style-display-5-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-5-weight, 600);
+      font-size: var(--font-style-display-5-size, 32px);
+      line-height: var(--font-style-display-5-line-height, 1.25);
+      letter-spacing: var(--font-style-display-5-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1);
+    }
+    .quote-card__author-name {
+      margin: 0;
+      font-family: var(--font-style-display-7-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-7-weight, 600);
+      font-size: var(--font-style-display-7-size, 20px);
+      line-height: var(--font-style-display-7-line-height, 1.5);
+      color: var(--color-on-surface-1);
+    }
+    .quote-card__author-title {
+      margin: 0;
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      color: var(--color-on-surface-2);
+    }
+    @media (min-width: 768px) {
+      .quote-card__inner {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-content-2xl, 48px);
+        padding: var(--space-9, 56px) var(--space-10, 64px);
+      }
+      .quote-card__avatar {
+        width: 160px;
+        height: 160px;
+      }
+    }
+    @media (min-width: 1440px) {
+      .quote-card__inner {
+        gap: 80px;
+        padding: var(--space-10, 64px) 112px;
+      }
+      .quote-card__avatar {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       4. STATS BLADE — Day theme, Cloud Blue 95 solid
+       ═══════════════════════════════════════════════════════════════ */
+    .stats-blade {
+      background: var(--color-surface-container-1, #EAF5FE);
+    }
+    .stat-card .sf-card__copy {
+      align-items: center;
+      text-align: center;
+      padding: var(--space-8, 48px) var(--space-5, 24px);
+    }
+    .stat-number {
+      margin: 0 0 var(--space-content-sm, 12px) 0;
+      font-family: var(--font-style-display-2-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-2-weight, 600);
+      font-size: var(--font-style-display-3-size, 48px);
+      line-height: var(--font-style-display-3-line-height, 1.125);
+      letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+      color: var(--color-fill-accent, #066AFE);
+    }
+    .stat-label {
+      margin: 0;
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      color: var(--color-on-surface-2, #181818);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       5. CTA BLADE — Night gradient, centered
+       ═══════════════════════════════════════════════════════════════ */
+    .cta-blade {
+      background: linear-gradient(180deg, #001E5B 0%, #022AC0 35.2%, #066AFE 75%, #00B3FF 100%);
+    }
+    .cta-blade .blade__cap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-blade .section-header {
+      margin-bottom: var(--space-8, 48px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ */
+    .sf-footer__links {
+      display: flex;
+      gap: 24px;
+      padding: 64px;
+      background: var(--color-surface-1);
+    }
+    .sf-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .sf-footer__logo { display: block; }
+    .sf-footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .sf-footer__social a { display: block; line-height: 0; }
+    .sf-footer__phone,
+    .sf-footer__contact-link {
+      font-family: var(--font-style-body-copy-3-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      color: #444;
+    }
+    .sf-footer__contact-link { text-decoration: underline; }
+    .sf-footer__columns {
+      display: flex;
+      flex: 1;
+      gap: 30px;
+    }
+    .sf-footer__column { flex: 1; }
+    .sf-footer__column h3 {
+      font-family: var(--font-style-body-copy-3-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      color: #444;
+      margin: 0 0 36px;
+    }
+    .sf-footer__column ul {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sf-footer__column a {
+      font-family: var(--font-style-body-copy-4-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.03px;
+      color: #0B5CAB;
+      text-decoration: none;
+    }
+    .sf-footer__column a:hover { text-decoration: underline; }
+    .sf-footer__bottom {
+      background: #032D60;
+      padding: 20px 64px;
+    }
+    .sf-footer__bottom-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .sf-footer__region {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 0 24px 11px;
+    }
+    .sf-footer__legal {
+      flex: 1;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sf-footer__legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+    .sf-footer__legal-links a,
+    .sf-footer__copyright,
+    .sf-footer__copyright a {
+      font-family: var(--font-style-body-copy-4-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.03px;
+      color: #fff;
+      text-decoration: underline;
+    }
+    .sf-footer__copyright { margin: 0; text-decoration: none; }
+    @media (max-width: 1023px) {
+      .sf-footer__links { padding: 40px; }
+      .sf-footer__bottom { padding: 20px 40px; }
+    }
+    @media (max-width: 767px) {
+      .sf-footer__links { display: none; }
+      .sf-footer__bottom { padding: 20px 24px; }
+      .sf-footer__bottom-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .sf-footer__region { padding-bottom: 0; }
+      .sf-footer__legal-links { justify-content: center; }
+    }
+    .embed .sf-nav, .embed .sf-footer { display: none !important; }
+  </style>
+  <script>if(location.search.includes('embed'))document.documentElement.classList.add('embed');</script>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     GLOBAL HEADER
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="sf-nav" data-theme="day" role="banner">
+  <div class="sf-nav__inner">
+    <a href="/" class="sf-nav__logo" aria-label="Salesforce home">
+      <img class="sf-nav__logo-full"
+           src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/salesforce-logo.svg"
+           alt="Salesforce" width="68" height="48" />
+      <img class="sf-nav__logo-bug"
+           src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/salesforce-logo-bug.svg"
+           alt="Salesforce" width="36" height="25" />
+    </a>
+    <button class="sf-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="sf-nav__links" aria-label="Main navigation">
+      <a href="#">Products</a>
+      <a href="#">Industries</a>
+      <a href="#">Customers</a>
+      <a href="#">Learning</a>
+      <a href="#">Support</a>
+      <a href="#">Company</a>
+      <a href="#">Pricing</a>
+    </nav>
+    <div class="sf-nav__utilities">
+      <button class="sf-nav__icon" aria-label="Call us">
+        <i class="icon icon--call"></i>
+      </button>
+      <button class="sf-nav__icon" aria-label="Search">
+        <i class="icon icon--search"></i>
+      </button>
+      <button class="sf-nav__icon sf-nav__icon--desktop-only" aria-label="Select region">
+        <i class="icon icon--globe"></i>
+      </button>
+      <a href="#" class="sf-nav__icon sf-nav__login" aria-label="Login">
+        <i class="icon icon--user"></i>
+        <span class="sf-nav__login-label">Login</span>
+      </a>
+      <a href="#" class="sf-cta sf-cta--special sf-cta--medium sf-nav__cta">Try for free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. HERO BLADE — Night gradient, 2-column
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero-blade hero-blade--2col" data-theme="night">
+    <div class="hero-blade__cap">
+      <div class="hero-blade__grid">
+
+        <div class="hero-blade__content">
+          <!-- Eyebrow illustration — stacked above headline, never adjacent -->
+          <div class="hero-blade__eyebrow-icon">
+            <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/eyebrow/retail.svg"
+                 alt="Retail Cloud" width="64" height="64" />
+          </div>
+          <h1 class="hero-blade__headline">Reimagine Every Customer Moment</h1>
+          <p class="hero-blade__body">
+            Unify your entire retail operation — from storefront to supply chain — with
+            AI-powered tools that drive personalization, streamline commerce, and build
+            lasting customer loyalty at every touchpoint.
+          </p>
+          <div class="hero-blade__ctas">
+            <a class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" href="#">Get Started</a>
+            <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#">Watch Demo</a>
+          </div>
+        </div>
+
+        <div class="hero-blade__asset">
+          <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/3-2/sample-1.png"
+               alt="Retail Cloud platform preview" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. FEATURE GRID BLADE — Day theme, solid white
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="blade feature-blade">
+    <div class="blade__cap">
+
+      <div class="section-header">
+        <h2 class="section-header__headline">Built for Modern Retail</h2>
+      </div>
+
+      <div class="sf-card-grid sf-card-grid--3up">
+
+        <!-- Card 1 — Omnichannel Commerce -->
+        <article class="sf-card">
+          <div class="sf-card__image">
+            <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/3-2/sample-1.png"
+                 alt="Omnichannel Commerce" />
+          </div>
+          <div class="sf-card__copy">
+            <i class="icon icon--world sf-card__icon" aria-hidden="true"></i>
+            <h3 class="sf-card__headline">Omnichannel Commerce</h3>
+            <p class="sf-card__body">
+              Deliver seamless shopping experiences across web, mobile, social, and in-store
+              channels with a single unified platform.
+            </p>
+            <div class="sf-card__cta-slot">
+              <a class="sf-cta-link" href="#">
+                <span class="sf-cta-link__label">Learn more</span>
+                <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 — AI-Powered Insights -->
+        <article class="sf-card">
+          <div class="sf-card__image">
+            <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/3-2/sample-2.png"
+                 alt="AI-Powered Insights" />
+          </div>
+          <div class="sf-card__copy">
+            <i class="icon icon--chart sf-card__icon" aria-hidden="true"></i>
+            <h3 class="sf-card__headline">AI-Powered Insights</h3>
+            <p class="sf-card__body">
+              Harness predictive analytics and generative AI to forecast demand, optimize
+              inventory, and personalize every interaction.
+            </p>
+            <div class="sf-card__cta-slot">
+              <a class="sf-cta-link" href="#">
+                <span class="sf-cta-link__label">Learn more</span>
+                <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 — Customer 360 -->
+        <article class="sf-card">
+          <div class="sf-card__image">
+            <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/3-2/sample-3.png"
+                 alt="Customer 360" />
+          </div>
+          <div class="sf-card__copy">
+            <i class="icon icon--user sf-card__icon" aria-hidden="true"></i>
+            <h3 class="sf-card__headline">Customer 360</h3>
+            <p class="sf-card__body">
+              Build complete customer profiles that unify purchase history, preferences, and
+              service interactions into one actionable view.
+            </p>
+            <div class="sf-card__cta-slot">
+              <a class="sf-cta-link" href="#">
+                <span class="sf-cta-link__label">Learn more</span>
+                <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 — Store Operations -->
+        <article class="sf-card">
+          <div class="sf-card__image">
+            <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/3-2/sample-4.png"
+                 alt="Store Operations" />
+          </div>
+          <div class="sf-card__copy">
+            <i class="icon icon--settings sf-card__icon" aria-hidden="true"></i>
+            <h3 class="sf-card__headline">Store Operations</h3>
+            <p class="sf-card__body">
+              Empower store associates with real-time tools for clienteling, task management,
+              and inventory visibility from any device.
+            </p>
+            <div class="sf-card__cta-slot">
+              <a class="sf-cta-link" href="#">
+                <span class="sf-cta-link__label">Learn more</span>
+                <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3. QUOTE BLADE — Night theme, solid dark surface
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="blade quote-blade" data-theme="night">
+    <div class="blade__cap">
+
+      <div class="sf-card-grid" style="justify-content: center;">
+        <article class="sf-card quote-card" style="max-width: 1280px; flex: 1 1 1280px;">
+          <div class="quote-card__inner">
+
+            <div class="quote-card__avatar">
+              <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/placeholders/1-1/sample-1.png"
+                   alt="Sarah Chen" />
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-content-lg, 24px); min-width: 0;">
+              <img class="quote-card__mark" src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/quotation.svg" alt="" aria-hidden="true" />
+              <blockquote class="quote-card__text">
+                Retail Cloud transformed how we connect with customers. We saw a 40% increase
+                in repeat purchases within the first quarter of implementation.
+              </blockquote>
+              <div>
+                <p class="quote-card__author-name">Sarah Chen</p>
+                <p class="quote-card__author-title">VP of Digital Commerce, NovaMart</p>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       4. STATS BLADE — Day theme, Cloud Blue 95 solid
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="blade stats-blade">
+    <div class="blade__cap">
+
+      <div class="section-header">
+        <h2 class="section-header__headline">Trusted by Industry Leaders</h2>
+      </div>
+
+      <div class="sf-card-grid sf-card-grid--3up">
+
+        <article class="sf-card stat-card">
+          <div class="sf-card__copy">
+            <p class="stat-number">85%</p>
+            <p class="stat-label">Increase in customer engagement across retail clients</p>
+          </div>
+        </article>
+
+        <article class="sf-card stat-card">
+          <div class="sf-card__copy">
+            <p class="stat-number">2.4x</p>
+            <p class="stat-label">Faster order fulfillment with unified inventory management</p>
+          </div>
+        </article>
+
+        <article class="sf-card stat-card">
+          <div class="sf-card__copy">
+            <p class="stat-number">$12B+</p>
+            <p class="stat-label">In revenue driven through personalized commerce experiences</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       5. CTA BLADE — Night gradient, centered
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="blade cta-blade" data-theme="night">
+    <div class="blade__cap">
+
+      <div class="section-header">
+        <h2 class="section-header__headline">Ready to Transform Your Retail Experience?</h2>
+        <p class="section-header__body">
+          Join thousands of retailers who are already using Salesforce Retail Cloud to
+          deliver exceptional customer experiences and drive measurable growth.
+        </p>
+      </div>
+
+      <div style="text-align: center;">
+        <a class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" href="#">Start Your Free Trial</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LEGAL FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer class="sf-footer" data-theme="day" role="contentinfo">
+  <div class="sf-footer__links">
+    <div class="sf-footer__brand">
+      <img class="sf-footer__logo"
+           src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/salesforce-logo.svg"
+           alt="Salesforce" width="92" height="65" />
+      <div class="sf-footer__social">
+        <a href="#" aria-label="Facebook"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/facebook.svg" alt="Facebook" width="32" height="32" /></a>
+        <a href="#" aria-label="X (Twitter)"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/twitter.svg" alt="X (Twitter)" width="32" height="32" /></a>
+        <a href="#" aria-label="LinkedIn"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/linkedin.svg" alt="LinkedIn" width="32" height="32" /></a>
+        <a href="#" aria-label="Instagram"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/instagram.svg" alt="Instagram" width="32" height="32" /></a>
+        <a href="#" aria-label="YouTube"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/youtube.svg" alt="YouTube" width="32" height="32" /></a>
+        <a href="#" aria-label="TikTok"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/images/footer-social/tik-tok.svg" alt="TikTok" width="32" height="32" /></a>
+      </div>
+      <p class="sf-footer__phone">Call us at 1-800-664-9073</p>
+      <a href="#" class="sf-footer__contact-link">See all ways to contact us</a>
+    </div>
+    <div class="sf-footer__columns">
+      <div class="sf-footer__column">
+        <h3>New to Salesforce?</h3>
+        <ul>
+          <li><a href="#">What is CRM?</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+          <li><a href="#">Customer Service Software</a></li>
+          <li><a href="#">Email Marketing</a></li>
+          <li><a href="#">Ecommerce</a></li>
+          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="#">Revenue Management Solutions</a></li>
+          <li><a href="#">AI Agents</a></li>
+          <li><a href="#">SaaS</a></li>
+        </ul>
+      </div>
+      <div class="sf-footer__column">
+        <h3>About Salesforce</h3>
+        <ul>
+          <li><a href="#">What is Salesforce?</a></li>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">Customer Success</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Trust</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Give us your Feedback</a></li>
+        </ul>
+      </div>
+      <div class="sf-footer__column">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="#">Salesforce Login</a></li>
+          <li><a href="#">New Release Features</a></li>
+          <li><a href="#">Find or Become a Partner</a></li>
+          <li><a href="#">Dreamforce</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">CRM Software</a></li>
+          <li><a href="#">All Cloud Products</a></li>
+          <li><a href="#">Product Pricing</a></li>
+          <li><a href="#">Newsletter Sign-up</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sf-footer__bottom">
+    <div class="sf-footer__bottom-inner">
+      <button class="sf-footer__region">
+        <i class="icon icon--globe"></i>
+        Worldwide <span aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="sf-footer__legal">
+        <div class="sf-footer__legal-links">
+          <a href="#">Legal</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Information</a>
+          <a href="#">Responsible Disclosure</a>
+          <a href="#">Trust</a>
+          <a href="#">Contact</a>
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Your Privacy Choices</a>
+        </div>
+        <p class="sf-footer__copyright">
+          &copy; Copyright 2024 Salesforce, Inc. <a href="#">All rights reserved</a>.
+          Various trademarks held by their respective owners. Salesforce, Inc.
+          Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105,
+          United States
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Hamburger toggle -->
+<script>
+  document.querySelector('.sf-nav__hamburger')?.addEventListener('click', function () {
+    const nav = document.querySelector('.sf-nav__links');
+    const open = nav.classList.toggle('is-open');
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day" data-typography="default" data-spacing="default" data-radii="default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamforce 2026 — The World's Largest AI + CRM Event</title>
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/tokens.css" />
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/fonts.css" />
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/icons.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif); }
+    img { display: block; max-width: 100%; height: auto; }
+    a { text-decoration: none; }
+
+    /* ─── Global Nav ─────────────────────────────────────────── */
+    .sf-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--color-surface-1, #FFFFFF);
+      border-bottom: 1px solid var(--color-border-1, #F3F3F3);
+    }
+    .sf-nav__inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 72px;
+      padding-inline: 40px;
+      margin: 0;
+    }
+    .sf-nav__logo { display: flex; align-items: center; }
+    .sf-nav__logo-full { display: block; }
+    .sf-nav__logo-bug { display: none; }
+    .sf-nav__hamburger { display: none; }
+    .sf-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .sf-nav__links a {
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--color-on-surface-1, #001E5B);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .sf-nav__links a:hover { background: var(--color-surface-container-1, #FFFFFF); }
+    .sf-nav__utilities {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-left: auto;
+    }
+    .sf-nav__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px;
+      border-radius: 100px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    .sf-nav__icon .icon { width: 18px; height: 18px; }
+    .sf-nav__icon:hover { background: var(--color-surface-container-1, #FFFFFF); }
+    .sf-nav__login { gap: 4px; text-decoration: none; }
+    .sf-nav__login-label {
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    .sf-nav__cta { margin-left: 16px; }
+    @media (max-width: 1023px) {
+      .sf-nav__inner { height: 56px; padding-inline: 16px; }
+      .sf-nav__logo-full { display: none; }
+      .sf-nav__logo-bug { display: block; }
+      .sf-nav__hamburger {
+        display: flex; flex-direction: column; gap: 5px;
+        background: none; border: none; cursor: pointer; padding: 8px; order: -1;
+      }
+      .sf-nav__hamburger span { display: block; width: 20px; height: 2px; background: var(--color-on-surface-1, #001E5B); border-radius: 1px; }
+      .sf-nav .sf-nav__cta {
+        padding-inline: var(--space-interactive-sm, 12px);
+        padding-block: var(--space-interactive-2xs, 4px);
+        font-size: 14px;
+      }
+      .sf-nav__links { display: none; }
+      .sf-nav__links.is-open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 56px; left: 0; right: 0; background: var(--color-surface-1, #FFFFFF);
+        border-bottom: 1px solid var(--color-border-1, #F3F3F3); padding: 16px; gap: 4px; z-index: 49;
+      }
+      .sf-nav__icon--desktop-only { display: none; }
+      .sf-nav__login-label { display: none; }
+    }
+    @media (max-width: 767px) {
+      .sf-nav__icon[aria-label="Call us"] { display: none; }
+    }
+
+    /* ─── CTA System ─────────────────────────────────────────── */
+    .sf-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      text-decoration: none;
+      border-radius: var(--radius-button, 9999px);
+      font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-weight-bold, 700);
+      cursor: pointer;
+      outline: none;
+      transition: background-color 150ms ease-out, transform 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    .sf-cta:not([aria-disabled="true"]):not(.is-disabled):hover { transform: translateY(-2px) scale(1.02); }
+    .sf-cta:not([aria-disabled="true"]):not(.is-disabled):active { transform: translateY(0) scale(0.98); }
+    .sf-cta:focus-visible { outline: 3px solid var(--color-border-focus, #066AFE); outline-offset: 2px; }
+    .sf-cta--hero {
+      padding-inline: var(--space-interactive-xl, 32px);
+      padding-block: var(--space-interactive-sm, 12px);
+      gap: var(--space-interactive-xs, 8px);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+    }
+    .sf-cta--medium {
+      padding-inline: var(--space-interactive-lg, 24px);
+      padding-block: var(--space-interactive-xs, 8px);
+      gap: var(--space-interactive-xs, 8px);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+    }
+    .sf-cta--primary {
+      background: var(--color-fill-accent, #066AFE);
+      color: var(--color-on-fill-accent, #FFFFFF);
+      border: none;
+    }
+    .sf-cta--primary:hover { background: var(--color-fill-accent-hover, #022AC0); }
+    .sf-cta--primary:active { background: var(--color-fill-accent-active, #002775); }
+    .sf-cta--secondary {
+      background: transparent;
+      color: var(--color-on-fill-neutral-accent, #022AC0);
+      border: none;
+      box-shadow: inset 0 0 0 2px var(--color-border-accent, #022AC0);
+    }
+    .sf-cta--secondary:hover {
+      background: var(--color-fill-neutral-hover, #EAF5FE);
+      color: var(--color-on-fill-neutral-accent-hover, #002775);
+      box-shadow: inset 0 0 0 2px var(--color-border-accent-hover, #002775);
+    }
+    .sf-cta--secondary:active {
+      background: var(--color-fill-neutral-active, #EAF5FE);
+      color: var(--color-on-fill-neutral-accent-active, #002775);
+      box-shadow: inset 0 0 0 2px var(--color-border-accent-active, #002775);
+    }
+    .sf-cta--special {
+      background: var(--color-green-50, #2E844A);
+      color: var(--color-white, #ffffff);
+      border: none;
+    }
+    .sf-cta--special:hover { background: var(--color-green-20, #143B25); }
+    .sf-cta--on-dark.sf-cta--primary {
+      background: #FFFFFF;
+      color: #022AC0;
+      border: none;
+    }
+    .sf-cta--on-dark.sf-cta--primary:hover { background: rgba(255,255,255,0.85); }
+    .sf-cta--on-dark.sf-cta--primary:active { background: rgba(255,255,255,0.85); }
+    .sf-cta--on-dark.sf-cta--secondary {
+      background: transparent;
+      color: #FFFFFF;
+      border: none;
+      box-shadow: inset 0 0 0 2px #FFFFFF;
+    }
+    .sf-cta--on-dark.sf-cta--secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      box-shadow: inset 0 0 0 2px #FFFFFF;
+    }
+    .sf-cta--on-dark.sf-cta--secondary:active {
+      background: rgba(255, 255, 255, 0.20);
+      color: #FFFFFF;
+      box-shadow: inset 0 0 0 2px #FFFFFF;
+    }
+    .sf-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-interactive-xs, 8px);
+      border-radius: var(--radius-4, 4px);
+      font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-weight-bold, 700);
+      font-size: var(--font-size-16, 16px);
+      line-height: var(--font-line-height-24, 24px);
+      letter-spacing: var(--font-letter-spacing-2, 0.002em);
+      color: var(--color-link, #022AC0);
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      outline: none;
+      transition: color 150ms ease-out;
+    }
+    .sf-cta-link__label {
+      position: relative;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: currentColor;
+      transition: text-decoration-color 150ms ease-in-out 350ms;
+    }
+    .sf-cta-link__label::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: calc(0.25em - 2px);
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      pointer-events: none;
+    }
+    .sf-cta-link:hover .sf-cta-link__label { text-decoration-color: transparent; transition: text-decoration-color 150ms ease-in-out 0ms; }
+    .sf-cta-link:hover .sf-cta-link__label::after { transform: scaleX(1); transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; }
+    .sf-cta-link:hover { color: var(--color-link-hover, #002775); }
+    .sf-cta-link:focus-visible { outline: 3px solid var(--color-border-focus, #066AFE); outline-offset: 2px; }
+    .sf-cta-link__chevron { flex-shrink: 0; width: 14px; height: 14px; }
+
+    /* ─── Card System ────────────────────────────────────────── */
+    .sf-card,
+    .sf-card *,
+    .sf-card *::before,
+    .sf-card *::after { box-sizing: border-box; }
+    .sf-card:not([data-theme]), .sf-card[data-theme="day"] {
+      --color-background-1: #FFFFFF;
+      --color-surface-1: #FFFFFF;
+      --color-surface-container-1: #FFFFFF;
+      --color-fill-accent: #066AFE;
+      --color-fill-accent-hover: #022AC0;
+      --color-fill-accent-active: #022AC0;
+      --color-fill-neutral: #FFFFFF;
+      --color-fill-neutral-hover: #EAF5FE;
+      --color-fill-neutral-active: #EAF5FE;
+      --color-on-surface-1: #001E5B;
+      --color-on-surface-2: #181818;
+      --color-on-surface-3: #444444;
+      --color-on-surface-4: #747474;
+      --color-on-fill-accent: #FFFFFF;
+      --color-link: #022AC0;
+      --color-link-hover: #066AFE;
+      --color-link-active: #066AFE;
+      --color-border-neutral: #D6D6D6;
+      --color-border-accent: #022AC0;
+      --color-border-focus: #066AFE;
+      --color-on-fill-neutral-accent: #002775;
+      --color-on-fill-neutral-accent-hover: #001D56;
+    }
+    .sf-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      text-align: left;
+      background: var(--color-surface-1, #FFFFFF);
+      border: 1px solid rgba(24, 24, 24, 0.04);
+      box-shadow: 0 2px 8px -2px rgba(24,24,24,0.08), 0 8px 12px -2px rgba(24,24,24,0.16);
+      border-radius: var(--radius-card, 12px);
+      overflow-wrap: anywhere;
+      word-break: normal;
+      hyphens: auto;
+      container-type: inline-size;
+      container-name: sf-card;
+    }
+    .sf-card :where(p, h1, h2, h3, h4, h5, h6, span, a, li, blockquote) {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .sf-card__copy {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      min-width: 0;
+      padding: var(--space-5, 24px);
+    }
+    .sf-card__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 var(--space-3, 12px);
+      flex-shrink: 0;
+    }
+    .sf-card__icon .icon { width: 24px; height: 24px; color: var(--color-on-surface-1, #001E5B); }
+    .sf-card__headline {
+      margin: 0 0 var(--space-4, 16px);
+      font-family: var(--font-style-display-7-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-7-weight, 600);
+      font-size: var(--font-style-display-7-size, 20px);
+      line-height: var(--font-style-display-7-line-height, 1.5);
+      letter-spacing: var(--font-style-display-7-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    @container sf-card (min-width: 360px) {
+      .sf-card__headline {
+        font-size: var(--font-style-display-6-size, 24px);
+        line-height: var(--font-style-display-6-line-height, 1.25);
+      }
+    }
+    .sf-card__body {
+      margin: 0 0 var(--space-5, 24px);
+      font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-weight, 400);
+      font-size: var(--font-style-body-copy-2-size, 18px);
+      line-height: var(--font-style-body-copy-2-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-2-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-2, #181818);
+    }
+    .sf-card__cta-slot { margin-top: auto; align-self: flex-start; }
+
+    /* ─── Card Grid ──────────────────────────────────────────── */
+    .sf-card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: var(--space-grid-desktop-gutter, 40px);
+      width: 100%;
+    }
+    .sf-card-grid > * { min-width: 0; }
+    .sf-card-grid :where(p, h1, h2, h3, h4, h5, h6, span, a, li, blockquote) {
+      min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: normal;
+    }
+    .sf-card-grid--4up > * { flex: 1 1 290px; min-width: min(270px, 100%); max-width: min(290px, 100%); }
+    .sf-card-grid--3up > * { flex: 1 1 400px; min-width: min(270px, 100%); max-width: min(400px, 100%); }
+    .sf-card-grid--2up > * { flex: 1 1 620px; min-width: min(270px, 100%); max-width: min(620px, 100%); }
+    .sf-card-grid--1up > * { flex: 1 1 1280px; min-width: min(270px, 100%); max-width: min(1280px, 100%); }
+    @media (max-width: 1439.98px) and (min-width: 1024px) { .sf-card-grid { gap: var(--space-grid-tablet-landscape-gutter, 32px); } }
+    @media (max-width: 1023.98px) and (min-width: 768px) { .sf-card-grid { gap: var(--space-grid-tablet-portrait-gutter, 24px); } }
+    @media (max-width: 767.98px) { .sf-card-grid { gap: var(--space-grid-mobile-gutter, 24px); } }
+
+    /* ─── Blade System ───────────────────────────────────────── */
+    .blade {
+      width: 100%;
+      padding-block: 64px;
+      padding-inline: var(--space-grid-desktop-margin, 48px);
+    }
+    .blade__cap {
+      max-width: 1280px;
+      width: 100%;
+      margin-inline: auto;
+    }
+    @media (max-width: 1023.98px) { .blade { padding-inline: var(--space-grid-tablet-portrait-margin, 32px); padding-block: 48px; } }
+    @media (max-width: 767.98px) { .blade { padding-inline: var(--space-grid-mobile-margin, 24px); padding-block: 48px; } }
+
+    /* ─── Section Header ─────────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: var(--space-8, 48px); }
+    .section-header__eyebrow {
+      margin: 0 0 var(--space-content-sm, 12px);
+      font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-bold-weight, 700);
+      font-size: var(--font-style-body-copy-2-bold-size, 18px);
+      line-height: var(--font-style-body-copy-2-bold-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-2-bold-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    .section-header__headline {
+      margin: 0 0 var(--space-content-lg, 24px);
+      font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-4-weight, 600);
+      font-size: var(--font-style-display-5-size, 32px);
+      line-height: var(--font-style-display-5-line-height, 1.25);
+      letter-spacing: var(--font-style-display-5-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    @media (min-width: 1024px) {
+      .section-header__headline {
+        font-size: var(--font-style-display-4-size, 40px);
+        line-height: var(--font-style-display-4-line-height, 1.125);
+        letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+      }
+    }
+    .section-header__body {
+      margin: 0 auto;
+      max-width: 720px;
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
+      color: var(--color-on-surface-2, #181818);
+    }
+    [data-theme="night"] .section-header__eyebrow,
+    [data-theme="night"] .section-header__headline { color: #FFFFFF; }
+    [data-theme="night"] .section-header__body { color: rgba(255,255,255,0.85); }
+
+    /* ─── Super-blade Regions ────────────────────────────────── */
+    .sf-blade-region { width: 100%; }
+    .sf-blade-region > .blade { background: transparent; }
+    .sf-blade-region--night-evening {
+      background: linear-gradient(180deg, #001E5B 0%, #022AC0 35.2%, #066AFE 75%, #00B3FF 100%);
+    }
+    .sf-blade-region--day-teal {
+      background: linear-gradient(180deg, #ACEDE9 0%, #E0F8F7 100%);
+    }
+
+    /* ─── Hero Blade (Large variant) ────────────────────────── */
+    .hero-blade {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      overflow: hidden;
+      padding-inline: var(--space-grid-mobile-margin, 24px);
+      padding-block: 48px;
+    }
+    .hero-blade__cap { width: 100%; margin-inline: auto; }
+    .hero-blade__grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-content-2xl, 48px);
+    }
+    .hero-blade__content, .hero-blade__asset { width: 100%; min-width: 0; }
+    .hero-blade__eyebrow {
+      margin: 0 0 var(--space-content-sm, 12px) 0;
+      font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-bold-weight, 700);
+      font-size: var(--font-style-body-copy-2-bold-size, 18px);
+      line-height: var(--font-style-body-copy-2-bold-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-2-bold-letter-spacing, 0.00125em);
+      color: #FFFFFF;
+    }
+    .hero-blade__headline {
+      margin: 0;
+      font-family: var(--font-style-display-3-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-3-weight, 600);
+      font-size: var(--font-style-display-3-size, 48px);
+      line-height: var(--font-style-display-3-line-height, 1.125);
+      letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+      color: #FFFFFF;
+    }
+    .hero-blade__subtitle {
+      margin-top: var(--space-content-lg, 24px);
+      font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-4-weight, 600);
+      font-size: var(--font-style-display-4-size, 40px);
+      line-height: var(--font-style-display-4-line-height, 1.125);
+      letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-blade__body {
+      margin-top: var(--space-content-lg, 24px);
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-blade__ctas {
+      display: inline-flex;
+      gap: var(--space-4, 16px);
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: var(--space-8, 48px);
+    }
+    .hero-blade__asset {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-hero-card, 16px);
+    }
+    .hero-blade__asset img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .hero-blade { padding-inline: var(--space-grid-tablet-portrait-margin, 32px); }
+    }
+    @media (min-width: 1024px) {
+      .hero-blade { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); padding-block: 64px; }
+      .hero-blade__grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: var(--space-grid-tablet-landscape-gutter, 32px);
+        align-items: center;
+        gap: 0;
+      }
+      .hero-blade--img-right .hero-blade__content { grid-column: 1 / span 6; grid-row: 1; }
+      .hero-blade--img-right .hero-blade__asset { grid-column: 7 / span 6; grid-row: 1; }
+      .hero-blade--img-left .hero-blade__content { grid-column: 7 / span 6; grid-row: 1; }
+      .hero-blade--img-left .hero-blade__asset { grid-column: 1 / span 6; grid-row: 1; }
+      .hero-blade__headline {
+        font-size: var(--font-style-display-2-size, 56px);
+        letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
+      }
+    }
+    @media (min-width: 1440px) {
+      .hero-blade { padding-inline: var(--space-grid-desktop-margin, 48px); }
+      .hero-blade__cap { max-width: var(--space-grid-desktop-max-content-width, 1280px); }
+      .hero-blade__grid { column-gap: var(--space-grid-desktop-gutter, 40px); }
+      .hero-blade__headline {
+        font-size: var(--font-style-display-1-size, 80px);
+        letter-spacing: var(--font-style-display-1-letter-spacing, -0.0036em);
+      }
+    }
+
+    /* ─── Stats Blade ────────────────────────────────────────── */
+    .stat-card {
+      text-align: center;
+      padding: var(--space-5, 24px) var(--space-4, 16px);
+      border-left: 3px solid;
+    }
+    .stat-card__number {
+      font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-4-weight, 600);
+      font-size: var(--font-style-display-5-size, 32px);
+      line-height: var(--font-style-display-5-line-height, 1.25);
+      letter-spacing: var(--font-style-display-5-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+      margin: 0 0 8px;
+    }
+    @container sf-card (min-width: 240px) {
+      .stat-card__number {
+        font-size: var(--font-style-display-4-size, 40px);
+        line-height: var(--font-style-display-4-line-height, 1.125);
+      }
+    }
+    .stat-card__label {
+      font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-weight, 400);
+      font-size: var(--font-style-body-copy-4-size, 14px);
+      line-height: var(--font-style-body-copy-4-line-height, 1.5);
+      color: var(--color-on-surface-3, #444444);
+      margin: 0;
+    }
+
+    /* ─── Featured Quote (1up horizontal) ────────────────────── */
+    .sf-card--feature-1up {
+      border-radius: var(--radius-hero-card, 16px);
+      padding: var(--space-10, 64px) var(--space-16, 112px);
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .sf-card__feature-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-12, 80px);
+      flex: 1 0 0;
+      min-width: 0;
+    }
+    .sf-card__feature-image {
+      flex: 0 0 auto;
+      width: 464px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-card-nested, 8px);
+      overflow: hidden;
+      background: var(--color-neutral-80, #c9c9c9);
+      position: relative;
+    }
+    .sf-card__feature-image:has(img) { background: transparent; }
+    .sf-card__feature-image img { width: 100%; height: 100%; object-fit: cover; }
+    .sf-card__feature-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-7, 40px);
+      flex: 1 0 0;
+      min-width: 0;
+    }
+    .sf-card__feature-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-5, 24px);
+      width: 100%;
+    }
+    .sf-card__feature-quote-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      width: 100%;
+    }
+    .sf-card__feature-quote-glyph { width: 42.667px; height: 32px; flex: none; }
+    .sf-card__feature-quote {
+      margin: 0;
+      font-family: var(--font-style-display-5-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-5-weight, 600);
+      font-size: var(--font-style-display-5-size, 32px);
+      line-height: var(--font-style-display-5-line-height, 1.25);
+      letter-spacing: var(--font-style-display-5-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+    .sf-card__feature-attribution { width: 100%; margin: 0; }
+    .sf-card__feature-name {
+      margin: 0;
+      font-family: var(--font-style-display-7-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-7-weight, 600);
+      font-size: var(--font-style-display-7-size, 20px);
+      line-height: var(--font-style-display-7-line-height, 1.5);
+      letter-spacing: var(--font-style-display-7-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    .sf-card__feature-role {
+      margin: 0;
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      color: var(--color-on-surface-2, #181818);
+    }
+    @media (max-width: 1439px) and (min-width: 768px) {
+      .sf-card--feature-1up { padding: 48px 64px; }
+      .sf-card__feature-row { gap: 48px; }
+      .sf-card__feature-image { width: auto; flex: 0 0 50%; }
+      .sf-card__feature-quote { font-size: 24px; line-height: 1.25; }
+    }
+    @media (max-width: 767px) {
+      .sf-card--feature-1up { padding: 40px 32px; flex-direction: column; }
+      .sf-card__feature-row { flex-direction: column; gap: 32px; }
+      .sf-card__feature-image { width: 100%; flex: none; }
+      .sf-card__feature-quote { font-size: 24px; line-height: 1.25; }
+    }
+
+    /* ─── Author Card ────────────────────────────────────────── */
+    .sf-card--author {
+      padding: var(--space-8, 48px) var(--space-8, 48px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+      text-align: left;
+    }
+    .sf-card__author-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4, 16px);
+      width: 100%;
+      margin-bottom: var(--space-5, 24px);
+      min-width: 0;
+    }
+    .sf-card__author-avatar {
+      flex: 0 0 auto;
+      width: var(--space-10, 64px);
+      height: var(--space-10, 64px);
+      border-radius: var(--radius-avatar, 9999px);
+      background: var(--color-neutral-80, #c9c9c9);
+      overflow: hidden;
+    }
+    .sf-card__author-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .sf-card__author-name {
+      margin: 0;
+      font-family: var(--font-style-display-6-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-6-weight, 600);
+      font-size: var(--font-style-display-6-size, 24px);
+      line-height: var(--font-style-display-6-line-height, 1.25);
+      letter-spacing: var(--font-style-display-6-letter-spacing, -0.0015em);
+      color: var(--color-on-surface-1, #001E5B);
+    }
+    .sf-card__author-role {
+      margin: 0;
+      font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-3-weight, 400);
+      font-size: var(--font-style-body-copy-3-size, 16px);
+      line-height: var(--font-style-body-copy-3-line-height, 1.5);
+      color: var(--color-on-surface-3, #444444);
+    }
+    .sf-card__author-body {
+      flex: 1 0 auto;
+      margin: 0 0 var(--space-5, 24px);
+      font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-2-weight, 400);
+      font-size: var(--font-style-body-copy-2-size, 18px);
+      line-height: var(--font-style-body-copy-2-line-height, 1.5);
+      color: var(--color-on-surface-2, #181818);
+    }
+    .sf-card__author-link {
+      margin-top: auto;
+    }
+
+    /* ─── Logo Grid Cards ────────────────────────────────────── */
+    .logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-grid-desktop-gutter, 40px); }
+    .logo-grid > * { flex: 1 1 200px; min-width: min(180px, 100%); max-width: 220px; }
+    @media (max-width: 1023px) { .logo-grid > * { max-width: 200px; } }
+    @media (max-width: 767px) { .logo-grid > * { flex: 1 1 140px; max-width: 160px; } }
+    .logo-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-5, 24px);
+      background: var(--color-surface-1, #FFFFFF);
+      border: 1px solid rgba(24, 24, 24, 0.04);
+      box-shadow: 0 2px 8px -2px rgba(24,24,24,0.08), 0 8px 12px -2px rgba(24,24,24,0.16);
+      border-radius: var(--radius-card, 12px);
+      aspect-ratio: 2 / 1;
+    }
+    .logo-placeholder {
+      width: 120px;
+      height: 60px;
+      background: var(--color-neutral-95, #f3f3f3);
+      border-radius: 8px;
+    }
+
+    /* ─── Closing CTA Blade ──────────────────────────────────── */
+    .closing-cta {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-content-lg, 24px);
+    }
+    .closing-cta__headline {
+      font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", "ITC Avant Garde", Arial, sans-serif);
+      font-weight: var(--font-style-display-4-weight, 600);
+      font-size: var(--font-style-display-4-size, 40px);
+      line-height: var(--font-style-display-4-line-height, 1.125);
+      letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+      color: #FFFFFF;
+      margin: 0;
+    }
+    .closing-cta__body {
+      font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+      font-weight: var(--font-style-body-copy-1-weight, 400);
+      font-size: var(--font-style-body-copy-1-size, 20px);
+      line-height: var(--font-style-body-copy-1-line-height, 1.5);
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      max-width: 600px;
+    }
+    .closing-cta__actions {
+      display: inline-flex;
+      gap: var(--space-4, 16px);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: var(--space-4, 16px);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .sf-footer__links {
+      display: flex; gap: 24px; padding: 64px;
+      background: var(--color-surface-1, #FFFFFF);
+    }
+    .sf-footer__brand { display: flex; flex-direction: column; gap: 28px; width: 280px; flex-shrink: 0; }
+    .sf-footer__logo { display: block; }
+    .sf-footer__social { display: flex; flex-wrap: wrap; gap: 14px; }
+    .sf-footer__social a { display: block; line-height: 0; }
+    .sf-footer__phone, .sf-footer__contact-link {
+      font-family: var(--font-style-body-copy-3-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700; font-size: 14px; line-height: 20px; color: #444;
+    }
+    .sf-footer__contact-link { text-decoration: underline; }
+    .sf-footer__columns { display: flex; flex: 1; gap: 30px; }
+    .sf-footer__column { flex: 1; }
+    .sf-footer__column h3 {
+      font-family: var(--font-style-body-copy-3-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700; font-size: 14px; line-height: 20px; color: #444; margin: 0 0 36px;
+    }
+    .sf-footer__column ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .sf-footer__column a {
+      font-family: var(--font-style-body-copy-4-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 400; font-size: 12px; line-height: 18px; letter-spacing: 0.03px; color: #0B5CAB; text-decoration: none;
+    }
+    .sf-footer__column a:hover { text-decoration: underline; }
+    .sf-footer__bottom { background: #032D60; padding: 20px 64px; }
+    .sf-footer__bottom-inner { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+    .sf-footer__region {
+      display: flex; align-items: center; gap: 6px; background: none; border: none;
+      cursor: pointer; color: #fff;
+      font-family: var(--font-style-body-copy-2-bold-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 700; font-size: 16px; line-height: 24px; padding: 0 24px 11px;
+    }
+    .sf-footer__legal { flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 24px; }
+    .sf-footer__legal-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+    .sf-footer__legal-links a, .sf-footer__copyright, .sf-footer__copyright a {
+      font-family: var(--font-style-body-copy-4-family, 'Salesforce Sans', Arial, sans-serif);
+      font-weight: 400; font-size: 12px; line-height: 18px; letter-spacing: 0.03px; color: #fff; text-decoration: underline;
+    }
+    .sf-footer__copyright { margin: 0; text-decoration: none; }
+    @media (max-width: 1023px) { .sf-footer__links { padding: 40px; } .sf-footer__bottom { padding: 20px 40px; } }
+    @media (max-width: 767px) {
+      .sf-footer__links { display: none; }
+      .sf-footer__bottom { padding: 20px 24px; }
+      .sf-footer__bottom-inner { flex-direction: column; align-items: center; text-align: center; }
+      .sf-footer__region { padding-bottom: 0; }
+      .sf-footer__legal-links { justify-content: center; }
+    }
+
+    /* ─── Standard hero headline cascade (Display 4 → 3 → 2) ── */
+    .hero-blade__headline--standard {
+      font-size: var(--font-style-display-4-size, 40px);
+      letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+    }
+    @media (min-width: 1024px) {
+      .hero-blade__headline--standard {
+        font-size: var(--font-style-display-3-size, 48px);
+        letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+      }
+    }
+    @media (min-width: 1440px) {
+      .hero-blade__headline--standard {
+        font-size: var(--font-style-display-2-size, 56px);
+        letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
+      }
+    }
+
+    /* ─── Blade 6: Day Gradient Morning background ───────────── */
+    .blade--day-morning {
+      background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 100%);
+    }
+    .embed .sf-nav, .embed .sf-footer { display: none !important; }
+  </style>
+  <script>if(location.search.includes('embed'))document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+
+<!-- ═══ GLOBAL HEADER (Day-scoped) ═══ -->
+<header class="sf-nav" data-theme="day" role="banner">
+  <div class="sf-nav__inner">
+    <a href="/" class="sf-nav__logo" aria-label="Salesforce home">
+      <img class="sf-nav__logo-full" src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/salesforce-logo.svg" alt="Salesforce" width="68" height="48" />
+      <img class="sf-nav__logo-bug" src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/salesforce-logo-bug.svg" alt="Salesforce" width="36" height="25" />
+    </a>
+    <button class="sf-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="sf-nav__links" aria-label="Main navigation">
+      <a href="#">Products</a>
+      <a href="#">Industries</a>
+      <a href="#">Customers</a>
+      <a href="#">Learning</a>
+      <a href="#">Support</a>
+      <a href="#">Company</a>
+      <a href="#">Pricing</a>
+    </nav>
+    <div class="sf-nav__utilities">
+      <button class="sf-nav__icon" aria-label="Call us"><i class="icon icon--call"></i></button>
+      <button class="sf-nav__icon" aria-label="Search"><i class="icon icon--search"></i></button>
+      <button class="sf-nav__icon sf-nav__icon--desktop-only" aria-label="Select region"><i class="icon icon--globe"></i></button>
+      <a href="#" class="sf-nav__icon sf-nav__login" aria-label="Login">
+        <i class="icon icon--user"></i>
+        <span class="sf-nav__login-label">Login</span>
+      </a>
+      <a href="#" class="sf-cta sf-cta--special sf-cta--medium sf-nav__cta">Try for free</a>
+    </div>
+  </div>
+</header>
+
+<main style="display: flex; flex-direction: column; width: 100%;">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REGION 1 — Night Evening gradient (super-blade wrapper)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="sf-blade-region sf-blade-region--night-evening" data-theme="night">
+
+  <!-- ─── BLADE 1: Large Hero (image-RIGHT) ─── -->
+  <section class="blade hero-blade hero-blade--img-right">
+    <div class="hero-blade__cap">
+      <div class="hero-blade__grid">
+        <div class="hero-blade__content">
+          <p class="hero-blade__eyebrow">September 16–18, 2025 · San Francisco</p>
+          <h1 class="hero-blade__headline">Dream<span style="color: #00B3FF;">force</span></h1>
+          <p class="hero-blade__subtitle">The world's largest AI + CRM event</p>
+          <p class="hero-blade__body">
+            Three days of hands-on learning, product launches, and community.
+            Join 45,000+ Trailblazers in person or millions streaming worldwide.
+          </p>
+          <div class="hero-blade__ctas">
+            <a class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" href="#">Register now</a>
+            <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#">Watch the keynote</a>
+          </div>
+        </div>
+        <div class="hero-blade__asset" style="aspect-ratio: 3 / 2;">
+          <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/3-2/sample-1.png" alt="Dreamforce 2026 event atmosphere" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</section>
+<!-- END REGION 1 -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BLADE 3 — Day solid white surface (Tracks)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="blade" style="background: var(--color-surface-1, #FFFFFF);">
+  <div class="blade__cap">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Tracks</p>
+      <h2 class="section-header__headline">Choose your path</h2>
+      <p class="section-header__body">Six curated tracks designed for every role — from admin to architect.</p>
+    </header>
+    <div class="sf-card-grid sf-card-grid--3up">
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-electric-blue-95, #EAF5FE);">
+            <i class="icon icon--einstein"></i>
+          </div>
+          <h3 class="sf-card__headline">AI & Data Cloud</h3>
+          <p class="sf-card__body">Build intelligent experiences with Einstein AI, Data Cloud, and predictive analytics at enterprise scale.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-cloud-blue-90, #C4E7FE);">
+            <i class="icon icon--flow"></i>
+          </div>
+          <h3 class="sf-card__headline">Automation & Flow</h3>
+          <p class="sf-card__body">Automate complex business processes with clicks, not code. Master Flow Builder and integration patterns.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-green-90, #97E396);">
+            <i class="icon icon--builder"></i>
+          </div>
+          <h3 class="sf-card__headline">Platform & DevOps</h3>
+          <p class="sf-card__body">Ship faster with source-driven development, CI/CD pipelines, and the Salesforce Platform APIs.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-pink-95, #FDDDE3);">
+            <i class="icon icon--shield"></i>
+          </div>
+          <h3 class="sf-card__headline">Security & Trust</h3>
+          <p class="sf-card__body">Protect your data with Shield encryption, Event Monitoring, and zero-trust architecture patterns.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-yellow-95, #FCF0C8);">
+            <i class="icon icon--data"></i>
+          </div>
+          <h3 class="sf-card__headline">Analytics & Insights</h3>
+          <p class="sf-card__body">Turn data into decisions with Tableau, CRM Analytics, and real-time dashboards for every team.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+      <article class="sf-card">
+        <div class="sf-card__copy">
+          <div class="sf-card__icon" style="background: var(--color-violet-95, #E8D5F5);">
+            <i class="icon icon--apps"></i>
+          </div>
+          <h3 class="sf-card__headline">AppExchange & ISV</h3>
+          <p class="sf-card__body">Discover partner solutions, learn to build and list apps, and grow your ISV business on AppExchange.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link" href="#">
+              <span class="sf-cta-link__label">View sessions</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REGION 2 — Day Teal gradient (super-blade wrapper)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="sf-blade-region sf-blade-region--day-teal" data-theme="day">
+
+  <!-- ─── BLADE 4: Featured Quote (1up horizontal) ─── -->
+  <section class="blade">
+    <div class="blade__cap">
+      <div class="sf-card-grid sf-card-grid--1up">
+        <article class="sf-card sf-card--feature-1up">
+          <div class="sf-card__feature-row">
+            <div class="sf-card__feature-image">
+              <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/1-1/sample-1.png" alt="Marc Benioff" />
+            </div>
+            <div class="sf-card__feature-copy">
+              <div class="sf-card__feature-text">
+                <div class="sf-card__feature-quote-body">
+                  <img class="sf-card__feature-quote-glyph" src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/quotation.svg" alt="" aria-hidden="true" />
+                  <blockquote class="sf-card__feature-quote">
+                    Dreamforce isn't just a conference — it's where ideas become products, strangers become collaborators, and ambition becomes action.
+                  </blockquote>
+                </div>
+                <footer class="sf-card__feature-attribution">
+                  <p class="sf-card__feature-name">Marc Benioff</p>
+                  <p class="sf-card__feature-role">Chair & CEO, Salesforce</p>
+                </footer>
+              </div>
+              <a class="sf-cta sf-cta--medium sf-cta--secondary" href="#">Watch the keynote</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BLADE 5: Keynote Speakers (Author Cards) ─── -->
+  <section class="blade">
+    <div class="blade__cap">
+      <header class="section-header">
+        <p class="section-header__eyebrow">Keynote speakers</p>
+        <h2 class="section-header__headline">Learn from the best</h2>
+      </header>
+      <div class="sf-card-grid sf-card-grid--3up">
+        <article class="sf-card sf-card--author">
+          <header class="sf-card__author-head">
+            <div class="sf-card__author-avatar">
+              <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/1-1/sample-2.png" alt="Parker Harris" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="sf-card__author-text">
+              <h3 class="sf-card__author-name">Parker Harris</h3>
+              <p class="sf-card__author-role">Co-Founder & CTO</p>
+            </div>
+          </header>
+          <p class="sf-card__author-body">Visionary technologist who co-founded Salesforce and continues to drive the platform's architecture and innovation roadmap.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link sf-card__author-link" href="#">
+              <span class="sf-cta-link__label">View session</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </article>
+        <article class="sf-card sf-card--author">
+          <header class="sf-card__author-head">
+            <div class="sf-card__author-avatar">
+              <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/1-1/sample-3.png" alt="Sarah Franklin" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="sf-card__author-text">
+              <h3 class="sf-card__author-name">Sarah Franklin</h3>
+              <p class="sf-card__author-role">President, AI</p>
+            </div>
+          </header>
+          <p class="sf-card__author-body">Leading the charge on enterprise AI strategy, bringing generative and predictive intelligence to every Salesforce cloud.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link sf-card__author-link" href="#">
+              <span class="sf-cta-link__label">View session</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </article>
+        <article class="sf-card sf-card--author">
+          <header class="sf-card__author-head">
+            <div class="sf-card__author-avatar">
+              <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/1-1/sample-4.png" alt="Clara Shih" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="sf-card__author-text">
+              <h3 class="sf-card__author-name">Clara Shih</h3>
+              <p class="sf-card__author-role">CEO, Salesforce AI</p>
+            </div>
+          </header>
+          <p class="sf-card__author-body">Pioneering the next generation of conversational AI agents and autonomous workflows for enterprise customers worldwide.</p>
+          <span class="sf-card__cta-slot">
+            <a class="sf-cta-link sf-card__author-link" href="#">
+              <span class="sf-cta-link__label">View session</span>
+              <i class="icon icon--chevronright sf-cta-link__chevron" aria-hidden="true"></i>
+            </a>
+          </span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</section>
+<!-- END REGION 2 -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BLADE 6 — Day Gradient Morning (Sponsors / Logo Grid)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="blade blade--day-morning">
+  <div class="blade__cap">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Sponsors</p>
+      <h2 class="section-header__headline">Trusted by the world's leading companies</h2>
+    </header>
+    <div class="logo-grid">
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+      <div class="logo-card"><div class="logo-placeholder"></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REGION 3 — Night Evening gradient (super-blade wrapper)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="sf-blade-region sf-blade-region--night-evening" data-theme="night">
+
+  <!-- ─── BLADE 7: Mirror Hero (image-LEFT) ─── -->
+  <section class="blade hero-blade hero-blade--img-left">
+    <div class="hero-blade__cap">
+      <div class="hero-blade__grid">
+        <div class="hero-blade__content">
+          <p class="hero-blade__eyebrow">Salesforce+</p>
+          <h1 class="hero-blade__headline hero-blade__headline--standard">Can't make it in person?</h1>
+          <p class="hero-blade__body">
+            Stream every keynote, session, and demo live on Salesforce+.
+            Create your free account and build your personal agenda.
+          </p>
+          <div class="hero-blade__ctas">
+            <a class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" href="#">Stream free</a>
+            <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#">Browse agenda</a>
+          </div>
+        </div>
+        <div class="hero-blade__asset" style="aspect-ratio: 16 / 9;">
+          <img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/placeholders/16-9/sample-2.png" alt="Salesforce+ streaming platform" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BLADE 8: Closing CTA ─── -->
+  <section class="blade">
+    <div class="blade__cap">
+      <div class="closing-cta">
+        <h2 class="closing-cta__headline">See you in San Francisco</h2>
+        <p class="closing-cta__body">Registration closes August 31. Early-bird pricing ends July 15.</p>
+        <div class="closing-cta__actions">
+          <a class="sf-cta sf-cta--hero sf-cta--primary sf-cta--on-dark" href="#">Register now</a>
+          <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#">Group pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+<!-- END REGION 3 -->
+
+</main>
+
+<!-- ═══ LEGAL FOOTER (Day-scoped) ═══ -->
+<footer class="sf-footer" data-theme="day" role="contentinfo">
+  <div class="sf-footer__links">
+    <div class="sf-footer__brand">
+      <img class="sf-footer__logo" src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/salesforce-logo.svg" alt="Salesforce" width="92" height="65" />
+      <div class="sf-footer__social">
+        <a href="#" aria-label="Facebook"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/facebook.svg" alt="Facebook" width="32" height="32" /></a>
+        <a href="#" aria-label="X (Twitter)"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/twitter.svg" alt="X (Twitter)" width="32" height="32" /></a>
+        <a href="#" aria-label="LinkedIn"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/linkedin.svg" alt="LinkedIn" width="32" height="32" /></a>
+        <a href="#" aria-label="Instagram"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/instagram.svg" alt="Instagram" width="32" height="32" /></a>
+        <a href="#" aria-label="YouTube"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/youtube.svg" alt="YouTube" width="32" height="32" /></a>
+        <a href="#" aria-label="TikTok"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/tik-tok.svg" alt="TikTok" width="32" height="32" /></a>
+      </div>
+      <p class="sf-footer__phone">Call us at 1-800-664-9073</p>
+      <a href="#" class="sf-footer__contact-link">See all ways to contact us</a>
+    </div>
+    <div class="sf-footer__columns">
+      <div class="sf-footer__column">
+        <h3>New to Salesforce?</h3>
+        <ul>
+          <li><a href="#">What is CRM?</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+          <li><a href="#">Customer Service Software</a></li>
+          <li><a href="#">Email Marketing</a></li>
+          <li><a href="#">Ecommerce</a></li>
+          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="#">Revenue Management Solutions</a></li>
+          <li><a href="#">AI Agents</a></li>
+          <li><a href="#">SaaS</a></li>
+        </ul>
+      </div>
+      <div class="sf-footer__column">
+        <h3>About Salesforce</h3>
+        <ul>
+          <li><a href="#">What is Salesforce?</a></li>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">Customer Success</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Trust</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Give us your Feedback</a></li>
+        </ul>
+      </div>
+      <div class="sf-footer__column">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="#">Salesforce Login</a></li>
+          <li><a href="#">New Release Features</a></li>
+          <li><a href="#">Find or Become a Partner</a></li>
+          <li><a href="#">Dreamforce</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">CRM Software</a></li>
+          <li><a href="#">All Cloud Products</a></li>
+          <li><a href="#">Product Pricing</a></li>
+          <li><a href="#">Newsletter Sign-up</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sf-footer__bottom">
+    <div class="sf-footer__bottom-inner">
+      <button class="sf-footer__region">
+        <i class="icon icon--globe"></i>
+        Worldwide <span aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="sf-footer__legal">
+        <div class="sf-footer__legal-links">
+          <a href="#">Legal</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Information</a>
+          <a href="#">Responsible Disclosure</a>
+          <a href="#">Trust</a>
+          <a href="#">Contact</a>
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Your Privacy Choices</a>
+        </div>
+        <p class="sf-footer__copyright">
+          &copy; Copyright 2026 Salesforce, Inc. <a href="#">All rights reserved</a>.
+          Various trademarks held by their respective owners. Salesforce, Inc.
+          Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.sf-nav__hamburger')?.addEventListener('click', function () {
+  const nav = document.querySelector('.sf-nav__links');
+  const open = nav.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', open);
+});
+</script>
+</body>
+</html>

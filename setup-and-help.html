@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMS Design Tokens — Setup and help</title>
+  <meta name="description" content="Prerequisites, setup help, prompt framework, and grab-and-go templates for the DMS Design Tokens skill.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/fonts.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/tokens.css">
+  <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <i class="icon icon--salesforce1 nav__logo-icon"></i>
+      DMS Design Tokens
+    </a>
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__tabs">
+      <a href="index.html" class="nav__tab-link">Overview</a>
+      <a href="use-it.html" class="nav__tab-link">How to use it</a>
+      <a href="setup-and-help.html" class="nav__tab-link active">Setup and help</a>
+      <a href="gallery.html" class="nav__tab-link">Gallery</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Page content ── -->
+<section class="blade blade--day" style="padding-top:32px;">
+  <div class="blade__inner prose">
+
+    <h2>Before you start — what you need</h2>
+    <p>Make sure you have these three things. If you're missing any, the fastest way to get them is to search Slack for how to request access at Salesforce (try searching the tool name plus "access" or "install"). You'll find the request process quickly.</p>
+    <ul>
+      <li><strong>Cursor or Claude Code installed</strong> — either one works, you don't need both.</li>
+      <li><strong>Git access</strong> so you can push what you build to the example gallery.</li>
+      <li><strong>A few minutes</strong> for the one-time setup in the <a href="use-it.html">How to use it</a> tab.</li>
+    </ul>
+
+    <h3>New to Terminal or Cursor?</h3>
+    <p>You do not need to be an engineer to do this. Here's the plain-English version of where things happen.</p>
+    <p><strong>What is the Terminal?</strong> A plain text window on your Mac where you type a command and press Enter. To open it: press Cmd + Space, type Terminal, and hit Enter. When the install step says "paste this in your terminal," this is the window it means. You paste one line, press Enter, and wait a couple seconds.</p>
+    <p><strong>What is Claude Code?</strong> An AI assistant that runs inside the Terminal. You type what you want in plain English and it builds it. After the one-time install, you start it by opening Terminal and typing <code>claude</code>.</p>
+    <p><strong>What is Cursor?</strong> A regular app (like VS Code) with an AI chat panel built in. If you'd rather not touch the Terminal at all, Cursor is the friendlier option: open the app, open the chat panel on the right, and type your request there.</p>
+    <p><strong>Which should I use?</strong> Either. If you've never used a code tool, Cursor is the gentler start because it's a normal app window. If you're comfortable pasting one command, Claude Code works great too. The skill behaves the same in both.</p>
+    <p><strong>Will I break anything?</strong> No. The setup command only downloads the skill into a folder. Everything you build is just a file you can open in your browser, throw away, or rebuild. Experiment freely.</p>
+
+    <h2>Writing your own prompts — the five slots</h2>
+    <p>The templates in Get Started are built on five named slots. Once you're comfortable, use these to write your own. The more you specify, the less the agent invents.</p>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Slot</th><th>What goes here</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Context</td><td>Pin the bundle URL + SKILL.md. Note if installed locally.</td></tr>
+        <tr><td>2</td><td>Goal</td><td>What you're building, one plain sentence.</td></tr>
+        <tr><td>3</td><td>Structure</td><td>The parts in order. Name recipe variants, theme per section, real copy.</td></tr>
+        <tr><td>4</td><td>Deliverables</td><td>File format, ask for the self-audit, ask it to cite tokens.</td></tr>
+        <tr><td>5</td><td>Constraints</td><td>Breakpoints, theme default, "no invented values," framework.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Tips for better results</h2>
+    <ul>
+      <li><strong>Be specific.</strong> Naming the recipe variant, theme, and breakpoints leaves the agent almost nothing to guess.</li>
+      <li><strong>Start from a real brief,</strong> not a hypothetical. Paste actual copy.</li>
+      <li><strong>Ask for the self-audit</strong> ("walk the self-audit") — it catches most brand violations before you see the output.</li>
+      <li><strong>Iterate in follow-ups:</strong> "make the hero Night," "add a stats row," "tighten spacing."</li>
+      <li><strong>Theme switches are cheap.</strong> If the agent starts rewriting CSS to go dark, tell it to stop and use <code>data-theme</code> (the theme-switch prompt).</li>
+    </ul>
+
+    <h2>Grab-and-go templates</h2>
+    <p>Each template fills the five framework slots. Replace the bracketed placeholders with your content and the skill does the rest.</p>
+
+    <h3>Template A — A single blade</h3>
+    <p>Hero, card grid, or closing CTA — one self-contained piece.</p>
+    <div class="template-preview">
+      <a href="previews/template-a.html" target="_blank" rel="noopener" class="template-preview__link"></a>
+      <div class="template-preview__wrap" data-visible-height="230">
+        <iframe src="previews/template-a.html?embed" class="template-preview__iframe" title="Template A preview"></iframe>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>// CONTEXT
+The Salesforce token bundle lives at:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
+The agent skill is at SKILL.md. Read it first.
+
+// GOAL
+I want a [single hero | card grid | closing CTA blade]
+on a [Day | Night] surface.
+
+// STRUCTURE
+- Variant: [.hero-blade--2col | .sf-card-grid--3up | …]
+- Theme: [Day | Night]
+- Eyebrow / Headline / Body / CTAs / Image
+
+// DELIVERABLES
+- One HTML &lt;section&gt; with embedded &lt;style&gt;.
+- Walk the 8-question self-audit. Tell me which recipes you read.
+
+// CONSTRAINTS
+- Render at 1440 / 1024 / 768 / 414 px.
+- Use only tokenized values (no invented hex / spacing).</code></pre>
+      <button class="copy-btn" onclick="copyText(this.closest('.code-block').querySelector('code').textContent, this)"><i class="icon icon--copy" style="width:12px;height:12px;"></i> Copy</button>
+    </div>
+
+    <h3>Template B — A full landing page (3–5 blades)</h3>
+    <p>Hero, body blades, and closing CTA composed into a complete page.</p>
+    <div class="template-preview">
+      <a href="previews/template-b.html" target="_blank" rel="noopener" class="template-preview__link"></a>
+      <div class="template-preview__wrap" data-visible-height="540">
+        <iframe src="previews/template-b.html?embed" class="template-preview__iframe" title="Template B preview"></iframe>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>// CONTEXT
+The Salesforce token bundle lives at:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
+The agent skill is at SKILL.md. Read it first.
+
+// GOAL
+I want a complete landing page about [topic / product / event].
+
+// STRUCTURE
+- Blade 1: Hero (Night --2col), two CTAs.
+- Blade 2: --3up card grid on Day, three feature cards.
+- Blade 3: Body blade, centered paragraph copy.
+- Blade 4: Closing CTA on Night gradient.
+
+// DELIVERABLES
+- One HTML file with embedded &lt;style&gt;.
+- Walk the 8-question self-audit. List recipe files read.
+
+// CONSTRAINTS
+- Render at 1440 / 1024 / 768 / 414 px.
+- &lt;html data-theme="day"&gt;; Night blades scope on &lt;section&gt;.
+- Day-island cards on Night blades. On-dark CTAs on gradients.</code></pre>
+      <button class="copy-btn" onclick="copyText(this.closest('.code-block').querySelector('code').textContent, this)"><i class="icon icon--copy" style="width:12px;height:12px;"></i> Copy</button>
+    </div>
+
+    <h3>Template C — Contiguous-gradient regions</h3>
+    <p>Two or more adjacent blades sharing a single uninterrupted gradient.</p>
+    <div class="template-preview">
+      <a href="previews/template-c.html" target="_blank" rel="noopener" class="template-preview__link"></a>
+      <div class="template-preview__wrap" data-visible-height="390">
+        <iframe src="previews/template-c.html?embed" class="template-preview__iframe" title="Template C preview"></iframe>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>// CONTEXT
+The Salesforce token bundle lives at:
+https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
+Read SKILL.md + references/recipe-multi-blade-gradient.md.
+
+// GOAL
+A page with two contiguous-gradient regions stacked.
+
+// STRUCTURE
+- REGION 1 (Night Evening, wrapped):
+  - Blade 1: Hero --2col + two CTAs.
+  - Blade 2: --3up card grid, Day-island cards.
+- REGION 2 (Day Morning, wrapped):
+  - Blade 3: Body blade, centered headline + paragraphs.
+  - Blade 4: --2up card grid with Secondary CTAs.
+
+// DELIVERABLES
+- One HTML file. Regions are &lt;section class="sf-blade-region"&gt;.
+- Walk the 8-question audit.
+
+// CONSTRAINTS
+- Render at 1440 / 1024 / 768 / 414 px.
+- Gradient on wrapper; child blades = transparent.
+- Each wrapper carries its own data-theme.</code></pre>
+      <button class="copy-btn" onclick="copyText(this.closest('.code-block').querySelector('code').textContent, this)"><i class="icon icon--copy" style="width:12px;height:12px;"></i> Copy</button>
+    </div>
+
+    <h2>Share your work &amp; give feedback</h2>
+    <p>Push what you build to the Git repo so we can feature it in the gallery. Even rough or "didn't quite work" results are useful signal.</p>
+    <p>Drop notes in <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener">#feedback-channel on Slack</a>: what you built, what worked, what fought you.</p>
+
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+<script>
+(function () {
+  var REF_WIDTH = 780;
+  function scalePreview() {
+    document.querySelectorAll('.template-preview__wrap').forEach(function (wrap) {
+      var container = wrap.parentElement;
+      var containerW = container.offsetWidth;
+      var scale = containerW / 1440;
+      var baseH = parseFloat(wrap.dataset.visibleHeight) || 400;
+      var visibleH = baseH * (containerW / REF_WIDTH);
+      var iframeH = visibleH / scale;
+      var iframe = wrap.querySelector('iframe');
+      iframe.style.height = iframeH + 'px';
+      wrap.style.height = iframeH + 'px';
+      wrap.style.transform = 'scale(' + scale + ')';
+      container.style.height = visibleH + 'px';
+    });
+  }
+  window.addEventListener('load', scalePreview);
+  window.addEventListener('resize', scalePreview);
+})();
+</script>
+</body>
+</html>

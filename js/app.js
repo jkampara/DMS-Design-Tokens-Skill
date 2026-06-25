@@ -1,35 +1,26 @@
-/* Tab switching */
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab");
-  const panels = document.querySelectorAll(".tab-panel");
-
-  function activateTab(id) {
-    tabs.forEach((t) => t.classList.toggle("active", t.dataset.tab === id));
-    panels.forEach((p) => p.classList.toggle("active", p.id === id));
-    history.replaceState(null, "", `#${id}`);
-  }
-
-  tabs.forEach((t) =>
-    t.addEventListener("click", () => activateTab(t.dataset.tab))
-  );
-
-  const hash = location.hash.slice(1);
-  const valid = [...tabs].map((t) => t.dataset.tab);
-  activateTab(valid.includes(hash) ? hash : valid[0]);
+/* ═══ Hamburger toggle ═══ */
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.querySelector('.nav__hamburger');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var tabs = document.querySelector('.nav__tabs');
+    var open = tabs.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open);
+  });
 });
 
-/* Copy to clipboard */
+/* ═══ Copy to clipboard ═══ */
 function copyText(text, btn) {
-  const plain = new DOMParser()
-    .parseFromString(text, "text/html")
-    .body.textContent;
-  navigator.clipboard.writeText(plain).then(() => {
-    const prev = btn.textContent;
-    btn.textContent = "Copied";
-    btn.classList.add("copied");
-    setTimeout(() => {
-      btn.textContent = prev;
-      btn.classList.remove("copied");
+  var el = document.createElement('textarea');
+  el.innerHTML = text;
+  var plain = el.value;
+  navigator.clipboard.writeText(plain).then(function () {
+    btn.classList.add('copied');
+    var origHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="icon icon--check" style="width:12px;height:12px;"></i> Copied';
+    setTimeout(function () {
+      btn.classList.remove('copied');
+      btn.innerHTML = origHTML;
     }, 1600);
   });
 }
