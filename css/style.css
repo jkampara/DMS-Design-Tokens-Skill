@@ -1730,50 +1730,50 @@ code {
   color: var(--color-fill-accent, #066AFE);
 }
 
-/* ── Prototype marquee banner ── */
+/* ── Prototype static banner ── */
 .proto-banner {
   width: 100%;
-  overflow: hidden;
   background: var(--color-electric-blue-15, #001E5B);
-  padding: 10px 0;
-}
-
-.proto-banner__inner {
-  width: 100%;
-  overflow: hidden;
-}
-
-.proto-banner__marquee {
+  padding: 14px 24px;
   display: flex;
-  width: max-content;
-  animation: proto-scroll 28s linear infinite;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
-.proto-banner__content {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 48px;
-  white-space: nowrap;
+.proto-banner__text {
   font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
   font-size: var(--font-style-body-copy-4-size, 14px);
   font-weight: var(--font-weight-demi, 600);
   color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.01em;
+  text-align: center;
 }
 
-.proto-banner__content .icon {
+.proto-banner__star {
+  width: 16px;
+  height: 16px;
   color: var(--color-cloud-blue-68, #00B3FF);
   flex-shrink: 0;
 }
 
-@keyframes proto-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.proto-banner__star--left {
+  animation: proto-twinkle-left 2.4s ease-in-out infinite;
 }
 
-.proto-banner:hover .proto-banner__marquee {
-  animation-play-state: paused;
+.proto-banner__star--right {
+  animation: proto-twinkle-right 2.4s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes proto-twinkle-left {
+  0%, 100% { opacity: 0.4; transform: scale(0.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(-15deg); }
+}
+
+@keyframes proto-twinkle-right {
+  0%, 100% { opacity: 0.4; transform: scale(0.85) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
 }
 
 /* ── Home tile grid ── */
@@ -1923,38 +1923,33 @@ code {
   text-underline-offset: 3px;
 }
 
-/* ── Pastel gradient tile variant ── */
-.home-tile--pastel {
-  border: none;
+/* ── Night gradient tile variant ── */
+.home-tile--night {
+  background: linear-gradient(180deg, #001E5B 0%, #022AC0 35%, #066AFE 75%, #00B3FF 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 28px 24px 24px;
-  min-height: 220px;
+  min-height: 260px;
   justify-content: flex-start;
   gap: 0;
 }
 
-.home-tile--pink {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #FEF0F3 100%);
-}
-
-.home-tile--yellow {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #FBF3E0 100%);
-}
-
-.home-tile--teal-pastel {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #DEF9F3 100%);
-}
-
-.home-tile--violet-pastel {
-  background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 62%, #F9F0FF 100%);
-}
-
-.home-tile--pastel .home-tile__title {
-  color: var(--color-on-surface-1, #001E5B);
+.home-tile--night .home-tile__title {
+  color: #FFFFFF;
   font-size: var(--font-style-display-7-size, 20px);
   margin-bottom: 4px;
 }
 
-/* ── Icon circle (document-style) ── */
+.home-tile--night .home-tile__desc {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.home-tile--night:hover {
+  box-shadow:
+    0 8px 24px -4px rgba(0, 0, 0, 0.35),
+    0 20px 40px -8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Icon circle ── */
 .home-tile__icon-circle {
   width: 48px;
   height: 48px;
@@ -1966,7 +1961,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
 }
 
@@ -1976,10 +1971,15 @@ code {
   color: var(--color-fill-accent, #066AFE);
 }
 
-.home-tile--pink .home-tile__icon-circle .icon { color: #DB2777; }
-.home-tile--yellow .home-tile__icon-circle .icon { color: #D97706; }
-.home-tile--teal-pastel .home-tile__icon-circle .icon { color: #0D9488; }
-.home-tile--violet-pastel .home-tile__icon-circle .icon { color: #7C3AED; }
+.home-tile__icon-circle--night {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.home-tile__icon-circle--night .icon {
+  color: var(--color-cloud-blue-68, #00B3FF);
+}
 
 /* ── Tile body group (title + desc + CTA tight together) ── */
 .home-tile__body {
