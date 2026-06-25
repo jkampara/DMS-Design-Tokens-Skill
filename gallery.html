@@ -29,6 +29,7 @@
       <a href="use-it.html" class="nav__tab-link">How to use it</a>
       <a href="setup-and-help.html" class="nav__tab-link">Setup and help</a>
       <a href="gallery.html" class="nav__tab-link active">Gallery</a>
+      <button class="sf-cta sf-cta--special sf-cta--medium nav__feedback" data-feedback-open><i class="icon icon--chat" aria-hidden="true" style="width:16px;height:16px;"></i> Feedback</button>
     </div>
   </div>
 </nav>
@@ -47,9 +48,15 @@
         See what's possible — then build your own and submit it here.
       </p>
       <div style="margin-top:16px;">
-        <a href="setup-and-help.html" class="sf-cta sf-cta--hero sf-cta--primary">Submit your work</a>
+        <button class="sf-cta sf-cta--hero sf-cta--primary" data-feedback-open>Submit your work</button>
       </div>
     </div>
+
+    <div class="fun-fact-banner">
+      <i class="icon icon--magicwand fun-fact-banner__icon" aria-hidden="true"></i>
+      <p class="fun-fact-banner__text"><strong>Fun fact</strong> — this entire documentation site was also built using the skill.</p>
+    </div>
+
   </div>
 </section>
 
@@ -63,8 +70,10 @@
     <div class="gallery-grid" style="margin-top:24px;">
 
       <article class="gallery-card">
-        <div class="gallery-card__preview" data-gallery-preview>
-          <iframe src="previews/agentforce-retail.html?embed" loading="lazy" title="Agentforce for Retail preview"></iframe>
+        <div class="gallery-card__preview">
+          <a href="previews/agentforce-retail.html" target="_blank" rel="noopener">
+            <img src="previews/screenshots/agentforce-retail.png" alt="Agentforce for Retail preview" class="gallery-card__img" />
+          </a>
         </div>
         <div class="gallery-card__info">
           <h3 class="gallery-card__title">Agentforce for Retail</h3>
@@ -77,8 +86,10 @@
       </article>
 
       <article class="gallery-card">
-        <div class="gallery-card__preview" data-gallery-preview>
-          <iframe src="previews/retail-cloud.html?embed" loading="lazy" title="Retail Cloud preview"></iframe>
+        <div class="gallery-card__preview">
+          <a href="previews/retail-cloud.html" target="_blank" rel="noopener">
+            <img src="previews/screenshots/retail-cloud.png" alt="Retail Cloud preview" class="gallery-card__img" />
+          </a>
         </div>
         <div class="gallery-card__info">
           <h3 class="gallery-card__title">Retail Cloud</h3>
@@ -105,8 +116,10 @@
       </article>
 
       <article class="gallery-card">
-        <div class="gallery-card__preview" data-gallery-preview>
-          <iframe src="previews/Dreamforce%202026.html?embed" loading="lazy" title="Dreamforce 2026 preview"></iframe>
+        <div class="gallery-card__preview">
+          <a href="previews/Dreamforce%202026.html" target="_blank" rel="noopener">
+            <img src="previews/screenshots/Dreamforce%202026.png" alt="Dreamforce 2026 preview" class="gallery-card__img" />
+          </a>
         </div>
         <div class="gallery-card__info">
           <h3 class="gallery-card__title">Dreamforce 2026</h3>
@@ -119,8 +132,10 @@
       </article>
 
       <article class="gallery-card">
-        <div class="gallery-card__preview" data-gallery-preview>
-          <iframe src="previews/Salesforce%20Trust%20%26%20Compliance%20Center.html?embed" loading="lazy" title="Trust & Compliance Center preview"></iframe>
+        <div class="gallery-card__preview">
+          <a href="previews/Salesforce%20Trust%20%26%20Compliance%20Center.html" target="_blank" rel="noopener">
+            <img src="previews/screenshots/Salesforce%20Trust%20%26%20Compliance%20Center.png" alt="Trust & Compliance Center preview" class="gallery-card__img" />
+          </a>
         </div>
         <div class="gallery-card__info">
           <h3 class="gallery-card__title">Trust &amp; Compliance Center</h3>
@@ -133,8 +148,10 @@
       </article>
 
       <article class="gallery-card">
-        <div class="gallery-card__preview" data-gallery-preview>
-          <iframe src="previews/Salesforce%20AI%20market%20place.html?embed" loading="lazy" title="Salesforce AI Marketplace preview"></iframe>
+        <div class="gallery-card__preview">
+          <a href="previews/Salesforce%20AI%20market%20place.html" target="_blank" rel="noopener">
+            <img src="previews/screenshots/Salesforce%20AI%20market%20place.png" alt="Salesforce AI Marketplace preview" class="gallery-card__img" />
+          </a>
         </div>
         <div class="gallery-card__info">
           <h3 class="gallery-card__title">Salesforce AI Marketplace</h3>
@@ -152,19 +169,39 @@
 
 </section><!-- /sf-blade-region -->
 
+<!-- ═══ Feedback FAB + Overlay ═══ -->
+<button class="feedback-fab" data-feedback-open aria-label="Give feedback">
+  <i class="icon icon--chat" aria-hidden="true"></i>
+</button>
+<div class="feedback-backdrop" id="feedback-backdrop"></div>
+<div class="feedback-overlay" id="feedback-overlay">
+  <div class="feedback-overlay__header">
+    <button class="feedback-overlay__close" data-feedback-close aria-label="Close"><i class="icon icon--close" aria-hidden="true"></i></button>
+    <h3 class="feedback-overlay__title">Share your work &amp; give feedback</h3>
+    <p class="feedback-overlay__subtitle">Help us improve the skill — even rough results are useful signal.</p>
+  </div>
+  <div class="feedback-overlay__body">
+    <div class="feedback-overlay__section">
+      <p class="feedback-overlay__label">Join the conversation</p>
+      <p class="feedback-overlay__text">Connect with other creators, share what you've built, get tips, and help shape the skill. Drop screenshots, questions, or ideas — everything helps.</p>
+      <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener" class="feedback-overlay__cta feedback-overlay__cta--primary">
+        <i class="icon icon--chat" aria-hidden="true"></i> Open Slack channel
+      </a>
+    </div>
+  </div>
+</div>
+
 <script src="js/app.js"></script>
 <script>
 (function () {
-  function scaleGalleryPreviews() {
-    document.querySelectorAll('[data-gallery-preview]').forEach(function (container) {
-      var iframe = container.querySelector('iframe');
-      if (!iframe) return;
-      var scale = container.offsetWidth / 1440;
-      iframe.style.transform = 'scale(' + scale + ')';
+  function scaleIframePreviews() {
+    document.querySelectorAll('[data-gallery-preview] iframe').forEach(function (iframe) {
+      var container = iframe.parentElement;
+      iframe.style.transform = 'scale(' + (container.offsetWidth / 1440) + ')';
     });
   }
-  window.addEventListener('load', scaleGalleryPreviews);
-  window.addEventListener('resize', scaleGalleryPreviews);
+  window.addEventListener('load', scaleIframePreviews);
+  window.addEventListener('resize', scaleIframePreviews);
 })();
 </script>
 </body>

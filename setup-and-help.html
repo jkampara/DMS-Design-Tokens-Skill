@@ -28,6 +28,7 @@
       <a href="use-it.html" class="nav__tab-link">How to use it</a>
       <a href="setup-and-help.html" class="nav__tab-link active">Setup and help</a>
       <a href="gallery.html" class="nav__tab-link">Gallery</a>
+      <button class="sf-cta sf-cta--special sf-cta--medium nav__feedback" data-feedback-open><i class="icon icon--chat" aria-hidden="true" style="width:16px;height:16px;"></i> Feedback</button>
     </div>
   </div>
 </nav>
@@ -84,9 +85,7 @@
     <p>Hero, card grid, or closing CTA — one self-contained piece.</p>
     <div class="template-preview">
       <a href="previews/template-a.html" target="_blank" rel="noopener" class="template-preview__link"></a>
-      <div class="template-preview__wrap" data-visible-height="230">
-        <iframe src="previews/template-a.html?embed" class="template-preview__iframe" title="Template A preview"></iframe>
-      </div>
+      <img src="previews/screenshots/template-a.png" alt="Template A preview" class="template-preview__img" />
     </div>
     <div class="code-block">
       <pre><code>// CONTEXT
@@ -95,16 +94,18 @@ https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
 The agent skill is at SKILL.md. Read it first.
 
 // GOAL
-I want a [single hero | card grid | closing CTA blade]
-on a [Day | Night] surface.
+I want a single centered hero blade for Agentforce on a Night surface.
 
 // STRUCTURE
-- Variant: [.hero-blade--2col | .sf-card-grid--3up | …]
-- Theme: [Day | Night]
-- Eyebrow / Headline / Body / CTAs / Image
+- Variant: .hero-blade--1col (centered)
+- Theme: Night
+- Eyebrow: "Agentforce"
+- Headline: "Start building with Agentforce today"
+- Body: "Spin up your first agent in minutes. No credit card, no setup fees."
+- CTAs: "Get started" (primary on-dark), "Watch the demo" (secondary on-dark)
 
 // DELIVERABLES
-- One HTML &lt;section&gt; with embedded &lt;style&gt;.
+- One standalone HTML file with global nav header and legal footer.
 - Walk the 8-question self-audit. Tell me which recipes you read.
 
 // CONSTRAINTS
@@ -117,9 +118,7 @@ on a [Day | Night] surface.
     <p>Hero, body blades, and closing CTA composed into a complete page.</p>
     <div class="template-preview">
       <a href="previews/template-b.html" target="_blank" rel="noopener" class="template-preview__link"></a>
-      <div class="template-preview__wrap" data-visible-height="540">
-        <iframe src="previews/template-b.html?embed" class="template-preview__iframe" title="Template B preview"></iframe>
-      </div>
+      <img src="previews/screenshots/template-b.png" alt="Template B preview" class="template-preview__img" />
     </div>
     <div class="code-block">
       <pre><code>// CONTEXT
@@ -128,16 +127,20 @@ https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
 The agent skill is at SKILL.md. Read it first.
 
 // GOAL
-I want a complete landing page about [topic / product / event].
+I want a complete landing page for Data Cloud.
 
 // STRUCTURE
-- Blade 1: Hero (Night --2col), two CTAs.
-- Blade 2: --3up card grid on Day, three feature cards.
-- Blade 3: Body blade, centered paragraph copy.
-- Blade 4: Closing CTA on Night gradient.
+- Blade 1: Hero (Night, centered --1col).
+  Headline: "Introducing Data Cloud"
+  Body: "Unify every data source into a single customer profile."
+  CTAs: "Try free" (primary on-dark), "See pricing" (secondary on-dark).
+- Blade 2: --3up card grid on Day surface, three feature cards:
+  "Unify", "Activate", "Analyze" — each with image, body copy, and link CTA.
+- Blade 3: Closing CTA on Night gradient.
+  Headline: "Ready to get started?" CTA: "Start free trial"
 
 // DELIVERABLES
-- One HTML file with embedded &lt;style&gt;.
+- One HTML file with global nav header, legal footer, and embedded &lt;style&gt;.
 - Walk the 8-question self-audit. List recipe files read.
 
 // CONSTRAINTS
@@ -151,9 +154,7 @@ I want a complete landing page about [topic / product / event].
     <p>Two or more adjacent blades sharing a single uninterrupted gradient.</p>
     <div class="template-preview">
       <a href="previews/template-c.html" target="_blank" rel="noopener" class="template-preview__link"></a>
-      <div class="template-preview__wrap" data-visible-height="390">
-        <iframe src="previews/template-c.html?embed" class="template-preview__iframe" title="Template C preview"></iframe>
-      </div>
+      <img src="previews/screenshots/template-c.png" alt="Template C preview" class="template-preview__img" />
     </div>
     <div class="code-block">
       <pre><code>// CONTEXT
@@ -162,15 +163,21 @@ https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/
 Read SKILL.md + references/recipe-multi-blade-gradient.md.
 
 // GOAL
-A page with two contiguous-gradient regions stacked.
+A page for Einstein AI with two contiguous-gradient regions stacked.
 
 // STRUCTURE
 - REGION 1 (Night Evening, wrapped):
-  - Blade 1: Hero --2col + two CTAs.
-  - Blade 2: --3up card grid, Day-island cards.
+  - Blade 1: Hero --1col centered.
+    Eyebrow: "Einstein AI". Headline: "AI that works for you"
+    Body: "Predictive, generative, and autonomous — built into every cloud."
+    CTAs: "Explore AI" (primary on-dark), "Watch demo" (secondary on-dark).
+  - Blade 2: --3up Day-island card grid.
+    Cards: "Predict" (icon: graph), "Generate" (icon: edit), "Automate" (icon: refresh).
 - REGION 2 (Day Morning, wrapped):
-  - Blade 3: Body blade, centered headline + paragraphs.
+  - Blade 3: Body blade, centered.
+    Headline: "Built on trust". Body about the Trust Layer.
   - Blade 4: --2up card grid with Secondary CTAs.
+    Cards: "Grounding" (icon: check), "Masking" (icon: lock).
 
 // DELIVERABLES
 - One HTML file. Regions are &lt;section class="sf-blade-region"&gt;.
@@ -183,35 +190,31 @@ A page with two contiguous-gradient regions stacked.
       <button class="copy-btn" onclick="copyText(this.closest('.code-block').querySelector('code').textContent, this)"><i class="icon icon--copy" style="width:12px;height:12px;"></i> Copy</button>
     </div>
 
-    <h2>Share your work &amp; give feedback</h2>
-    <p>Push what you build to the Git repo so we can feature it in the gallery. Even rough or "didn't quite work" results are useful signal.</p>
-    <p>Drop notes in <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener">#feedback-channel on Slack</a>: what you built, what worked, what fought you.</p>
-
   </div>
 </section>
 
+<!-- ═══ Feedback FAB + Overlay ═══ -->
+<button class="feedback-fab" data-feedback-open aria-label="Give feedback">
+  <i class="icon icon--chat" aria-hidden="true"></i>
+</button>
+<div class="feedback-backdrop" id="feedback-backdrop"></div>
+<div class="feedback-overlay" id="feedback-overlay">
+  <div class="feedback-overlay__header">
+    <button class="feedback-overlay__close" data-feedback-close aria-label="Close"><i class="icon icon--close" aria-hidden="true"></i></button>
+    <h3 class="feedback-overlay__title">Share your work &amp; give feedback</h3>
+    <p class="feedback-overlay__subtitle">Help us improve the skill — even rough results are useful signal.</p>
+  </div>
+  <div class="feedback-overlay__body">
+    <div class="feedback-overlay__section">
+      <p class="feedback-overlay__label">Join the conversation</p>
+      <p class="feedback-overlay__text">Connect with other creators, share what you've built, get tips, and help shape the skill. Drop screenshots, questions, or ideas — everything helps.</p>
+      <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener" class="feedback-overlay__cta feedback-overlay__cta--primary">
+        <i class="icon icon--chat" aria-hidden="true"></i> Open Slack channel
+      </a>
+    </div>
+  </div>
+</div>
+
 <script src="js/app.js"></script>
-<script>
-(function () {
-  var REF_WIDTH = 780;
-  function scalePreview() {
-    document.querySelectorAll('.template-preview__wrap').forEach(function (wrap) {
-      var container = wrap.parentElement;
-      var containerW = container.offsetWidth;
-      var scale = containerW / 1440;
-      var baseH = parseFloat(wrap.dataset.visibleHeight) || 400;
-      var visibleH = baseH * (containerW / REF_WIDTH);
-      var iframeH = visibleH / scale;
-      var iframe = wrap.querySelector('iframe');
-      iframe.style.height = iframeH + 'px';
-      wrap.style.height = iframeH + 'px';
-      wrap.style.transform = 'scale(' + scale + ')';
-      container.style.height = visibleH + 'px';
-    });
-  }
-  window.addEventListener('load', scalePreview);
-  window.addEventListener('resize', scalePreview);
-})();
-</script>
 </body>
 </html>

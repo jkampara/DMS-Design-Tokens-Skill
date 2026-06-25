@@ -9,6 +9,40 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ═══ Feedback overlay ═══ */
+document.addEventListener('DOMContentLoaded', function () {
+  var overlay = document.getElementById('feedback-overlay');
+  var backdrop = document.getElementById('feedback-backdrop');
+  if (!overlay) return;
+
+  function openFeedback() {
+    overlay.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeedback() {
+    overlay.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-feedback-open]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openFeedback();
+    });
+  });
+
+  var closeBtn = overlay.querySelector('[data-feedback-close]');
+  if (closeBtn) closeBtn.addEventListener('click', closeFeedback);
+  if (backdrop) backdrop.addEventListener('click', closeFeedback);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeFeedback();
+  });
+});
+
 /* ═══ Copy to clipboard ═══ */
 function copyText(text, btn) {
   var el = document.createElement('textarea');

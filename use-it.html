@@ -28,6 +28,7 @@
       <a href="use-it.html" class="nav__tab-link active">How to use it</a>
       <a href="setup-and-help.html" class="nav__tab-link">Setup and help</a>
       <a href="gallery.html" class="nav__tab-link">Gallery</a>
+      <button class="sf-cta sf-cta--special sf-cta--medium nav__feedback" data-feedback-open><i class="icon icon--chat" aria-hidden="true" style="width:16px;height:16px;"></i> Feedback</button>
     </div>
   </div>
 </nav>
@@ -237,6 +238,28 @@ https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/SKILL
 </section>
 
 </section><!-- /sf-blade-region (Night) -->
+
+<!-- ═══ Feedback FAB + Overlay ═══ -->
+<button class="feedback-fab" data-feedback-open aria-label="Give feedback">
+  <i class="icon icon--chat" aria-hidden="true"></i>
+</button>
+<div class="feedback-backdrop" id="feedback-backdrop"></div>
+<div class="feedback-overlay" id="feedback-overlay">
+  <div class="feedback-overlay__header">
+    <button class="feedback-overlay__close" data-feedback-close aria-label="Close"><i class="icon icon--close" aria-hidden="true"></i></button>
+    <h3 class="feedback-overlay__title">Share your work &amp; give feedback</h3>
+    <p class="feedback-overlay__subtitle">Help us improve the skill — even rough results are useful signal.</p>
+  </div>
+  <div class="feedback-overlay__body">
+    <div class="feedback-overlay__section">
+      <p class="feedback-overlay__label">Join the conversation</p>
+      <p class="feedback-overlay__text">Connect with other creators, share what you've built, get tips, and help shape the skill. Drop screenshots, questions, or ideas — everything helps.</p>
+      <a href="https://salesforce.enterprise.slack.com/archives/C0BCZ8MQ8TU" target="_blank" rel="noopener" class="feedback-overlay__cta feedback-overlay__cta--primary">
+        <i class="icon icon--chat" aria-hidden="true"></i> Open Slack channel
+      </a>
+    </div>
+  </div>
+</div>
 
 <script src="js/app.js"></script>
 </body>

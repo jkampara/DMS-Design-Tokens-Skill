@@ -483,6 +483,17 @@ body {
   outline-color: #FFFFFF;
 }
 
+/* Variant: Special — green pill */
+.sf-cta--special {
+  background: var(--color-green-50, #2E844A);
+  color: var(--color-white, #FFFFFF);
+  border: none;
+}
+
+.sf-cta--special:hover { background: var(--color-green-20, #143B25); }
+.sf-cta--special:active { background: var(--color-green-20, #143B25); }
+.sf-cta--special:focus-visible { background: var(--color-green-20, #143B25); }
+
 /* ── Copy button ── */
 .copy-btn {
   display: inline-flex;
@@ -1137,7 +1148,7 @@ code {
   margin: 32px 0;
 }
 
-/* ═══ Template previews (iframe, always desktop) ═══ */
+/* ═══ Template previews (screenshot images) ═══ */
 .template-preview {
   border-radius: 10px;
   overflow: hidden;
@@ -1162,19 +1173,11 @@ code {
     0 12px 20px -2px rgba(24, 24, 24, 0.2);
 }
 
-.template-preview__wrap {
-  width: 1440px;
-  transform-origin: top left;
-  pointer-events: none;
-}
-
-.template-preview__iframe {
-  width: 1440px;
-  border: none;
+.template-preview__img {
+  width: 100%;
+  height: auto;
   display: block;
 }
-
-.template-preview__iframe { height: 100%; }
 
 .prose table {
   width: 100%;
@@ -1582,6 +1585,14 @@ code {
   position: relative;
 }
 
+.gallery-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
 .gallery-card__preview iframe {
   width: 1440px;
   height: 900px;
@@ -1684,6 +1695,38 @@ code {
   flex-shrink: 0;
   width: 14px;
   height: 14px;
+}
+
+/* ── Fun fact banner ── */
+.fun-fact-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(6, 106, 254, 0.15);
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.fun-fact-banner__icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-fill-accent, #066AFE);
+  flex-shrink: 0;
+}
+
+.fun-fact-banner__text {
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-size: 14px;
+  font-weight: var(--font-weight-demi, 600);
+  color: var(--color-electric-blue-15, #001E5B);
+  margin: 0;
 }
 
 /* ── Gallery empty ── */
@@ -1863,4 +1906,227 @@ code {
     font-size: 14px;
     border-radius: 10px;
   }
+  .nav__feedback {
+    display: none;
+  }
+  .nav__tabs.is-open .nav__feedback {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  .feedback-fab { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+  .feedback-fab .icon { width: 20px; height: 20px; }
+  .feedback-overlay {
+    bottom: 16px;
+    right: 16px;
+    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+  }
+}
+
+/* ═══ Nav feedback CTA ═══ */
+.nav__feedback {
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* ═══ Feedback FAB ═══ */
+.feedback-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-green-50, #2E844A);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 12px -2px rgba(46, 132, 74, 0.4),
+    0 8px 20px -4px rgba(46, 132, 74, 0.25);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.feedback-fab:hover {
+  background: var(--color-green-20, #143B25);
+  transform: scale(1.08);
+  box-shadow:
+    0 6px 16px -2px rgba(46, 132, 74, 0.5),
+    0 12px 28px -4px rgba(46, 132, 74, 0.3);
+}
+
+.feedback-fab:active { transform: scale(0.95); }
+
+.feedback-fab .icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* ═══ Feedback overlay ═══ */
+.feedback-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+
+.feedback-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.feedback-overlay {
+  position: fixed;
+  z-index: 301;
+  bottom: 32px;
+  right: 32px;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  background: var(--color-surface-1, #FFFFFF);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px -4px rgba(24, 24, 24, 0.2),
+    0 20px 48px -8px rgba(24, 24, 24, 0.15);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s,
+              visibility 0.3s;
+}
+
+.feedback-overlay.is-open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.feedback-overlay__header {
+  background: var(--grad-night);
+  padding: 28px 28px 24px;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.feedback-overlay__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.feedback-overlay__close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.feedback-overlay__close .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.feedback-overlay__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-style-display-7-size, 20px);
+  font-weight: var(--font-weight-demi, 600);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.feedback-overlay__subtitle {
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.feedback-overlay__body {
+  padding: 24px 28px 28px;
+}
+
+.feedback-overlay__section {
+  margin-bottom: 20px;
+}
+
+.feedback-overlay__section:last-child {
+  margin-bottom: 0;
+}
+
+.feedback-overlay__label {
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-style-body-copy-4-size, 14px);
+  color: var(--color-on-surface-1, #001E5B);
+  margin-bottom: 6px;
+}
+
+.feedback-overlay__text {
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  color: var(--color-on-surface-2, #444444);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.feedback-overlay__cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: var(--font-family-body, "Salesforce Sans", Arial, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.feedback-overlay__cta--primary {
+  background: var(--color-fill-accent, #066AFE);
+  color: var(--color-on-fill-accent, #FFFFFF);
+}
+
+.feedback-overlay__cta--primary:hover {
+  background: var(--color-fill-accent-hover, #022AC0);
+}
+
+.feedback-overlay__cta--secondary {
+  background: transparent;
+  color: var(--color-link, #066AFE);
+  box-shadow: inset 0 0 0 2px var(--color-border-accent, #022AC0);
+}
+
+.feedback-overlay__cta--secondary:hover {
+  background: var(--color-fill-neutral-hover, #EAF5FE);
+}
+
+.feedback-overlay__cta .icon {
+  width: 16px;
+  height: 16px;
 }
